@@ -1,33 +1,86 @@
-body {
+/* Asegurar que el body y html ocupen toda la pantalla */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #F1F1F1;
     color: #3E3636;
 }
 
-.navbar {
-    background-color: #12477F;
+/* Asegurar que el contenido principal empuje el footer hacia abajo */
+.container {
+    flex: 1; /* Hace que el contenido ocupe el espacio disponible */
 }
 
+/* Navbar */
+.navbar {
+    background-color: #12477F;
+    padding: 15px 0;
+}
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: bold;
     color: white !important;
 }
+.navbar-nav .nav-link {
+    color: white !important;
+    margin-right: 15px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+.navbar-nav .nav-link:hover {
+    color: #51C3F0 !important;
+}
 
-.btn-primary {
+/* Botón de reserva en navbar */
+.btn-accent {
     background-color: #51C3F0;
     border-color: #51C3F0;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
 }
-
-.btn-primary:hover {
+.btn-accent:hover {
     background-color: #12477F;
     border-color: #12477F;
+    transform: scale(1.05);
 }
 
+/* Card */
 .card {
     border: none;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+.card-text {
+    font-size: 16px;
+}
+
+/* Botón de la tarjeta */
+.btn-primary {
+    background-color: #51C3F0;
+    border-color: #51C3F0;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.btn-primary:hover {
+    background-color: #12477F;
+    border-color: #12477F;
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -35,12 +88,27 @@ body {
     background-color: #12477F;
     color: white;
     padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     text-align: center;
+    width: 100%;
+    margin-top: auto; /* Empuja el footer hacia abajo */
 }
 .footer a {
     color: white;
     text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Iconos redes sociales */
+.bi {
+    font-size: 20px;
+    color: white;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.bi:hover {
+    color: #51C3F0;
 }
