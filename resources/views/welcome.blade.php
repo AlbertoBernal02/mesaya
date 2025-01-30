@@ -41,7 +41,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <img src="https://source.unsplash.com/600x400/?restaurant" class="card-img-top" alt="Restaurante">
+                    <img src="{{ asset('img/bilio.jpg') }}" class="card-img-top" alt="Plato Especial">
                     <div class="card-body text-center">
                         <h5 class="card-title">Reserva en los mejores restaurantes</h5>
                         <p class="card-text">Encuentra y reserva tu mesa en los restaurantes más exclusivos de la ciudad con MesaYa.</p>
