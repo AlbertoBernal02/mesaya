@@ -17,3 +17,7 @@ Route::get('/contacto', function () {
 Route::get('/nosotros', function () {
     return view('nosotros'); //resources/views/nosotros.blade.php"
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
