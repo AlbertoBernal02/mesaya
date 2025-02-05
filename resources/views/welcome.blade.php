@@ -74,4 +74,4 @@
 </body>
 </html>
 
-{{-- Hola chavale --}}
+{{-- Example --}}
