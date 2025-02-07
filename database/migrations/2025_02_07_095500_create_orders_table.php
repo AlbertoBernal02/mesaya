@@ -10,6 +10,7 @@ return new class extends Migration {
             $table->id();
             $table->decimal('total_price', 10, 2)->unsigned();
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
+            $table->timestamp('order_date')->default(now()); // ✅ Asegurar que esta línea esté aquí
             $table->timestamps();
         });
     }
@@ -18,4 +19,3 @@ return new class extends Migration {
         Schema::dropIfExists('orders');
     }
 };
-
