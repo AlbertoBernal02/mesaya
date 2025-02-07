@@ -11,8 +11,12 @@ return new class extends Migration {
             $table->string('name', 255);
             $table->string('email', 255)->unique();
             $table->string('password', 255);
-            $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
             $table->timestamps();
+        });
+
+        // Agregar la clave foránea después de crear la tabla
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
         });
     }
 
@@ -20,3 +24,4 @@ return new class extends Migration {
         Schema::dropIfExists('users');
     }
 };
+
