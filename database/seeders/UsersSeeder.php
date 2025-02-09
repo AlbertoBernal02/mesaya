@@ -8,33 +8,21 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         DB::table('users')->insert([
             [
                 'name' => 'Admin MesaYa',
                 'email' => 'admin@mesaya.com',
-                'password' => Hash::make('admin123'),
-                'role_id' => 1,
-                'email_verified_at' => now(),
-                'remember_token' => 'admin_token'
+                'password' => Hash::make('admin'),
+                'role_id' => 1, // ID del rol de Administrador en la tabla roles
             ],
             [
-                'name' => 'Restaurante La Parrilla',
-                'email' => 'laparrilla@mesaya.com',
-                'password' => Hash::make('restaurante123'),
-                'role_id' => 2,
-                'email_verified_at' => now(),
-                'remember_token' => 'restaurant_token'
-            ],
-            [
-                'name' => 'Cliente Juan Pérez',
-                'email' => 'juan.perez@mesaya.com',
+                'name' => 'Cliente Ejemplo',
+                'email' => 'cliente@mesaya.com',
                 'password' => Hash::make('cliente123'),
-                'role_id' => 3,
-                'email_verified_at' => now(),
-                'remember_token' => 'cliente_token'
-            ],
+                'role_id' => 2, // ID del rol Cliente
+            ]
         ]);
     }
 }
