@@ -18,6 +18,12 @@ class UsersSeeder extends Seeder
                 'role_id' => 1, // ID del rol de Administrador en la tabla roles
             ],
             [
+                'name' => 'AdminPrueba MesaYa',
+                'email' => 'adminprueba@mesaya.com',
+                'password' => Hash::make('adminprueba'),
+                'role_id' => 1, // ID del rol de Administrador en la tabla roles
+            ],
+            [
                 'name' => 'Cliente Ejemplo',
                 'email' => 'cliente@mesaya.com',
                 'password' => Hash::make('cliente123'),

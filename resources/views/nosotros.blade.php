@@ -47,7 +47,7 @@
                             </li>
                         @elseif(Auth::user()->role && Auth::user()->role->role_name == 'Administrador')
                             <li class="nav-item">
-                                <a class="btn btn-warning" href="{{ url('/admin/restaurants') }}">Administrar Restaurantes</a>
+                                <a class="btn btn-warning" href="{{ url('/') }}">Administrar Restaurantes</a>
                             </li>
                         @endif
                         <li class="nav-item">
@@ -64,6 +64,13 @@
             </div>
         </div>
     </nav>
+
+    <!-- Nosotros Page Content -->
+    <div class="container mt-5">
+        <h1>Sobre Nosotros</h1>
+        <p>Esta es la página sobre nosotros.</p>
+    </div>
+
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
         <div class="container text-center">

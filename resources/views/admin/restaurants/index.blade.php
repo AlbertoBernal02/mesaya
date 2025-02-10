@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MesaYa - Reserva tu mesa</title>
+    <title>MesaYa - Contactos</title>
 
     {{-- Vite para importar bootstrap --}}
     @vite(['resources/js/app.js', 'resources/sass/app.scss'])
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     <!-- Header Mejorado -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -46,7 +47,7 @@
                             </li>
                         @elseif(Auth::user()->role && Auth::user()->role->role_name == 'Administrador')
                             <li class="nav-item">
-                                <a class="btn btn-warning" href="{{ url('/') }}">Administrar Restaurantes</a>
+                                <a class="btn btn-warning" href="{{ url('/admin/restaurants') }}">Administrar Restaurantes</a>
                             </li>
                         @endif
                         <li class="nav-item">
@@ -63,40 +64,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Contenido Principal -->
-    <div class="container mt-5">
-        <div class="row">
-            @if ($restaurants->isEmpty())
-                <p class="text-center text-danger">No hay restaurantes disponibles.</p>
-            @endif
-
-            @foreach ($restaurants as $restaurant)
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <img src="{{ asset('img/' . $restaurant->image) }}" class="card-img-top"
-                            alt="{{ $restaurant->name }}" style="height: 150px; object-fit: cover;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $restaurant->name }}</h5>
-                            <p class="card-text">{{ $restaurant->category->name }}</p>
-                            <p class="card-text">Precio Medio: {{ $restaurant->total_price }}€</p>
-
-                            @guest
-                                <a href="{{ route('login') }}" class="btn btn-primary">Reservar Ahora</a>
-                            @else
-                                @if (Auth::user()->role && Auth::user()->role->role_name == 'Cliente')
-                                    <a href="{{ url('/reservas') }}" class="btn btn-success">Reservar Ahora</a>
-                                @elseif(Auth::user()->role && Auth::user()->role->role_name == 'Administrador')
-                                    <a href="{{ url('/admin/dashboard') }}" class="btn btn-warning">Administrar Restaurantes</a>
-                                @endif
-                            @endguest
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
         <div class="container text-center">

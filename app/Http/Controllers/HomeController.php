@@ -18,4 +18,14 @@ class HomeController extends Controller
             return view('welcome', compact('restaurants'));
         }
     }
+
+    public function contacto()
+    {
+        return view('contacto'); // Asegúrate de tener una vista llamada 'contacto.blade.php'
+    }
+
+    public function nosotros()
+    {
+        return view('nosotros'); // Asegúrate de tener una vista llamada 'nosotros.blade.php'
+    }
 }
