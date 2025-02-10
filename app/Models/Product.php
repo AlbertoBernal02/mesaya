@@ -8,8 +8,6 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $table = 'products'; // Asegurar que Laravel usa la tabla correcta
-
     protected $fillable = ['name', 'total_price', 'categories_id', 'image'];
 
     public function category()
@@ -17,3 +15,4 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'categories_id');
     }
 }
+

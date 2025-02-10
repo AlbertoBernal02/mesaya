@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
     <!-- Header Mejorado -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
