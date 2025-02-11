@@ -65,11 +65,86 @@
         </div>
     </nav>
 
-    <!-- Nosotros Page Content -->
-    <div class="container mt-5">
-        <h1>Sobre Nosotros</h1>
-        <p>Esta es la página sobre nosotros.</p>
+  <!-- Imagen y Texto sobre nuestra empresa -->
+<div class="container mt-5">
+    <!-- Imagen -->
+    <div class="text-center">
+        <img src="{{ asset('public/img/bilio.jpg') }}" alt="Nuestra Empresa" class="img-fluid rounded" style="max-width: 100%; height: auto;">
     </div>
+
+   <!-- Texto sobre la empresa centrado -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="text-center">
+        <h1>MesaYa</h1>
+        <p>Somos una plataforma que conecta a los amantes de la gastronomía con los mejores restaurantes locales. Nuestra misión es facilitar reservas y mejorar la experiencia de comer fuera de casa, brindando un servicio cómodo, rápido y eficiente para todos.</p>
+    </div>
+</div>
+
+
+<!-- Tres Cards con diseño mejorado usando Bootstrap -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary shadow-lg hover-card h-100">
+                <img src="{{ asset('images/card1.jpg') }}" class="card-img-top" alt="Card 1">
+                <div class="card-body">
+                    <h5 class="card-title">Reserva Rápida</h5>
+                    <p class="card-text">Disfruta de una reserva rápida y sin complicaciones en los mejores restaurantes de tu ciudad.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary shadow-lg hover-card h-100">
+                <img src="{{ asset('images/card2.jpg') }}" class="card-img-top" alt="Card 2">
+                <div class="card-body">
+                    <h5 class="card-title">Variedad de Opciones</h5>
+                    <p class="card-text">Encuentra restaurantes de todas las categorías, desde comida gourmet hasta casual.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary shadow-lg hover-card h-100">
+                <img src="{{ asset('images/card3.jpg') }}" class="card-img-top" alt="Card 3">
+                <div class="card-body">
+                    <h5 class="card-title">Ofertas Exclusivas</h5>
+                    <p class="card-text">Accede a promociones y descuentos exclusivos solo para usuarios de MesaYa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Utility Classes for Hover Effect -->
+<style>
+    /* Aplicando la sombra y expansión en la tarjeta */
+    .hover-card {
+        transition: all 0.3s ease; /* Suaviza la transición de los efectos */
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* Sombra azul por defecto */
+        border-width: 2px; /* Bordes más gruesos */
+        border-color: rgba(0, 123, 255, 0.7); /* Bordes azules */
+    }
+
+    .hover-card:hover {
+        transform: translateY(-10px); /* Efecto de expansión hacia arriba */
+        box-shadow: 0 8px 16px rgba(0, 123, 255, 0.7); /* Sombra azul más grande en hover */
+    }
+
+    /* Asegura que las imágenes no se agranden, solo la tarjeta */
+    .hover-card img {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-card:hover img {
+        transform: none; /* No modificar el tamaño de la imagen */
+    }
+
+    /* Asegurar que todas las tarjetas tengan el mismo tamaño */
+    .h-100 {
+        height: 100%; /* Hace que las tarjetas se ajusten a un mismo tamaño */
+    }
+</style>
 
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
