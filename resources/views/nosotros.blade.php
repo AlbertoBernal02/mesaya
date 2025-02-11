@@ -79,51 +79,78 @@
     </div>
 
     <!-- Texto sobre la empresa centrado -->
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 30vh; margin-top: 5vh;">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 40vh; margin-top: 5vh;">
         <div class="text-center">
             <h1>Somos una plataforma que conecta a los amantes de la gastronomía con los mejores restaurantes locales. Nuestra misión es facilitar reservas y mejorar la experiencia de comer fuera de casa, brindando un servicio cómodo, rápido y eficiente para todos.</h1>
         </div>
     </div>
 
     <!-- Título adicional "Disfruta de nuestras ventajas" -->
-    <div class="container text-center mb-4">
+    <div class="container text-center mb-4" style= "min-height: 20vh";>
         <h2>Disfruta de nuestras ventajas</h2>
     </div>
 
-    <!-- Tres Cards con diseño mejorado usando Bootstrap -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card border-primary shadow-lg hover-card h-100">
-                    <img src="{{ asset('../../img/bilio.jpg') }}" class="card-img-top" alt="Card 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Reserva Rápida</h5>
-                        <p class="card-text">Disfruta de una reserva rápida y sin complicaciones en los mejores restaurantes de tu ciudad.</p>
+ <!-- Tres Cards con diseño mejorado usando Bootstrap -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-lg hover-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="{{ asset('../../img/reloj.png') }}" class="card-img-top" alt="Card 1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">¿Tienes prisa?</h5>
+                        </div>
+                    </div>
+                    <div class="card-back d-flex justify-content-center align-items-center text-center">
+                        <div class="card-body">
+                            <p class="card-text">Ahorrate el ir al restaurante y que no haya mesa y tengas que comer tarde. ¡Mesaya tiene la solución al problema!.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card border-primary shadow-lg hover-card h-100">
-                    <img src="{{ asset('../../img/bilio.jpg') }}" class="card-img-top" alt="Card 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Variedad de Opciones</h5>
-                        <p class="card-text">Encuentra restaurantes de todas las categorías, desde comida gourmet hasta casual.</p>
+        <!-- Card 2 -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-lg hover-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="{{ asset('../../img/vip.png') }}" class="card-img-top" alt="Card 2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fidelidad</h5>
+                        </div>
+                    </div>
+                    <div class="card-back d-flex justify-content-center align-items-center text-center">
+                        <div class="card-body">
+                            <p class="card-text">Tendrás más opciones de eventos organizados por nosotros y descuentos en nuestros restaurantes.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card border-primary shadow-lg hover-card h-100">
-                    <img src="{{ asset('../../img/bilio.jpg') }}" class="card-img-top" alt="Card 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Ofertas Exclusivas</h5>
-                        <p class="card-text">Accede a promociones y descuentos exclusivos solo para usuarios de MesaYa.</p>
+        <!-- Card 3 -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-lg hover-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="{{ asset('../../img/ahorro.png') }}" class="card-img-top" alt="Card 3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Ofertas Exclusivas</h5>
+                        </div>
+                    </div>
+                    <div class="card-back d-flex justify-content-center align-items-center text-center">
+                        <div class="card-body">
+                            <p class="card-text">Accede a promociones y descuentos exclusivos solo para usuarios de MesaYa.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
