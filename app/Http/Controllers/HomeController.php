@@ -12,8 +12,8 @@ class HomeController extends Controller
     {
         $restaurants = Product::all(); // Cargar los productos como restaurantes
 
-        if (Auth::check() && Auth::user()->role && Auth::user()->role->role_name == 'Administrador') {
-            return view('admin.restaurants', compact('restaurants'));
+        if (Auth::check() && Auth::user()->role && Auth::user()->role == 'admin') {
+            return view('welcome', compact('restaurants'));
         } else {
             return view('welcome', compact('restaurants'));
         }

@@ -2,12 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RestaurantController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\ProductController;
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+});
+
 
 // Página de inicio (welcome.blade.php)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 Route::get('/contacto', [HomeController::class, 'contacto'])->name('contacto');
 Route::get('/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 
@@ -22,7 +30,7 @@ Route::get('/home', function () {
     return redirect()->route('login');
 })->name('home');
 
-// Rutas protegidas para ADMINISTRADORES
+/*// Rutas protegidas para ADMINISTRADORES
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard'); // Asegúrate de tener una vista llamada 'admin.dashboard'
@@ -40,7 +48,7 @@ Route::prefix('admin')->group(function () {
 Route::middleware(['auth', 'can:isClient'])->group(function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
-});
+});*/
 
 // Ruta de prueba para verificar si el rol funciona correctamente
 Route::get('/admin/test', function () {

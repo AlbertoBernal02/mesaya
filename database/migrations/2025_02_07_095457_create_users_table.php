@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
             $table->rememberToken();
-            $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null'); // ✅ Debe estar aquí
+            $table->string('role')->default('Cliente');
             $table->timestamps();
         });
     }
