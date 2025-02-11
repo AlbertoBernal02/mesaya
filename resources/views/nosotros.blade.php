@@ -72,7 +72,7 @@
     </nav>
 
   <!-- Imagen y Texto sobre nuestra empresa -->
-<div class="container mt-5">
+  <div class="d-flex flex-column min-vh-100">
 
    <!-- Texto sobre la empresa centrado -->
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
@@ -117,36 +117,6 @@
         </div>
     </div>
 </div>
-
-<!-- Bootstrap Utility Classes for Hover Effect -->
-<style>
-    /* Aplicando la sombra y expansión en la tarjeta */
-    .hover-card {
-        transition: all 0.3s ease; /* Suaviza la transición de los efectos */
-        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* Sombra azul por defecto */
-        border-width: 2px; /* Bordes más gruesos */
-        border-color: rgba(0, 123, 255, 0.7); /* Bordes azules */
-    }
-
-    .hover-card:hover {
-        transform: translateY(-10px); /* Efecto de expansión hacia arriba */
-        box-shadow: 0 8px 16px rgba(0, 123, 255, 0.7); /* Sombra azul más grande en hover */
-    }
-
-    /* Asegura que las imágenes no se agranden, solo la tarjeta */
-    .hover-card img {
-        transition: transform 0.3s ease;
-    }
-
-    .hover-card:hover img {
-        transform: none; /* No modificar el tamaño de la imagen */
-    }
-
-    /* Asegurar que todas las tarjetas tengan el mismo tamaño */
-    .h-100 {
-        height: 100%; /* Hace que las tarjetas se ajusten a un mismo tamaño */
-    }
-</style>
 
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
