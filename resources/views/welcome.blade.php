@@ -18,13 +18,20 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400&display=swap"
         rel="stylesheet">
+ <!-- Favicon -->
+ <link rel="icon" href="{{ asset('../../img/logo.png') }}" type="image/x-icon"> <!-- Cambia el nombre de la imagen según corresponda -->
 </head>
 
 <body>
-    <!-- Header Mejorado -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">MesaYa</a>
+
+   <!-- Header Mejorado -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Logo de la empresa al lado del texto "MesaYa" -->
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;"> <!-- Cambia el nombre de la imagen según corresponda -->
+            MesaYa
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>

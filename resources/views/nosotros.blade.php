@@ -18,22 +18,28 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400&display=swap"
         rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('../../img/logo.png') }}" type="image/x-icon"> <!-- Cambia el nombre de la imagen según corresponda -->
 </head>
 
 <body>
 
-    <!-- Header Mejorado -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">MesaYa</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Sobre Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
+   <!-- Header Mejorado -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Logo de la empresa al lado del texto "MesaYa" -->
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;"> <!-- Cambia el nombre de la imagen según corresponda -->
+            MesaYa
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Sobre Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
 
                     @guest
                         <li class="nav-item">
@@ -67,10 +73,6 @@
 
   <!-- Imagen y Texto sobre nuestra empresa -->
 <div class="container mt-5">
-    <!-- Imagen -->
-    <div class="text-center">
-        <img src="{{ asset('public/img/bilio.jpg') }}" alt="Nuestra Empresa" class="img-fluid rounded" style="max-width: 100%; height: auto;">
-    </div>
 
    <!-- Texto sobre la empresa centrado -->
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
@@ -86,7 +88,7 @@
     <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card border-primary shadow-lg hover-card h-100">
-                <img src="{{ asset('images/card1.jpg') }}" class="card-img-top" alt="Card 1">
+                <img src="{{ asset('../../img/bilio.jpg') }}" class="card-img-top" alt="Card 1">
                 <div class="card-body">
                     <h5 class="card-title">Reserva Rápida</h5>
                     <p class="card-text">Disfruta de una reserva rápida y sin complicaciones en los mejores restaurantes de tu ciudad.</p>
@@ -96,7 +98,7 @@
 
         <div class="col-md-4 mb-4">
             <div class="card border-primary shadow-lg hover-card h-100">
-                <img src="{{ asset('images/card2.jpg') }}" class="card-img-top" alt="Card 2">
+                <img src="{{ asset('../../img/bilio.jpg') }}" class="card-img-top" alt="Card 2">
                 <div class="card-body">
                     <h5 class="card-title">Variedad de Opciones</h5>
                     <p class="card-text">Encuentra restaurantes de todas las categorías, desde comida gourmet hasta casual.</p>
@@ -106,7 +108,7 @@
 
         <div class="col-md-4 mb-4">
             <div class="card border-primary shadow-lg hover-card h-100">
-                <img src="{{ asset('images/card3.jpg') }}" class="card-img-top" alt="Card 3">
+                <img src="{{ asset('../../img/bilio.jpg') }}" class="card-img-top" alt="Card 3">
                 <div class="card-body">
                     <h5 class="card-title">Ofertas Exclusivas</h5>
                     <p class="card-text">Accede a promociones y descuentos exclusivos solo para usuarios de MesaYa.</p>
