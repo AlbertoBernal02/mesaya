@@ -22,13 +22,21 @@ class ProductController extends Controller
         $product->categories_id = $request->categories_id;
         $product->total_price = $request->total_price;
 
+        // Subir la imagen
         if ($request->hasFile('image')) {
-            $product->image = $request->file('image')->store('products');
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName);
+            $imagePath = '../../img/' . $imageName;
+        } else {
+            $imagePath = '../../img/default.png';
         }
+
+        // ASIGNAR LA IMAGEN ANTES DE GUARDAR
+        $product->image = $imagePath;
 
         $product->save();
 
-        // Cambiar la redirección a una ruta diferente
         return redirect()->route('home')->with('success', 'Product created successfully.');
     }
 }
