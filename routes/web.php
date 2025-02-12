@@ -4,8 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\ProductController;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
-use App\Http\Controllers\ProductController;
+Route::get('/categories', function (Request $request) {
+    return response()->json(Category::all());
+});
 
 /*Permisos de ruta*/
 Route::get('/contacto', function () {
@@ -13,14 +18,10 @@ Route::get('/contacto', function () {
 })->middleware(['auth', 'role:user']);  
 /*End Permisos de ruta*/
 
-
-
-
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    // Ruta para procesar el formulario de creación de producto
+    Route::post('admin/products', [ProductController::class, 'store'])->name('products.store');
 });
-
 
 // Página de inicio (welcome.blade.php)
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -38,11 +39,3 @@ Route::get('/home', function () {
     }
     return redirect()->route('login');
 })->name('home');
-
-
-
-
-// Ruta de prueba para verificar si el rol funciona correctamente
-Route::get('/admin/test', function () {
-    return "Ruta protegida correctamente";
-})->middleware('auth')->can('isAdmin');

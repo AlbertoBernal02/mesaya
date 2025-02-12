@@ -67,11 +67,10 @@
         
     @else
         @if (Auth::user()->role && Auth::user()->role == 'admin')
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRestaurantModal">Añadir Restaurante</button>
-        @endif
-    @endguest
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">Añadir Restaurante</button>
 
-    <!-- Modal para añadir producto -->
+
+            <!-- Modal para añadir producto -->
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -90,10 +89,10 @@
                     <div class="mb-3">
     <label for="categories_id" class="form-label">Categoría</label>
     <select class="form-select" id="categories_id" name="categories_id" required>
-        <option value="">Selecciona una categoría</option>
-        
+        <option value="">Cargando categorías...</option>
     </select>
 </div>
+
 
 
                     <div class="mb-3">
@@ -112,6 +111,10 @@
         </div>
     </div>
 </div>
+        @endif
+    @endguest
+
+    
 
 
 
@@ -130,14 +133,14 @@
                         alt="{{ $restaurant->name }}" style="height: 150px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ $restaurant->name }}</h5>
-                        <p class="card-text">{{ $restaurant->category->name }}</p>
+                        <p class="card-text">{{ $restaurant->category }}</p>
                         <p class="card-text">Precio Medio: {{ $restaurant->total_price }}€</p>
 
                         @guest
-                        <a href="{{ route('login') }}" class="btn btn-primary">Reservar Ahora</a>
+                        <a href="{{ route('login') }}" class="btn btn-success">Reservar Ahora</a>
                         @else
                         @if (Auth::user()->role && Auth::user()->role == 'user')
-                        <a href="{{ url('/') }}" class="btn btn-success">Reservar</a>
+                        <a href="{{ url('/') }}" class="btn btn-success">Reservar Ahora</a>
                         @elseif(Auth::user()->role && Auth::user()->role == 'admin')
                         <a href="{{ url('/') }}" class="btn btn-warning">Editar</a>
                         <a href="{{ url('/') }}" class="btn btn-warning">Borrar</a>

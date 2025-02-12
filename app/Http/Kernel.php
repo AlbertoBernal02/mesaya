@@ -32,12 +32,12 @@ class Kernel extends HttpKernel
         ],
     ];
 
-    // En app/Http/Kernel.php
-protected $routeMiddleware = [
-    'auth' => \App\Http\Middleware\Authenticate::class,
-    'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-    'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-    'role' => \App\Http\Middleware\RoleMiddleware::class, // Registra tu middleware aquí
-    'can' => \Illuminate\Auth\Middleware\Authorize::class,
-];
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+    ];
 }
