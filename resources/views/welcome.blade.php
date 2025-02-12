@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400&display=swap"
         rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('../../img/logo.png') }}" type="image/x-icon"> <!-- Cambia el nombre de la imagen según corresponda -->
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         <div class="container">
             <!-- Logo de la empresa al lado del texto "MesaYa" -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;"> <!-- Cambia el nombre de la imagen según corresponda -->
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;">
                 MesaYa
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -47,7 +47,6 @@
                         <a class="btn btn-secondary" href="{{ route('register') }}">Registrarse</a>
                     </li>
                     @else
-                    
                     <li class="nav-item">
                         <a class="btn btn-danger" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -64,77 +63,68 @@
     </nav>
 
     @guest
-        
     @else
         @if (Auth::user()->role && Auth::user()->role == 'admin')
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">Añadir Restaurante</button>
 
-
             <!-- Modal para añadir producto -->
-<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addProductModalLabel">Añadir Producto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addProductModalLabel">Añadir Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nombre del Producto</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="categories_id" class="form-label">Categoría</label>
+                                    <select class="form-select" id="categories_id" name="categories_id" required>
+                                        <option value="">Cargando categorías...</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Imagen</label>
+                                    <input type="file" class="form-control" id="image" name="image">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="total_price" class="form-label">Precio Total</label>
+                                    <input type="number" class="form-control" id="total_price" name="total_price" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Añadir Producto</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nombre del Producto</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-
-                    <div class="mb-3">
-    <label for="categories_id" class="form-label">Categoría</label>
-    <select class="form-select" id="categories_id" name="categories_id" required>
-        <option value="">Cargando categorías...</option>
-    </select>
-</div>
-
-
-
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_price" class="form-label">Precio Total</label>
-                        <input type="number" class="form-control" id="total_price" name="total_price" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Añadir Producto</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
         @endif
     @endguest
-
-    
-
-
-
 
     <!-- Contenido Principal -->
     <div class="container mt-5">
         <div class="row">
-            @if ($restaurants->isEmpty())
+            @if ($products->isEmpty())
             <p class="text-center text-danger">No hay restaurantes disponibles.</p>
             @endif
 
-            @foreach ($restaurants as $restaurant)
+            @foreach ($products as $product)
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm">
-                    <img src="{{ asset('img/' . $restaurant->image) }}" class="card-img-top"
-                        alt="{{ $restaurant->name }}" style="height: 150px; object-fit: cover;">
+                    <img src="{{ asset('img/' . $product->image) }}" class="card-img-top"
+                        alt="{{ $product->name }}" style="height: 150px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <h5 class="card-title">{{ $restaurant->name }}</h5>
-                        <p class="card-text">{{ $restaurant->category }}</p>
-                        <p class="card-text">Precio Medio: {{ $restaurant->total_price }}€</p>
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ $product->category->name ?? 'Sin categoría' }}</p>
+                        <p class="card-text">Precio Medio: {{ $product->total_price }}€</p>
 
                         @guest
                         <a href="{{ route('login') }}" class="btn btn-success">Reservar Ahora</a>
@@ -142,8 +132,15 @@
                         @if (Auth::user()->role && Auth::user()->role == 'user')
                         <a href="{{ url('/') }}" class="btn btn-success">Reservar Ahora</a>
                         @elseif(Auth::user()->role && Auth::user()->role == 'admin')
-                        <a href="{{ url('/') }}" class="btn btn-warning">Editar</a>
-                        <a href="{{ url('/') }}" class="btn btn-warning">Borrar</a>
+
+                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
+
+                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                        </form>
+
                         @endif
                         @endguest
                     </div>
@@ -170,9 +167,9 @@
         </div>
     </footer>
 
-    <!-- Scripts de Bootstrap (antes de cerrar el body) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

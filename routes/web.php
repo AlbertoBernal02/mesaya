@@ -8,6 +8,13 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+// Grupo de rutas protegidas para administradores
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', ProductController::class);
+});
+
+
+
 Route::get('/categories', function (Request $request) {
     return response()->json(Category::all());
 });
@@ -24,7 +31,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 // Página de inicio (welcome.blade.php)
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/nosotros', [HomeController::class, 'nosotros']);
