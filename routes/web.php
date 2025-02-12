@@ -8,6 +8,12 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\ReservaController;
+
+Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
+
+
+
 // Grupo de rutas protegidas para administradores
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', ProductController::class);

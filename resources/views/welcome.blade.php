@@ -20,6 +20,13 @@
         rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
+
+    <!-- Agregar los enlaces de FullCalendar y Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js" defer></script>
+    <!-- Agregar Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
 <body>
@@ -127,10 +134,10 @@
                         <p class="card-text">Precio Medio: {{ $product->total_price }}€</p>
 
                         @guest
-                        <a href="{{ route('login') }}" class="btn btn-success">Reservar Ahora</a>
+                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}">Reservar Ahora</a>
                         @else
                         @if (Auth::user()->role && Auth::user()->role == 'user')
-                        <a href="{{ url('/') }}" class="btn btn-success">Reservar Ahora</a>
+                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}">Reservar Ahora</a>
                         @elseif(Auth::user()->role && Auth::user()->role == 'admin')
 
                         <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
@@ -149,6 +156,88 @@
             @endforeach
         </div>
     </div>
+
+    <!-- Modal de Reserva Mejorado -->
+    <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reserveModalLabel">Reserva tu mesa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reservationForm" action="{{ route('reservas.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="restaurante" id="restaurante">
+                    <div class="mb-3">
+    <label for="reservationDate" class="form-label">Fecha de Reserva</label>
+    <input type="date" class="form-control" id="reservationDate" name="fecha" required min="" />
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener la fecha actual en formato YYYY-MM-DD
+        const today = new Date().toISOString().split('T')[0];  // Formato "YYYY-MM-DD"
+        // Establecer la fecha mínima en el campo de fecha
+        document.getElementById('reservationDate').setAttribute('min', today);
+    });
+</script>
+                    <div class="mb-3">
+                        <label for="timeSlot" class="form-label">Hora</label>
+                        <select class="form-select" id="timeSlot" name="hora" required></select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numPeople" class="form-label">Número de Personas</label>
+                        <input type="number" class="form-control" id="numPeople" name="num_comensales" min="1" max="10" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Reservar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const reservationDate = document.getElementById('reservationDate');
+            const timeSlot = document.getElementById('timeSlot');
+            
+            reservationDate.addEventListener('change', function () {
+                populateTimeSlots(this.value);
+            });
+
+            function populateTimeSlots(selectedDate) {
+                const now = new Date();
+                const selectedDay = new Date(selectedDate);
+                timeSlot.innerHTML = '';
+                let startHour = 12, endHour = 21; // Horario estándar de reservas
+                
+                if (selectedDay.toDateString() === now.toDateString()) {
+                    startHour = now.getHours() + (now.getMinutes() >= 30 ? 1 : 0);
+                }
+                
+                for (let h = startHour; h <= endHour; h++) {
+                    ["00", "30"].forEach(min => {
+                        if (h < endHour || min === "00") {
+                            const option = document.createElement('option');
+                            option.value = `${h}:${min}`;
+                            option.textContent = `${h}:${min}`;
+                            timeSlot.appendChild(option);
+                        }
+                    });
+                }
+            }
+
+            // Establecer el restaurante cuando se abra el modal
+            const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+            reserveButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const restaurante = this.getAttribute('data-restaurante');
+                    document.getElementById('restaurante').value = restaurante;
+                });
+            });
+        });
+    </script>
 
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
