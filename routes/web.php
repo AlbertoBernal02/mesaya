@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\ProductController;
 
+/*Permisos de ruta*/
+Route::get('/contacto', function () {
+    return view('contacto');
+})->middleware(['auth', 'role:user']);  
+/*End Permisos de ruta*/
+
+
+
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
@@ -16,8 +25,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Página de inicio (welcome.blade.php)
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/contacto', [HomeController::class, 'contacto'])->name('contacto');
-Route::get('/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
+
+Route::get('/nosotros', [HomeController::class, 'nosotros']);
 
 // Rutas de autenticación
 Auth::routes();
@@ -30,25 +39,8 @@ Route::get('/home', function () {
     return redirect()->route('login');
 })->name('home');
 
-/*// Rutas protegidas para ADMINISTRADORES
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard'); // Asegúrate de tener una vista llamada 'admin.dashboard'
-    })->name('admin.dashboard')->middleware('auth')->can('isAdmin');
 
-    Route::get('/restaurants', [RestaurantController::class, 'adminIndex'])->name('admin.restaurants.index')->middleware('auth')->can('isAdmin');
-    Route::get('/restaurants/create', [RestaurantController::class, 'create'])->name('admin.restaurants.create')->middleware('auth')->can('isAdmin');
-    Route::post('/restaurants', [RestaurantController::class, 'store'])->name('admin.restaurants.store')->middleware('auth')->can('isAdmin');
-    Route::get('/restaurants/{id}/edit', [RestaurantController::class, 'edit'])->name('admin.restaurants.edit')->middleware('auth')->can('isAdmin');
-    Route::put('/restaurants/{id}', [RestaurantController::class, 'update'])->name('admin.restaurants.update')->middleware('auth')->can('isAdmin');
-    Route::delete('/restaurants/{id}', [RestaurantController::class, 'destroy'])->name('admin.restaurants.destroy')->middleware('auth')->can('isAdmin');
-});
 
-// Rutas protegidas para CLIENTES
-Route::middleware(['auth', 'can:isClient'])->group(function () {
-    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
-    Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
-});*/
 
 // Ruta de prueba para verificar si el rol funciona correctamente
 Route::get('/admin/test', function () {

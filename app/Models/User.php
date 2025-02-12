@@ -10,15 +10,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role_id'
+        'role',  // Sigue usando 'role' como un string en la tabla 'users'
     ];
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
 }
