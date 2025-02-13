@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->decimal('total_price', 10, 2)->unsigned();
             $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade');
             $table->string('image', 255);
+            $table->string('ubication');
+            $table->integer('capacity');
             $table->timestamps();
         });
     }

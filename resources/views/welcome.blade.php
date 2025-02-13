@@ -148,7 +148,10 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->category->name ?? 'Sin categoría' }}</p>
+                        <p class="card-text">{{ $product->ubication ?? 'Sin ubicación' }}</p>
                         <p class="card-text">Precio Medio: {{ $product->total_price }}€</p>
+                        <p class="card-text">Aforo Disponible: {{ $product->capacity }} personas</p>
+                        
 
 
                         @guest
