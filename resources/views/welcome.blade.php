@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MesaYa - Reserva tu mesa</title>
 
+
     {{-- Vite para importar bootstrap --}}
     @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400&display=swap"
         rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
+
 
     <!-- Agregar los enlaces de FullCalendar y Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
@@ -29,7 +35,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
+
 <body>
+
 
     <!-- Header Mejorado -->
     <nav class="navbar navbar-expand-lg">
@@ -47,6 +55,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Sobre Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
+
 
                     @guest
                     <li class="nav-item">
@@ -69,10 +78,12 @@
         </div>
     </nav>
 
+
     @guest
     @else
         @if (Auth::user()->role && Auth::user()->role == 'admin')
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">Añadir Restaurante</button>
+
 
             <!-- Modal para añadir producto -->
             <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
@@ -90,6 +101,7 @@
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
 
+
                                 <div class="mb-3">
                                     <label for="categories_id" class="form-label">Categoría</label>
                                     <select class="form-select" id="categories_id" name="categories_id" required>
@@ -97,15 +109,18 @@
                                     </select>
                                 </div>
 
+
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Imagen</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
 
+
                                 <div class="mb-3">
                                     <label for="total_price" class="form-label">Precio Total</label>
                                     <input type="number" class="form-control" id="total_price" name="total_price" required>
                                 </div>
+
 
                                 <button type="submit" class="btn btn-primary">Añadir Producto</button>
                             </form>
@@ -116,12 +131,14 @@
         @endif
     @endguest
 
+
     <!-- Contenido Principal -->
     <div class="container mt-5">
         <div class="row">
             @if ($products->isEmpty())
             <p class="text-center text-danger">No hay restaurantes disponibles.</p>
             @endif
+
 
             @foreach ($products as $product)
             <div class="col-md-4 mb-4">
@@ -133,20 +150,24 @@
                         <p class="card-text">{{ $product->category->name ?? 'Sin categoría' }}</p>
                         <p class="card-text">Precio Medio: {{ $product->total_price }}€</p>
 
+
                         @guest
-                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}">Reservar Ahora</a>
+                       
                         @else
                         @if (Auth::user()->role && Auth::user()->role == 'user')
                         <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}">Reservar Ahora</a>
                         @elseif(Auth::user()->role && Auth::user()->role == 'admin')
 
+
                         <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
+
 
                         <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
+
 
                         @endif
                         @endguest
@@ -156,6 +177,7 @@
             @endforeach
         </div>
     </div>
+
 
     <!-- Modal de Reserva Mejorado -->
     <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
@@ -173,6 +195,7 @@
     <label for="reservationDate" class="form-label">Fecha de Reserva</label>
     <input type="date" class="form-control" id="reservationDate" name="fecha" required min="" />
 </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -197,25 +220,27 @@
         </div>
     </div>
 
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const reservationDate = document.getElementById('reservationDate');
             const timeSlot = document.getElementById('timeSlot');
-            
+           
             reservationDate.addEventListener('change', function () {
                 populateTimeSlots(this.value);
             });
+
 
             function populateTimeSlots(selectedDate) {
                 const now = new Date();
                 const selectedDay = new Date(selectedDate);
                 timeSlot.innerHTML = '';
                 let startHour = 12, endHour = 21; // Horario estándar de reservas
-                
+               
                 if (selectedDay.toDateString() === now.toDateString()) {
                     startHour = now.getHours() + (now.getMinutes() >= 30 ? 1 : 0);
                 }
-                
+               
                 for (let h = startHour; h <= endHour; h++) {
                     ["00", "30"].forEach(min => {
                         if (h < endHour || min === "00") {
@@ -228,6 +253,7 @@
                 }
             }
 
+
             // Establecer el restaurante cuando se abra el modal
             const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
             reserveButtons.forEach(button => {
@@ -238,6 +264,7 @@
             });
         });
     </script>
+
 
     <!-- Footer Mejorado -->
     <footer class="footer mt-5">
@@ -256,9 +283,11 @@
         </div>
     </footer>
 
+
     <!-- Scripts de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
+
 
 </html>

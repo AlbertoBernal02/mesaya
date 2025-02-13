@@ -27,9 +27,9 @@ class ProductController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img'), $imageName);
-            $imagePath = 'img/' . $imageName;
+            $imagePath = '../../img/' . $imageName;
         } else {
-            $imagePath = 'img/default.png';
+            $imagePath = '../../img/default.png';
         }
 
         // Asignar la imagen antes de guardar

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ReservaController;
 
-Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
+Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store')->middleware(['auth', 'role:user']);
 
 
 
@@ -52,3 +52,4 @@ Route::get('/home', function () {
     }
     return redirect()->route('login');
 })->name('home');
+
