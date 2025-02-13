@@ -8,6 +8,15 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\CarritoReservaController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cliente/carrito', [CarritoReservaController::class, 'index'])->name('carrito.index');
+    Route::post('/cliente/carrito/confirmar', [CarritoReservaController::class, 'confirmarReservas'])->name('carrito.confirmar');
+});
+
+
+
 use App\Http\Controllers\ReservaController;
 
 Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store')->middleware(['auth', 'role:user']);

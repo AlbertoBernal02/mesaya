@@ -7,6 +7,7 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UsuarioMiddleware;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\CarritoReservaController;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => AdminMiddleware::class,
             'usuario' => UsuarioMiddleware::class,
             'reserva' => ReservaController::class,
+            'carritoReserva' => CarritoReservaController::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

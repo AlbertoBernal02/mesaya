@@ -56,6 +56,16 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Sobre Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
 
+                    @guest
+                    @else
+                    @if (Auth::user()->role && Auth::user()->role == 'user')
+    <li class="nav-item">
+        <a class="btn btn-warning me-2" href="{{ route('carrito.index') }}">
+            🛒 Ir al Carrito
+        </a>
+    </li>
+    @endif
+    @endguest
 
                     @guest
                     <li class="nav-item">
