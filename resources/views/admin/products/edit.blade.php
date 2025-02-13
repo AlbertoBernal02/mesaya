@@ -23,12 +23,22 @@
 
         <div class="mb-3">
             <label for="image" class="form-label">Imagen</label>
-            <input type="file" class="form-control" id="image" name="image">
+            <input type="file" class="form-control" id="image" name="image" value="{{ $product->image }}>
         </div>
 
         <div class="mb-3">
-            <label for="total_price" class="form-label">Precio Total</label>
+            <label for="ubication" class="form-label">Ubicación</label>
+            <input type="text" class="form-control" id="ubication" name="ubication" value="{{ $product->ubication }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="total_price" class="form-label">Precio Medio</label>
             <input type="number" class="form-control" id="total_price" name="total_price" value="{{ $product->total_price }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="capacity" class="form-label">Aforo</label>
+            <input type="number" class="form-control" id="capacity" name="capacity" value="{{ $product->capacity }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>

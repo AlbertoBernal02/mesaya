@@ -14,6 +14,8 @@ class Product extends Model
         'categories_id',
         'total_price',
         'image',
+        'capacity',
+        'ubication',
     ];
 
     // Modelo Product

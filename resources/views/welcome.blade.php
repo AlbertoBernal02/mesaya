@@ -114,11 +114,20 @@
                                     <label for="image" class="form-label">Imagen</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
-
+                                
+                                <div class="mb-3">
+                                    <label for="ubication" class="form-label">Ubicación</label>
+                                    <input type="number" class="form-control" id="ubication" name="ubication" required>
+                                </div>
 
                                 <div class="mb-3">
-                                    <label for="total_price" class="form-label">Precio Total</label>
+                                    <label for="total_price" class="form-label">Precio Medio</label>
                                     <input type="number" class="form-control" id="total_price" name="total_price" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="capacity" class="form-label">Aforo</label>
+                                    <input type="number" class="form-control" id="capacity" name="capacity" required>
                                 </div>
 
 
