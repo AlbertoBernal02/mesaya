@@ -18,22 +18,24 @@ class CarritoReservaController extends Controller
 
     // Confirmar las reservas y moverlas a reservas_confirmadas
     public function confirmarReservas()
-    {
-        $reservas = Reserva::where('user_id', Auth::id())->get();
+{
+    $reservas = Reserva::where('user_id', Auth::id())->get();
 
-        foreach ($reservas as $reserva) {
-            ReservaConfirmada::create([
-                'user_id' => $reserva->user_id,
-                'restaurante' => $reserva->restaurante,
-                'fecha' => $reserva->fecha,
-                'hora' => $reserva->hora,
-                'num_comensales' => $reserva->num_comensales,
-            ]);
-        }
-
-        // Eliminar las reservas de la tabla original
-        Reserva::where('user_id', Auth::id())->delete();
-
-        return redirect()->route('carrito.index')->with('success', 'Reservas confirmadas exitosamente.');
+    foreach ($reservas as $reserva) {
+        // Crear la reserva confirmada (se activará el evento 'created')
+        ReservaConfirmada::create([
+            'user_id' => $reserva->user_id,
+            'restaurante' => $reserva->restaurante,
+            'fecha' => $reserva->fecha,
+            'hora' => $reserva->hora,
+            'num_comensales' => $reserva->num_comensales,
+        ]);
     }
+
+    // Eliminar las reservas originales
+    Reserva::where('user_id', Auth::id())->delete();
+
+    return redirect()->route('carrito.index')->with('success', 'Reservas confirmadas exitosamente.');
+}
+
 }

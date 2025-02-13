@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class ReservaConfirmada extends Model
 {
@@ -15,5 +16,19 @@ class ReservaConfirmada extends Model
     {
         return $this->belongsTo(User::class);
     }
-}
 
+    // Evento para reducir la capacidad del restaurante al crear una reserva
+    protected static function booted()
+    {
+        static::created(function ($reserva) {
+            // Buscar el restaurante por su nombre
+            $restaurante = Product::where('name', $reserva->restaurante)->first();
+
+            if ($restaurante) {
+                // Restar el número de comensales de la capacidad
+                $restaurante->capacity = max(0, $restaurante->capacity - $reserva->num_comensales);
+                $restaurante->save();
+            }
+        });
+    }
+}
