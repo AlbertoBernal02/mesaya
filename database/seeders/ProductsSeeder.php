@@ -15,6 +15,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/foodPorn.jpg',
                 'ubication' => 'Calle Hola 1',
                 'capacity' => 100,
+                'user_id' => 1,
             ],
             [
                 'name' => 'La Mafia Se Sienta A La Mesa',
@@ -23,6 +24,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/Mafia.png',
                 'ubication' => 'Calle Hola 2',
                 'capacity' => 100,
+                'user_id' => 2,
             ],
             [
                 'name' => 'Maquiavelo',
@@ -31,6 +33,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/maquiavelo.jpg',
                 'ubication' => 'Calle Hola 3',
                 'capacity' => 100,
+                'user_id' => 3,
             ],
             [
                 'name' => 'Blanca Paloma',
@@ -39,6 +42,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/blancaPaloma.jpg',
                 'ubication' => 'Calle Hola 4',
                 'capacity' => 100,
+                'user_id' => 4,
             ],
             [
                 'name' => 'Río Grande',
@@ -47,6 +51,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/rioGrande.jpg',
                 'ubication' => 'Calle Hola 5',
                 'capacity' => 100,
+                'user_id' => 5,
             ],
             [
                 'name' => 'Bilio',
@@ -55,6 +60,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/bilio.jpg',
                 'ubication' => 'Calle Hola 6',
                 'capacity' => 100,
+                'user_id' => 6,
             ],
             [
                 'name' => 'Abades Triana',
@@ -63,6 +69,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/abades.jpg',
                 'ubication' => 'Calle Hola 7',
                 'capacity' => 100,
+                'user_id' => 7,
             ],
             [
                 'name' => 'Las Dunas',
@@ -71,6 +78,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/Dunas.jpg',
                 'ubication' => 'Calle Hola 8',
                 'capacity' => 100,
+                'user_id' => 8,
             ],
             [
                 'name' => 'Taberna Bocanegra',
@@ -79,6 +87,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/bocanegra.jpg',
                 'ubication' => 'Calle Hola 9',
                 'capacity' => 100,
+                'user_id' => 9,
             ],
             [
                 'name' => 'Taberna Coloniales',
@@ -87,6 +96,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/coloniales.jpg',
                 'ubication' => 'Calle Hola 10',
                 'capacity' => 100,
+                'user_id' => 10,
             ],
             [
                 'name' => 'Taberna El Arenal',
@@ -95,6 +105,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/Arenal.jpg',
                 'ubication' => 'Calle Hola 11',
                 'capacity' => 100,
+                'user_id' => 11,
             ],
             [
                 'name' => 'Taberna Antonio Romero',
@@ -103,6 +114,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/antonioRomero.jpg',
                 'ubication' => 'Calle Hola 12',
                 'capacity' => 100,
+                'user_id' => 12,
             ],
             [
                 'name' => 'Restaurante San Marco (Santa Cruz,Sevilla)',
@@ -111,6 +123,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/SanMarco.jpg',
                 'ubication' => 'Calle Hola 13',
                 'capacity' => 100,
+                'user_id' => 13,
             ],
             [
                 'name' => 'María Trifulca',
@@ -119,6 +132,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/mariaTrifulca.jpg',
                 'ubication' => 'Calle Hola 14',
                 'capacity' => 100,
+                'user_id' => 14,
             ],
             [
                 'name' => 'Taberna Almazara',
@@ -127,6 +141,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/almazara.jpg',
                 'ubication' => 'Calle Hola 15',
                 'capacity' => 100,
+                'user_id' => 15,
             ],
             [
                 'name' => 'Patio San Eloy (Triana)',
@@ -135,6 +150,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/SanEloyTriana.jpg',
                 'ubication' => 'Calle Hola 16',
                 'capacity' => 100,
+                'user_id' => 16,
             ],
             [
                 'name' => 'Patio San Eloy (Santa Catalina)',
@@ -143,6 +159,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/SanEloyStaCatalina.jpg',
                 'ubication' => 'Calle Hola 17',
                 'capacity' => 100,
+                'user_id' => 17,
             ],
             [
                 'name' => 'Bar Casemiro',
@@ -151,6 +168,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/casemiro.jpg',
                 'ubication' => 'Calle Hola 18',
                 'capacity' => 100,
+                'user_id' => 18,
             ],
             [
                 'name' => 'Amanecer (Alameda de Hércules, Sevilla)',
@@ -159,6 +177,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/amanecer.png',
                 'ubication' => 'Calle Hola 19',
                 'capacity' => 100,
+                'user_id' => 19,
             ],
             [
                 'name' => 'Avelino',
@@ -167,6 +186,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/avelino.jpg',
                 'ubication' => 'Calle Hola 20',
                 'capacity' => 100,
+                'user_id' => 20,
             ],
             [
                 'name' => 'Aderezo',
@@ -175,6 +195,7 @@ class ProductsSeeder extends Seeder {
                 'image' => '../../img/aderezo.jpg',
                 'ubication' => 'Calle Hola 21',
                 'capacity' => 100,
+                'user_id' => 21,
             ],
         ]);
     }
