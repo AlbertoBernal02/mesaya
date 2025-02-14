@@ -61,7 +61,7 @@
                     @if (Auth::user()->role && Auth::user()->role == 'user')
                     <li class="nav-item">
     <a class="btn btn-warning me-2 position-relative" href="{{ route('carrito.index') }}">
-        🛒 Ir al Carrito
+    📆 Confirmar Reservas
         @if($reservasPendientes > 0)
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{ $reservasPendientes }}
