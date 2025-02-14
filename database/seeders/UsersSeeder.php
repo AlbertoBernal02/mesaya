@@ -152,8 +152,8 @@ class UsersSeeder extends Seeder
             ],
             [
                 'name' => 'Cliente Ejemplo',
-                'email' => 'cliente@mesaya.com',
-                'password' => Hash::make('cliente123'),
+                'email' => 'abernalmejias@alumnos.ilerna.com',
+                'password' => Hash::make('vertico'),
                 'role' => 'user', // ✅ Debe estar aquí
                 
             ]
