@@ -13,6 +13,6 @@ class NosotrosController extends Controller
         // Contar las reservas pendientes para el usuario autenticado
         $reservasPendientes = Reserva::where('user_id', Auth::id())->count();
 
-        return view('contacto', compact('reservasPendientes'));
+        return view('nosotros', compact('reservasPendientes'));
     }
 }
