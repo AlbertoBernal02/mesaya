@@ -29,7 +29,7 @@
         <div class="container">
             <!-- Logo de la empresa al lado del texto "MesaYa" -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;"> <!-- Cambia el nombre de la imagen según corresponda -->
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;">
                 MesaYa
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -37,9 +37,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Sobre Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('nosotros') }}">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contacto') }}">Contacto</a></li>
+
+                    @guest
+                    @else
+                    @if (Auth::user()->role && Auth::user()->role == 'user')
+                    <li class="nav-item">
+    <a class="btn btn-warning me-2 position-relative" href="{{ route('carrito.index') }}">
+        🛒 Ir al Carrito
+        @if($reservasPendientes > 0)
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ $reservasPendientes }}
+                <span class="visually-hidden">reservas pendientes</span>
+            </span>
+        @endif
+    </a>
+</li>
+    @endif
+    @endguest
 
                     @guest
                     <li class="nav-item">
@@ -47,7 +64,6 @@
                         <a class="btn btn-secondary" href="{{ route('register') }}">Registrarse</a>
                     </li>
                     @else
-                    
                     <li class="nav-item">
                         <a class="btn btn-danger" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -62,7 +78,7 @@
             </div>
         </div>
     </nav>
-
+    
  <!-- Imagen y Texto sobre nuestra empresa -->
 <div class="d-flex flex-column min-vh-100">
     <!-- Gif alargado que ocupa todo el ancho con altura reducida -->

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Reserva;
 
 class ProductController extends Controller
 {
@@ -98,12 +100,17 @@ class ProductController extends Controller
     }
 
     public function index()
-{
-    // Obtener productos desde el modelo o base de datos
-    $products = Product::all();
+    {
+        // Obtener productos
+        $products = Product::all();
 
-    // Pasar la variable a la vista
-    return view('welcome', ['products' => $products]);
+        // Calcular reservas pendientes si el usuario está autenticado
+        $reservasPendientes = 0;
+        if (Auth::check()) {
+            $reservasPendientes = Reserva::where('user_id', Auth::id())->count();
+        }
 
-}
+        // Pasar productos y reservas a la vista
+        return view('welcome', compact('products', 'reservasPendientes'));
+    }
 }

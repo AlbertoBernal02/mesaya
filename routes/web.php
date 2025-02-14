@@ -10,9 +10,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\CarritoReservaController;
 
+use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\NosotrosController;
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/cliente/carrito', [CarritoReservaController::class, 'index'])->name('carrito.index');
     Route::post('/cliente/carrito/confirmar', [CarritoReservaController::class, 'confirmarReservas'])->name('carrito.confirmar');
+    Route::delete('/carrito/reserva/{id}', [CarritoReservaController::class, 'eliminarReserva'])->name('carrito.eliminar');
 });
 
 
@@ -34,11 +38,13 @@ Route::get('/categories', function (Request $request) {
     return response()->json(Category::all());
 });
 
-/*Permisos de ruta*/
-Route::get('/contacto', function () {
-    return view('contacto');
-})->middleware(['auth', 'role:user']);  
-/*End Permisos de ruta*/
+
+
+Route::get('/contacto', [ContactoController::class, 'index'])->middleware(['auth', 'role:user'])->name('contacto');
+Route::get('/nosotros', [NosotrosController::class, 'index'])->middleware(['auth', 'role:user'])->name('nosotros');
+
+
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     // Ruta para procesar el formulario de creación de producto
@@ -49,7 +55,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/nosotros', [HomeController::class, 'nosotros']);
 
 // Rutas de autenticación
 Auth::routes();

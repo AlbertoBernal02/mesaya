@@ -52,18 +52,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Sobre Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('nosotros') }}">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contacto') }}">Contacto</a></li>
 
                     @guest
                     @else
                     @if (Auth::user()->role && Auth::user()->role == 'user')
-    <li class="nav-item">
-        <a class="btn btn-warning me-2" href="{{ route('carrito.index') }}">
-            🛒 Ir al Carrito
-        </a>
-    </li>
+                    <li class="nav-item">
+    <a class="btn btn-warning me-2 position-relative" href="{{ route('carrito.index') }}">
+        🛒 Ir al Carrito
+        @if($reservasPendientes > 0)
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ $reservasPendientes }}
+                <span class="visually-hidden">reservas pendientes</span>
+            </span>
+        @endif
+    </a>
+</li>
     @endif
     @endguest
 

@@ -12,8 +12,14 @@ class CarritoReservaController extends Controller
     // Mostrar el carrito con las reservas del usuario
     public function index()
 {
+    // Obtener todas las reservas del usuario
     $reservas = Reserva::where('user_id', Auth::id())->get();
-    return view('cliente.carrito.index', compact('reservas'));
+
+    // Obtener el número de reservas pendientes de confirmación
+    $reservasPendientes = $reservas->where('confirmada', false)->count();
+
+    // Pasar el número de reservas pendientes a la vista
+    return view('cliente.carrito.index', compact('reservas', 'reservasPendientes'));
 }
 
     // Confirmar las reservas y moverlas a reservas_confirmadas
@@ -37,5 +43,19 @@ class CarritoReservaController extends Controller
 
     return redirect()->route('carrito.index')->with('success', 'Reservas confirmadas exitosamente.');
 }
+
+public function eliminarReserva($id)
+{
+    $reserva = Reserva::findOrFail($id);
+
+    if ($reserva->user_id !== Auth::id()) {
+        return redirect()->route('carrito.index')->with('error', 'No tienes permiso para eliminar esta reserva.');
+    }
+
+    $reserva->delete();
+
+    return redirect()->route('carrito.index')->with('success', 'Reserva eliminada correctamente.');
+}
+
 
 }
