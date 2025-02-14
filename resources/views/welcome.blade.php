@@ -133,7 +133,7 @@
                                 
                                 <div class="mb-3">
                                     <label for="ubication" class="form-label">Ubicación</label>
-                                    <input type="number" class="form-control" id="ubication" name="ubication" required>
+                                    <input type="text" class="form-control" id="ubication" name="ubication" required>
                                 </div>
 
                                 <div class="mb-3">
