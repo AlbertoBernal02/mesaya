@@ -22,50 +22,50 @@ class ProductController extends Controller
         'ubication' => 'required|string|max:255',
     ]);
 
-    // Crear el producto primero para obtener su ID
-    $product = new Product();
-    $product->name = $request->name;
-    $product->categories_id = $request->categories_id;
-    $product->total_price = $request->total_price;
-    $product->capacity = $request->capacity;
-    $product->ubication = $request->ubication;
+    // Generar un email temporal único
+    $timestamp = time(); // Usamos time() para evitar duplicados
+    $tempEmail = "temp_{$timestamp}@mesaya.com";
 
-    // Subir la imagen
+    // Crear el usuario con email único
+    $user = new User();
+    $user->name = 'restaurant_temp';
+    $user->email = $tempEmail;
+    $user->password = bcrypt('temp');
+    $user->role = 'restaurant';
+    $user->save();
+
+    // Subir la imagen o asignar una por defecto
+    $imagePath = '../../img/default.png';
     if ($request->hasFile('image')) {
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('img'), $imageName);
         $imagePath = '../../img/' . $imageName;
-    } else {
-        $imagePath = '../../img/default.png';
     }
 
-    // Asignar la imagen antes de guardar
-    $product->image = $imagePath;
+    // Crear el producto con el `user_id`
+    $product = Product::create([
+        'name' => $request->name,
+        'categories_id' => $request->categories_id,
+        'total_price' => $request->total_price,
+        'capacity' => $request->capacity,
+        'ubication' => $request->ubication,
+        'image' => $imagePath,
+        'user_id' => $user->id, // Se asigna el usuario creado
+    ]);
 
-    
-    $product->save(); // Se guarda para obtener el ID
-
-    // Crear usuario con formato "restaurant{id}@mesaya.com"
+    // Actualizar el usuario con el nombre y email correctos basados en el `product->id`
     $username = 'restaurant' . $product->id;
-    $email = $username . '@mesaya.com'; // Correo con el dominio personalizado
-    $password = $username; // La contraseña será igual al usuario
-
-    $user = new User();
-    $user->name = $username;
-    $user->email = $email;
-    $user->password = bcrypt($password); // Se hashea la contraseña
-    $user->role = 'user'; // Se asigna el rol por defecto
-    $user->save();
-
-    // Asignar el user_id al producto y guardar
-    $product->user_id = $user->id;
-    $product->save();
-
-    
+    $user->update([
+        'name' => $username,
+        'email' => $username . '@mesaya.com', // Ahora es único
+        'password' => bcrypt($username), // La contraseña será igual al usuario
+    ]);
 
     return redirect()->route('home')->with('success', 'Producto y usuario creados correctamente.');
 }
+
+
 
 
 

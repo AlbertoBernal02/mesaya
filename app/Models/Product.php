@@ -16,6 +16,7 @@ class Product extends Model
         'image',
         'capacity',
         'ubication',
+        'user_id',
     ];
 
     // Modelo Product
