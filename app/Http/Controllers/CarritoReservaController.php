@@ -33,10 +33,14 @@ class CarritoReservaController extends Controller
         $reservasConfirmadasData = []; // Asegurarse de definir la variable
 
         foreach ($reservas as $reserva) {
+            // Obtener el nombre del restaurante desde la tabla 'products' usando el ID
+            $restaurante = \App\Models\Product::find($reserva->restaurante);  // 'restaurante' es el ID del restaurante
+            $nombreRestaurante = $restaurante ? $restaurante->name : 'Restaurante no encontrado';  // Obtener el nombre o un mensaje si no lo encuentra
+
             // Crear la reserva confirmada (se activará el evento 'created')
             $reservaConfirmada = ReservaConfirmada::create([
                 'user_id' => $reserva->user_id,
-                'restaurante' => $reserva->restaurante,
+                'restaurante' => $nombreRestaurante,
                 'fecha' => $reserva->fecha,
                 'hora' => $reserva->hora,
                 'num_comensales' => $reserva->num_comensales,
