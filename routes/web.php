@@ -13,6 +13,15 @@ use App\Http\Controllers\CarritoReservaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 
+use App\Http\Controllers\ScheduleController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/get-schedule', [ScheduleController::class, 'getSchedule'])->name('get-schedule');
+    Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules.index');
+    Route::post('/schedules', [ScheduleController::class, 'store'])->name('schedule.store');
+    Route::post('/schedules/unavailable', [ScheduleController::class, 'updateUnavailableHours'])->name('schedule.unavailable');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/cliente/carrito', [CarritoReservaController::class, 'index'])->name('carrito.index');
     Route::post('/cliente/carrito/confirmar', [CarritoReservaController::class, 'confirmarReservas'])->name('carrito.confirmar');
@@ -62,8 +71,12 @@ Auth::routes();
 // Redirección después del login según el rol
 Route::get('/home', function () {
     if (Auth::check()) {
+        if (Auth::user()->role == 'restaurant') {
+            return redirect()->route('schedules.index');
+        }
         return redirect('/');
     }
     return redirect()->route('login');
 })->name('home');
+
 

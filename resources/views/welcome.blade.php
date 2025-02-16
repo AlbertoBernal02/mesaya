@@ -183,7 +183,7 @@
                        
                         @else
                         @if (Auth::user()->role && Auth::user()->role == 'user')
-                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}">Reservar Ahora</a>
+                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}" data-restaurante-id="{{ $product->id }}">Reservar Ahora</a>
                         @elseif(Auth::user()->role && Auth::user()->role == 'admin')
 
 
@@ -225,6 +225,8 @@ Borrar
 </div>
 
 
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Obtener la fecha actual en formato YYYY-MM-DD
@@ -251,47 +253,133 @@ Borrar
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const reservationDate = document.getElementById('reservationDate');
-            const timeSlot = document.getElementById('timeSlot');
-           
-            reservationDate.addEventListener('change', function () {
-                populateTimeSlots(this.value);
-            });
+    const reservationDate = document.getElementById('reservationDate');
+    const timeSlot = document.getElementById('timeSlot');
+   
+    reservationDate.addEventListener('change', function () {
+        populateTimeSlots(this.value);
+    });
 
+    function populateTimeSlots(selectedDate) {
+        const now = new Date();
+        const selectedDay = new Date(selectedDate);
+        timeSlot.innerHTML = '';  // Limpiar las opciones previas
+        
+        const restaurantId = document.getElementById('restaurante').value; // Obtener el ID del restaurante seleccionado
 
-            function populateTimeSlots(selectedDate) {
-                const now = new Date();
-                const selectedDay = new Date(selectedDate);
-                timeSlot.innerHTML = '';
-                let startHour = 12, endHour = 21; // Horario estándar de reservas
-               
+        // Hacer la llamada a la API para obtener el horario del restaurante
+        fetch(`/get-schedule?restaurant_id=${restaurantId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Asegurarnos de que los datos estén disponibles y sean correctos
+                const openingTime = data.opening_time || "12:00:00";
+                const closingTime = data.closing_time || "21:00:00";
+
+                const [startHour, startMinute] = openingTime.split(":");
+                const [endHour, endMinute] = closingTime.split(":");
+
+                let start = parseInt(startHour);
+                let end = parseInt(endHour);
+
+                // Ajustar las horas si es hoy y ya ha pasado la mitad del día
                 if (selectedDay.toDateString() === now.toDateString()) {
-                    startHour = now.getHours() + (now.getMinutes() >= 30 ? 1 : 0);
+                    start = now.getHours() + (now.getMinutes() >= 30 ? 1 : 0);
                 }
-               
-                for (let h = startHour; h <= endHour; h++) {
+
+                // Rellenar las opciones de horas en el select
+                for (let h = start; h <= end; h++) {
                     ["00", "30"].forEach(min => {
-                        if (h < endHour || min === "00") {
-                            const option = document.createElement('option');
-                            option.value = `${h}:${min}`;
-                            option.textContent = `${h}:${min}`;
-                            timeSlot.appendChild(option);
-                        }
+                        const option = document.createElement('option');
+                        option.value = `${h}:${min}`;
+                        option.textContent = `${h}:${min}`;
+                        timeSlot.appendChild(option);
                     });
                 }
-            }
-
-
-            // Establecer el restaurante cuando se abra el modal
-            const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
-            reserveButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const restaurante = this.getAttribute('data-restaurante');
-                    document.getElementById('restaurante').value = restaurante;
-                });
+            })
+            .catch(error => {
+                console.error('Error al obtener el horario:', error);
             });
+    }
+
+    // Establecer el restaurante cuando se abra el modal
+    const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+    reserveButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const restaurante = this.getAttribute('data-restaurante');
+            document.getElementById('restaurante').value = restaurante;
         });
+    });
+});
+
+
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function () {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('reservationDate').setAttribute('min', today);
+
+    const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+    reserveButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const restaurantId = this.getAttribute('data-restaurante-id');
+            document.getElementById('restaurante').value = restaurantId; // Usar el ID del restaurante
+
+            try {
+                const response = await fetch(`/get-schedule?restaurant_id=${restaurantId}`);
+                if (!response.ok) {
+                    throw new Error('Error al obtener horarios');
+                }
+                const schedule = await response.json();
+                
+                if (!schedule.opening_time || !schedule.closing_time) {
+                    console.error('Horario no disponible.');
+                    return;
+                }
+
+                const openingTime = parseInt(schedule.opening_time.split(':')[0]);
+                const closingTime = parseInt(schedule.closing_time.split(':')[0]);
+                
+                const selectElement = document.createElement('select');
+                selectElement.classList.add('form-select');
+                selectElement.name = 'hora';
+                selectElement.required = true;
+
+                for (let hour = openingTime; hour < closingTime; hour++) {
+                    const option = document.createElement('option');
+                    option.value = `${hour}:00`;
+                    option.textContent = `${hour}:00 - ${hour + 1}:00`;
+                    selectElement.appendChild(option);
+                }
+
+                const form = document.getElementById('reservationForm');
+                const existingSelect = form.querySelector('select[name="hora"]');
+                if (existingSelect && form.contains(existingSelect)) {
+                    form.removeChild(existingSelect);
+                }
+                form.insertBefore(selectElement, form.children[2]);
+            } catch (error) {
+                console.error('Error al obtener horarios:', error);
+            }
+        });
+    });
+
+    // Cargar categorías
+    try {
+        const categoriesResponse = await fetch('/api/categories');
+        if (!categoriesResponse.ok) {
+            throw new Error('Error al cargar las categorías');
+        }
+        const categories = await categoriesResponse.json();
+        const categoriesSelect = document.getElementById('categories_id');
+        if (categoriesSelect) {
+            categoriesSelect.innerHTML = categories.map(category => `<option value="${category.id}">${category.name}</option>`).join('');
+        }
+    } catch (error) {
+        console.error('Error al cargar las categorías:', error);
+    }
+});
+</script>
 
 
     <!-- Footer Mejorado -->

@@ -39,5 +39,6 @@ class Kernel extends HttpKernel
         'role' => \App\Http\Middleware\RoleMiddleware::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'restaurant' => \App\Http\Middleware\RestauranteMiddleware::class,
     ];
 }

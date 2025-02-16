@@ -8,6 +8,8 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UsuarioMiddleware;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\CarritoReservaController;
+use App\Http\Middleware\RestauranteMiddleware;
+use App\Http\Controllers\ScheduleController;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,6 +24,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'usuario' => UsuarioMiddleware::class,
             'reserva' => ReservaController::class,
             'carritoReserva' => CarritoReservaController::class,
+            'restaurant' => RestauranteMiddleware::class,
+            'get-schedule' => ScheduleController::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
