@@ -363,21 +363,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         });
     });
-
-    // Cargar categorías
-    try {
-        const categoriesResponse = await fetch('/api/categories');
-        if (!categoriesResponse.ok) {
-            throw new Error('Error al cargar las categorías');
-        }
-        const categories = await categoriesResponse.json();
-        const categoriesSelect = document.getElementById('categories_id');
-        if (categoriesSelect) {
-            categoriesSelect.innerHTML = categories.map(category => `<option value="${category.id}">${category.name}</option>`).join('');
-        }
-    } catch (error) {
-        console.error('Error al cargar las categorías:', error);
-    }
 });
 </script>
 
