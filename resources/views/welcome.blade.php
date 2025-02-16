@@ -119,14 +119,6 @@
 
 
                                 <div class="mb-3">
-                                    <label for="categories_id" class="form-label">Categoría</label>
-                                    <select class="form-select" id="categories_id" name="categories_id" required>
-                                        <option value="">Cargando categorías...</option>
-                                    </select>
-                                </div>
-
-
-                                <div class="mb-3">
                                     <label for="image" class="form-label">Imagen</label>
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
@@ -354,7 +346,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 const form = document.getElementById('reservationForm');
                 const existingSelect = form.querySelector('select[name="hora"]');
-                if (existingSelect && form.contains(existingSelect)) {
+                if (existingSelect && existingSelect.parentNode === form) {
                     form.removeChild(existingSelect);
                 }
                 form.insertBefore(selectElement, form.children[2]);

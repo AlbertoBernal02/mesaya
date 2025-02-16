@@ -156,6 +156,13 @@ class UsersSeeder extends Seeder
                 'password' => Hash::make('vertico'),
                 'role' => 'user', // ✅ Debe estar aquí
                 
+            ],
+            [
+                'name' => 'Jesus',
+                'email' => 'jesuscasacarrillo@alumnos.ilerna.com',
+                'password' => Hash::make('jesus'),
+                'role' => 'user', // ✅ Debe estar aquí
+                
             ]
         ]);
     }
