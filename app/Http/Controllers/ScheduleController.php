@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller {
+
     public function index(Request $request)
 {
     // Obtener el restaurant_id desde el parámetro de la consulta (URL)
@@ -34,28 +35,66 @@ class ScheduleController extends Controller {
 }
 
 
-    public function store(Request $request) {
-        $request->validate([
-            'opening_time' => 'required|date_format:H:i',
-            'closing_time' => 'required|date_format:H:i|after:opening_time',
-        ]);
 
-        $restaurant = Product::where('user_id', Auth::id())->first();
 
-        if (!$restaurant) {
-            return redirect()->back()->with('error', 'No tienes un restaurante asignado.');
-        }
-
-        Schedule::updateOrCreate(
-            ['product_id' => $restaurant->id],
-            [
-                'opening_time' => $request->opening_time,
-                'closing_time' => $request->closing_time,
-            ]
-        );
-
-        return redirect()->back()->with('success', 'Horario actualizado correctamente.');
+public function index1(Request $request)
+{
+    // Obtener el restaurante del usuario autenticado
+    $restaurant = Product::where('user_id', Auth::id())->first();
+    
+    // Si el restaurante no existe
+    if (!$restaurant) {
+        return response()->json(['message' => 'No se encuentra el restaurante asociado al usuario.'], 404);
     }
+
+    // Obtener el horario del restaurante (si existe)
+    $schedule = $restaurant->schedule;
+    
+    // Devolver la vista con el restaurante y su horario (si existe)
+    return view('schedules.index', compact('restaurant', 'schedule'));
+}
+
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'opening_time' => 'required|date_format:H:i',
+        'closing_time' => 'required|date_format:H:i|after:opening_time',
+        'unavailable_hours' => 'nullable|array',
+    ]);
+
+    // Obtener el restaurante
+    $restaurant = Product::where('user_id', Auth::id())->first();
+    
+    if (!$restaurant) {
+        return redirect()->back()->with('error', 'No tienes un restaurante asociado.');
+    }
+
+    // Actualizar el restaurante
+    $restaurant->update([
+        'name' => $request->name,
+        'categories_id' => $request->categories_id,
+        'image' => $request->image,  // Maneja la imagen según sea necesario
+        'ubication' => $request->ubication,
+        'total_price' => $request->total_price,
+        'capacity' => $request->capacity,
+    ]);
+
+    // Actualizar el horario del restaurante
+    $schedule = $restaurant->schedule()->updateOrCreate(
+        ['product_id' => $restaurant->id],
+        [
+            'opening_time' => $request->opening_time,
+            'closing_time' => $request->closing_time,
+        ]
+    );
+
+    // Actualizar las horas no disponibles
+    $schedule->update(['unavailable_hours' => $request->unavailable_hours]);
+
+    return redirect()->back()->with('success', 'Restaurante y horario actualizados correctamente.');
+}
+
 
     public function updateUnavailableHours(Request $request) {
         $request->validate([

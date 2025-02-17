@@ -18,7 +18,9 @@ use App\Http\Controllers\ScheduleController;
 Route::middleware(['auth'])->group(function () {
     Route::get('/get-schedule', [ScheduleController::class, 'getSchedule'])->name('get-schedule');
     Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules.index');
+    Route::get('/schedules', [ScheduleController::class, 'index1'])->name('schedules.index1');
     Route::post('/schedules', [ScheduleController::class, 'store'])->name('schedule.store');
+
     Route::post('/schedules/unavailable', [ScheduleController::class, 'updateUnavailableHours'])->name('schedule.unavailable');
 });
 
@@ -72,7 +74,7 @@ Auth::routes();
 Route::get('/home', function () {
     if (Auth::check()) {
         if (Auth::user()->role == 'restaurant') {
-            return redirect()->route('schedules.index');
+            return redirect()->route('schedules.index1');
         }
         return redirect('/');
     }
