@@ -26,10 +26,14 @@
             <!-- Si hay una imagen, mostrarla -->
             @if($product->image)
                 <div class="mb-2">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="Imagen del producto" style="max-width: 150px;">
+                    <img id="imagePreview" src="{{ asset('storage/' . $product->image) }}" alt="Imagen del producto" style="max-width: 150px;">
+                </div>
+            @else
+                <div class="mb-2">
+                    <img id="imagePreview" src="default_image_path_here" alt="Imagen del producto" style="max-width: 150px;">
                 </div>
             @endif
-            <input type="file" class="form-control" id="image" name="image">
+            <input type="file" class="form-control" id="image" name="image" onchange="previewImage(event)">
         </div>
 
         <div class="mb-3">
@@ -50,4 +54,16 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </form>
 </div>
+
+<script>
+    // Función para actualizar la vista previa de la imagen
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection

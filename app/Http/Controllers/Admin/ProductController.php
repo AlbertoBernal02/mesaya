@@ -113,7 +113,7 @@ class ProductController extends Controller
         // Subir la nueva imagen
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('../../img'), $imageName);
+        $image->move(public_path('img'), $imageName);
         $imagePath = '../../img/' . $imageName; // Guardar la ruta correcta
 
         // Asignar la nueva imagen
