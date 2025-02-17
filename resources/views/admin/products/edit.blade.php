@@ -14,12 +14,28 @@
         </div>
 
         <div class="mb-3">
-            <label for="categories_id" class="form-label">Categoría</label>
-            <select class="form-select" id="categories_id" name="categories_id" required>
-                <option value="{{ $product->categories_id }}">{{ $product->category }}</option>
-                <!-- Aquí puedes cargar otras categorías -->
-            </select>
-        </div>
+    <label class="form-label">Categoría</label>
+    <div>
+        <!-- Iterar sobre todas las categorías y marcar la correspondiente -->
+        @foreach ($categories as $category)
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="categories_id" 
+                    id="category_{{ $category->id }}" 
+                    value="{{ $category->id }}" 
+                    {{ $product->categories_id == $category->id ? 'checked' : '' }}>
+                <label class="form-check-label" for="category_{{ $category->id }}">
+                    {{ $category->name }}
+                </label>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+
+
 
         <div class="mb-3">
             <label for="image" class="form-label">Imagen</label>

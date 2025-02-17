@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Reserva;
 use App\Models\User;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -70,11 +71,27 @@ class ProductController extends Controller
 
 
 
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('admin.products.edit', compact('product'));
-    }
+public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    $categories = Category::all();  // Cargar todas las categorías disponibles
+
+    return view('admin.products.edit', compact('product', 'categories'));
+}
+
+
+    public function editarProducto($id)
+{
+    $product = Product::findOrFail($id);
+    $categories = Category::all();  // Cargar todas las categorías disponibles
+
+    // Pasar las categorías y el producto a la vista
+    return view('producto.editar', compact('product', 'categories'));
+}
+
+
+
+
 
     public function destroy($id)
     {
