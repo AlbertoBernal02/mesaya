@@ -9,7 +9,7 @@
     <a href="{{ route('admin.products.edit', $restaurant->id) }}" class="btn btn-warning mb-3">Editar Restaurante</a>
 
     <!-- Formulario para configurar horario, sin editar el restaurante -->
-    <form action="{{ route('schedules.index1') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('schedule.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <h3>Configurar Horario</h3>

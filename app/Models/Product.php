@@ -29,10 +29,9 @@ class Product extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // En el archivo app/Models/Product.php
-public function schedule()
-{
-    return $this->hasOne(Schedule::class);
+// En el modelo Product
+public function schedule() {
+    return $this->hasOne(Schedule::class, 'product_id');
 }
 
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ScheduleController extends Controller {
 
@@ -54,68 +55,75 @@ public function index1(Request $request)
     return view('schedules.index', compact('restaurant', 'schedule'));
 }
 
-public function store(Request $request)
-{
+public function store(Request $request) {
+    // Validar los datos
     $request->validate([
-        'name' => 'required|string|max:255',
         'opening_time' => 'required|date_format:H:i',
         'closing_time' => 'required|date_format:H:i|after:opening_time',
         'unavailable_hours' => 'nullable|array',
     ]);
 
-    // Obtener el restaurante
+    // Obtener el restaurante asociado al usuario autenticado
     $restaurant = Product::where('user_id', Auth::id())->first();
-    
+
     if (!$restaurant) {
-        return redirect()->back()->with('error', 'No tienes un restaurante asociado.');
+        return redirect()->back()->with('error', 'No tienes un restaurante asignado.');
     }
 
-    // Actualizar el restaurante
-    $restaurant->update([
-        'name' => $request->name,
-        'categories_id' => $request->categories_id,
-        'image' => $request->image,  // Maneja la imagen según sea necesario
-        'ubication' => $request->ubication,
-        'total_price' => $request->total_price,
-        'capacity' => $request->capacity,
-    ]);
-
-    // Actualizar el horario del restaurante
-    $schedule = $restaurant->schedule()->updateOrCreate(
-        ['product_id' => $restaurant->id],
+    // Usamos updateOrCreate para actualizar o crear el horario
+    $schedule = Schedule::updateOrCreate(
+        ['product_id' => $restaurant->id], // Se asegura que estamos buscando por el ID correcto
         [
             'opening_time' => $request->opening_time,
             'closing_time' => $request->closing_time,
+            'unavailable_hours' => $request->unavailable_hours ?? [],
         ]
     );
 
-    // Actualizar las horas no disponibles
-    $schedule->update(['unavailable_hours' => $request->unavailable_hours]);
-
-    return redirect()->back()->with('success', 'Restaurante y horario actualizados correctamente.');
+    // Mensaje de éxito
+    return redirect()->back()->with('success', $schedule->wasRecentlyCreated ? 'Horario creado correctamente.' : 'Horario actualizado correctamente.');
 }
 
 
-    public function updateUnavailableHours(Request $request) {
-        $request->validate([
-            'unavailable_hours' => 'nullable|array',
-        ]);
 
-        $restaurant = Product::where('user_id', Auth::id())->first();
 
-        if (!$restaurant) {
-            return redirect()->back()->with('error', 'No tienes un restaurante asignado.');
-        }
 
-        $schedule = $restaurant->schedule;
-        if ($schedule) {
-            $schedule->update([
-                'unavailable_hours' => $request->unavailable_hours ?? [],
-            ]);
-        }
 
-        return redirect()->back()->with('success', 'Horas bloqueadas actualizadas.');
+
+
+
+
+
+
+
+public function updateUnavailableHours(Request $request) {
+    // Validar horas no disponibles
+    $request->validate([
+        'unavailable_hours' => 'nullable|array',
+    ]);
+
+    // Buscar el restaurante asociado al usuario autenticado
+    $restaurant = Product::where('user_id', Auth::id())->first();
+
+    if (!$restaurant) {
+        return redirect()->back()->with('error', 'No tienes un restaurante asignado.');
     }
+
+    // Obtener el horario del restaurante
+    $schedule = $restaurant->schedule;
+
+    if ($schedule) {
+        // Actualizar las horas no disponibles
+        $schedule->update([
+            'unavailable_hours' => $request->unavailable_hours ?? [],
+        ]);
+    } else {
+        return redirect()->back()->with('error', 'No se ha encontrado el horario del restaurante.');
+    }
+
+    return redirect()->back()->with('success', 'Horas bloqueadas actualizadas.');
+}
+
 
     public function getSchedule(Request $request)
     {

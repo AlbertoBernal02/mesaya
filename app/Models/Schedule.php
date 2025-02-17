@@ -14,8 +14,11 @@ class Schedule extends Model {
     protected $casts = [
         'unavailable_hours' => 'array', // Para guardar y recuperar las horas no disponibles como array
     ];
+// En el modelo Schedule
+public function product() {
+    return $this->belongsTo(Product::class, 'product_id');
+}
 
-    public function restaurant() {
-        return $this->belongsTo(Product::class, 'product_id');
-    }
+
+
 }
