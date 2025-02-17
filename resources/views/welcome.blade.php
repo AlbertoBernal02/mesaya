@@ -160,119 +160,64 @@ Borrar
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    const reservationDate = document.getElementById('reservationDate');
-    const timeSlot = document.getElementById('timeSlot');
+    document.addEventListener('DOMContentLoaded', async function () {
+        const reservationDate = document.getElementById('reservationDate');
+        const timeSlot = document.getElementById('timeSlot');
    
-    reservationDate.addEventListener('change', function () {
-        populateTimeSlots(this.value);
-    });
+        // Establecer la fecha mínima
+        const today = new Date().toISOString().split('T')[0];
+        reservationDate.setAttribute('min', today);
 
-    function populateTimeSlots(selectedDate) {
-        const now = new Date();
-        const selectedDay = new Date(selectedDate);
-        timeSlot.innerHTML = '';  // Limpiar las opciones previas
-        
-        const restaurantId = document.getElementById('restaurante').value; // Obtener el ID del restaurante seleccionado
-
-        // Hacer la llamada a la API para obtener el horario del restaurante
-        fetch(`/get-schedule?restaurant_id=${restaurantId}`)
-            .then(response => response.json())
-            .then(data => {
-                // Asegurarnos de que los datos estén disponibles y sean correctos
-                const openingTime = data.opening_time || "12:00:00";
-                const closingTime = data.closing_time || "21:00:00";
-
-                const [startHour, startMinute] = openingTime.split(":");
-                const [endHour, endMinute] = closingTime.split(":");
-
-                let start = parseInt(startHour);
-                let end = parseInt(endHour);
-
-                // Ajustar las horas si es hoy y ya ha pasado la mitad del día
-                if (selectedDay.toDateString() === now.toDateString()) {
-                    start = now.getHours() + (now.getMinutes() >= 30 ? 1 : 0);
-                }
-
-                // Rellenar las opciones de horas en el select
-                for (let h = start; h <= end; h++) {
-                    ["00", "30"].forEach(min => {
-                        const option = document.createElement('option');
-                        option.value = `${h}:${min}`;
-                        option.textContent = `${h}:${min}`;
-                        timeSlot.appendChild(option);
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error al obtener el horario:', error);
-            });
-    }
-
-    // Establecer el restaurante cuando se abra el modal
-    const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
-    reserveButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const restaurante = this.getAttribute('data-restaurante');
-            document.getElementById('restaurante').value = restaurante;
+        // Manejo del evento de cambio en la fecha seleccionada
+        reservationDate.addEventListener('change', function () {
+            populateTimeSlots(this.value);
         });
-    });
-});
 
+        // Función para poblar las horas disponibles según la fecha seleccionada
+        async function populateTimeSlots(selectedDate) {
+            const selectedDay = new Date(selectedDate);
+            timeSlot.innerHTML = '';  // Limpiar las opciones previas
 
-    </script>
+            const restaurantId = document.getElementById('restaurante').value; // Obtener el ID del restaurante
 
-<script>
-document.addEventListener('DOMContentLoaded', async function () {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('reservationDate').setAttribute('min', today);
-
-    const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
-    reserveButtons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const restaurantId = this.getAttribute('data-restaurante-id');
-            document.getElementById('restaurante').value = restaurantId; // Usar el ID del restaurante
-
+            // Hacer la llamada a la API para obtener el horario del restaurante
             try {
                 const response = await fetch(`/get-schedule?restaurant_id=${restaurantId}`);
                 if (!response.ok) {
                     throw new Error('Error al obtener horarios');
                 }
-                const schedule = await response.json();
+                const data = await response.json();
                 
-                if (!schedule.opening_time || !schedule.closing_time) {
-                    console.error('Horario no disponible.');
-                    return;
-                }
+                const openingTime = parseInt(data.opening_time.split(':')[0]);
+                const closingTime = parseInt(data.closing_time.split(':')[0]);
+                const unavailableHours = data.unavailable_hours || [];
 
-                const openingTime = parseInt(schedule.opening_time.split(':')[0]);
-                const closingTime = parseInt(schedule.closing_time.split(':')[0]);
-                
-                const selectElement = document.createElement('select');
-                selectElement.classList.add('form-select');
-                selectElement.name = 'hora';
-                selectElement.required = true;
-
+                // Llenar las horas disponibles
                 for (let hour = openingTime; hour < closingTime; hour++) {
-                    const option = document.createElement('option');
-                    option.value = `${hour}:00`;
-                    option.textContent = `${hour}:00 - ${hour + 1}:00`;
-                    selectElement.appendChild(option);
+                    const timeSlotValue = `${hour}:00`;
+                    if (!unavailableHours.includes(timeSlotValue)) {
+                        const option = document.createElement('option');
+                        option.value = timeSlotValue;
+                        option.textContent = `${hour}:00 - ${hour + 1}:00`;
+                        timeSlot.appendChild(option);
+                    }
                 }
-
-                const form = document.getElementById('reservationForm');
-                const existingSelect = form.querySelector('select[name="hora"]');
-                if (existingSelect && existingSelect.parentNode === form) {
-                    form.removeChild(existingSelect);
-                }
-                form.insertBefore(selectElement, form.children[2]);
             } catch (error) {
-                console.error('Error al obtener horarios:', error);
+                console.error('Error al obtener los horarios:', error);
             }
+        }
+
+        // Establecer el restaurante cuando se abra el modal
+        const reserveButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+        reserveButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const restaurantId = this.getAttribute('data-restaurante-id');
+                document.getElementById('restaurante').value = restaurantId; // Establecer el ID del restaurante
+            });
         });
     });
-});
 </script>
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Schedule;
 
 class ReservaController extends Controller
 {
@@ -18,6 +19,12 @@ class ReservaController extends Controller
             'num_comensales' => 'required|integer|min:1|max:10',
         ]);
 
+
+
+
+
+
+
         // Crear la reserva
         Reserva::create([
             'user_id' => Auth::id(),
@@ -28,5 +35,5 @@ class ReservaController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Reserva realizada con éxito');
-    }
+        }
 }

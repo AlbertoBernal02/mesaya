@@ -63,6 +63,12 @@ class ProductController extends Controller
         'password' => bcrypt($username), // La contraseña será igual al usuario
     ]);
 
+     // Guardar el aforo del producto en la tabla schedules
+    // Asegúrate de pasar un solo producto
+    if ($product instanceof Product) {
+        $this->updateScheduleForProduct($product);
+    }
+
     return redirect()->route('home')->with('success', 'Producto y usuario creados correctamente.');
 }
 
@@ -140,6 +146,12 @@ public function edit($id)
     // Guardar los cambios en la base de datos
     $product->save();
 
+     // Guardar el aforo del producto en la tabla schedules
+    // Asegúrate de pasar un solo producto
+    if ($product instanceof Product) {
+        $this->updateScheduleForProduct($product);
+    }
+
     return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
 }
 
@@ -158,4 +170,24 @@ public function edit($id)
         // Pasar productos y reservas a la vista
         return view('welcome', compact('products', 'reservasPendientes'));
     }
+
+    private function updateScheduleForProduct(Product $product)
+{
+    // Si ya existe un horario para este producto, actualízalo
+    $schedule = $product->schedule()->first();
+
+    if ($schedule) {
+        // Si ya existe el registro, solo actualizamos el aforo
+        $schedule->update([
+            'hourly_capacity' => $product->capacity,
+        ]);
+    } else {
+        // Si no existe, creamos un nuevo registro en la tabla schedules
+        \App\Models\Schedule::create([
+            'product_id' => $product->id,
+            'hourly_capacity' => $product->capacity,
+        ]);
+    }
+}
+
 }

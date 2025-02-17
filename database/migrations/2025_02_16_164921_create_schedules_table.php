@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->time('opening_time');
             $table->time('closing_time');
             $table->json('unavailable_hours')->nullable(); // Guardará las horas no disponibles
+            $table->json('hourly_capacity')->nullable(); // Guardará los aforos por hora
             $table->timestamps();
         });
     }
