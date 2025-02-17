@@ -116,7 +116,7 @@
             <tbody>
                 @forelse ($reservas as $reserva)
                     <tr>
-                        <td class="fw-semibold">{{ $reserva->restaurante }}</td>
+                    <td class="fw-semibold">{{ \App\Models\Product::find($reserva->restaurante)->name ?? 'Restaurante no encontrado' }}</td>
                         <td>{{ $reserva->fecha }}</td>
                         <td>{{ $reserva->hora }}</td>
                         <td>{{ $reserva->num_comensales }}</td>

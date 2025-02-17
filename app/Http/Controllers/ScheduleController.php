@@ -55,6 +55,12 @@ public function index1(Request $request)
     return view('schedules.index', compact('restaurant', 'schedule'));
 }
 
+
+
+
+
+
+
 public function store(Request $request) {
     // Validar los datos
     $request->validate([
@@ -79,7 +85,7 @@ public function store(Request $request) {
             'unavailable_hours' => $request->unavailable_hours ?? [],
         ]
     );
-
+    
     // Mensaje de éxito
     return redirect()->back()->with('success', $schedule->wasRecentlyCreated ? 'Horario creado correctamente.' : 'Horario actualizado correctamente.');
 }
