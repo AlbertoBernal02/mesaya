@@ -117,6 +117,12 @@
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="categories_id" class="form-label">Categoría</label>
+                                    <select class="form-select" id="categories_id" name="categories_id" required>
+                                        <option value="">Cargando categorías...</option>
+                                    </select>
+                                </div>
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Imagen</label>
