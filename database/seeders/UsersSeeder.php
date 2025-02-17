@@ -164,6 +164,14 @@ class UsersSeeder extends Seeder
                 'role' => 'user', // ✅ Debe estar aquí
                 
             ]
+            ,
+            [
+                'name' => 'Jesus',
+                'email' => 'jesuscasacarrillo@gmail.com',
+                'password' => Hash::make('jesus'),
+                'role' => 'user', // ✅ Debe estar aquí
+                
+            ]
         ]);
     }
 }

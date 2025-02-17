@@ -42,6 +42,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('products', ProductController::class);
 });
 
+
+// Grupo de rutas protegidas para administradores
+Route::middleware(['auth', 'restaurant'])->prefix('restaurant')->name('restaurant.')->group(function () {
+    Route::resource('products', ProductController::class);
+});
+
+
 Route::get('/categories', function (Request $request) {
     return response()->json(Category::all());
 });

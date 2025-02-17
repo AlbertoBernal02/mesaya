@@ -4,7 +4,7 @@
 <div class="container">
     <h2>Editar Producto</h2>
 
-    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route(Auth::user()->role == 'restaurant' ? 'restaurant.products.update' : 'admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

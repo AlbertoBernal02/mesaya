@@ -5,7 +5,7 @@
 <div class="container">
     <h2>Editar Restaurante</h2>
 
-    <a href="{{ route('admin.products.edit', $restaurant->id) }}" class="btn btn-warning mb-3">Editar Restaurante</a>
+    <a href="{{ route('restaurant.products.edit', $restaurant->id) }}" class="btn btn-warning mb-3">Editar Restaurante</a>
 
     <form action="{{ route('schedule.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
