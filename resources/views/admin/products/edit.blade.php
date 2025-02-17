@@ -23,7 +23,13 @@
 
         <div class="mb-3">
             <label for="image" class="form-label">Imagen</label>
-            <input type="file" class="form-control" id="image" name="image" value="{{ $product->image }}>
+            <!-- Si hay una imagen, mostrarla -->
+            @if($product->image)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="Imagen del producto" style="max-width: 150px;">
+                </div>
+            @endif
+            <input type="file" class="form-control" id="image" name="image">
         </div>
 
         <div class="mb-3">

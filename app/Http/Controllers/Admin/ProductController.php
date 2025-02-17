@@ -84,44 +84,48 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
+{
+    $product = Product::findOrFail($id);
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'categories_id' => 'required|integer',
-            'total_price' => 'required|numeric',
-            'image' => 'nullable|image',
-            'capacity' => 'required|integer',
-            'ubication' => 'required|string|max:255',
-        ]);
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'categories_id' => 'required|integer',
+        'total_price' => 'required|numeric',
+        'image' => 'nullable|image', // Cambié a nullable para que no sea obligatorio
+        'capacity' => 'required|integer',
+        'ubication' => 'required|string|max:255',
+    ]);
 
-        $product->update([
-            'name' => $request->name,
-            'categories_id' => $request->categories_id,
-            'total_price' => $request->total_price,
-            'image' => $request->image,
-            'capacity' => $request->capacity,
-            'ubication' => $request->ubication,
-        ]);
+    // Guardar los campos que no son imagen
+    $product->name = $request->name;
+    $product->categories_id = $request->categories_id;
+    $product->total_price = $request->total_price;
+    $product->capacity = $request->capacity;
+    $product->ubication = $request->ubication;
 
-        // Subir la imagen
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('img'), $imageName);
-            $imagePath = '../../img/' . $imageName;
-        } else {
-            $imagePath = '../../img/default.png';
+    // Verificar si se ha subido una nueva imagen
+    if ($request->hasFile('image')) {
+        // Eliminar la imagen anterior si existe
+        if ($product->image && file_exists(public_path($product->image))) {
+            unlink(public_path($product->image)); // Eliminar la imagen anterior
         }
 
-        // Asignar la imagen antes de guardar
+        // Subir la nueva imagen
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('../../img'), $imageName);
+        $imagePath = '../../img/' . $imageName; // Guardar la ruta correcta
+
+        // Asignar la nueva imagen
         $product->image = $imagePath;
-
-        $product->save();
-
-        return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
     }
+
+    // Guardar los cambios en la base de datos
+    $product->save();
+
+    return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
+}
+
 
     public function index()
     {
