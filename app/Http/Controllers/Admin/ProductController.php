@@ -21,6 +21,8 @@ class ProductController extends Controller
         'image' => 'nullable|image',
         'capacity' => 'required|integer',
         'ubication' => 'required|string|max:255',
+        'opening_time' => 'required|date_format:H:i',
+        'closing_time' => 'required|date_format:H:i',
     ]);
 
     // Generar un email temporal único
@@ -54,6 +56,13 @@ class ProductController extends Controller
         'image' => $imagePath,
         'user_id' => $user->id, // Se asigna el usuario creado
     ]);
+
+    // Crear el horario para el producto recién creado
+\App\Models\Schedule::create([
+    'product_id' => $product->id,           // Relacionar con el producto creado
+    'opening_time' => $request->opening_time, // Guardar la hora de apertura
+    'closing_time' => $request->closing_time, // Guardar la hora de cierre
+]);
 
     // Actualizar el usuario con el nombre y email correctos basados en el `product->id`
     $username = 'restaurant' . $product->id;
@@ -167,8 +176,10 @@ public function edit($id)
             $reservasPendientes = Reserva::where('user_id', Auth::id())->count();
         }
 
+        $categories = Category::all();
+
         // Pasar productos y reservas a la vista
-        return view('welcome', compact('products', 'reservasPendientes'));
+        return view('welcome', compact('products', 'reservasPendientes', 'categories'));
     }
 
     private function updateScheduleForProduct(Product $product)

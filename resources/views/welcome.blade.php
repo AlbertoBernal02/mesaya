@@ -28,11 +28,25 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="categories_id" class="form-label">Categoría</label>
-                                    <select class="form-select" id="categories_id" name="categories_id" required>
-                                        <option value="">Cargando categorías...</option>
-                                    </select>
-                                </div>
+    <label class="form-label">Categoría</label>
+    <div>
+        <!-- Iterar sobre todas las categorías y marcar la correspondiente -->
+        @foreach ($categories as $category)
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="categories_id" 
+                    id="category_{{ $category->id }}" 
+                    value="{{ $category->id }}" 
+                    >
+                <label class="form-check-label" for="category_{{ $category->id }}">
+                    {{ $category->name }}
+                </label>
+            </div>
+        @endforeach
+    </div>
+</div>
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Imagen</label>
@@ -49,10 +63,23 @@
                                     <input type="number" class="form-control" id="total_price" name="total_price" required>
                                 </div>
 
+                                
+
+
                                 <div class="mb-3">
                                     <label for="capacity" class="form-label">Aforo</label>
                                     <input type="number" class="form-control" id="capacity" name="capacity" required>
                                 </div>
+
+                                <div class="mb-3">
+    <label for="opening_time" class="form-label">Hora de Apertura</label>
+    <input type="time" class="form-control" id="opening_time" name="opening_time" value="09:00" required>
+</div>
+
+<div class="mb-3">
+    <label for="closing_time" class="form-label">Hora de Cierre</label>
+    <input type="time" class="form-control" id="closing_time" name="closing_time" value="23:00" required>
+</div>
 
 
                                 <button type="submit" class="btn btn-primary">Añadir Producto</button>
