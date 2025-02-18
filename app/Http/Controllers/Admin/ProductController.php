@@ -126,6 +126,9 @@ public function edit($id)
         'image' => 'nullable|image', // Cambié a nullable para que no sea obligatorio
         'capacity' => 'required|integer',
         'ubication' => 'required|string|max:255',
+        'opening_time' => 'required|date_format:H:i',
+        'closing_time' => 'required|date_format:H:i',
+        'unavailable_hours' => 'nullable|array',
     ]);
 
     // Guardar los campos que no son imagen
@@ -155,10 +158,25 @@ public function edit($id)
     // Guardar los cambios en la base de datos
     $product->save();
 
-     // Guardar el aforo del producto en la tabla schedules
-    // Asegúrate de pasar un solo producto
-    if ($product instanceof Product) {
-        $this->updateScheduleForProduct($product);
+    // Guardar el aforo y horarios del producto en la tabla schedules
+    $schedule = $product->schedule()->first();
+    if ($schedule) {
+        // Si ya existe el registro, solo actualizamos el aforo y horarios
+        $schedule->update([
+            'hourly_capacity' => $product->capacity,
+            'opening_time' => $request->opening_time,
+            'closing_time' => $request->closing_time,
+            'unavailable_hours' => $request->unavailable_hours ?? [],
+        ]);
+    } else {
+        // Si no existe, creamos un nuevo registro en la tabla schedules
+        \App\Models\Schedule::create([
+            'product_id' => $product->id,
+            'hourly_capacity' => $product->capacity,
+            'opening_time' => $request->opening_time,
+            'closing_time' => $request->closing_time,
+            'unavailable_hours' => $request->unavailable_hours ?? [],
+        ]);
     }
 
     return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
