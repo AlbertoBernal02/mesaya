@@ -114,26 +114,19 @@
                         
 
 
-                        @guest
-                       
-                        @else
-                        @if (Auth::user()->role && Auth::user()->role == 'user')
-                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}" data-restaurante-id="{{ $product->id }}">Reservar Ahora</a>
-                        @elseif(Auth::user()->role && Auth::user()->role == 'admin')
+                        @if (Auth::guest())
+                            <a href="{{ route('login') }}" class="btn btn-success">Reservar Ahora</a>
+                        @elseif (Auth::check() && Auth::user()->role == 'user')
+                            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reserveModal" data-restaurante="{{ $product->name }}" data-restaurante-id="{{ $product->id }}">Reservar Ahora</a>
+                        @elseif(Auth::check() && Auth::user()->role == 'admin')
+                            <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
 
-
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-
-
-                        <!-- Botón para abrir el modal de confirmación -->
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion"
-data-id="{{ $product->id }}" data-name="{{ $product->name }}">
-Borrar
-</button>
-
-
+                            <!-- Botón para abrir el modal de confirmación -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion"
+                            data-id="{{ $product->id }}" data-name="{{ $product->name }}">
+                            Borrar
+                            </button>
                         @endif
-                        @endguest
                     </div>
                 </div>
             </div>

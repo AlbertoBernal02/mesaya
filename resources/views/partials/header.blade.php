@@ -10,7 +10,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('nosotros') }}">Sobre Nosotros</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contacto') }}">Contacto</a></li>
 
