@@ -10,8 +10,12 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\CarritoReservaController;
 use App\Http\Middleware\RestauranteMiddleware;
 use App\Http\Controllers\ScheduleController;
+use App\Providers\FortifyServiceProvider;
 
 return Application::configure(basePath: dirname(__DIR__))
+    ->withProviders([
+        FortifyServiceProvider::class, // Asegura que Laravel Fortify se cargue
+    ])  
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
