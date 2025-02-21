@@ -11,44 +11,56 @@ use App\Http\Controllers\CarritoReservaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ReservaController;
 
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
+use Laravel\Fortify\Http\Controllers\NewPasswordController;
+
+// Rutas de autenticación Fortify
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+// Middleware para rutas autenticadas
 Route::middleware(['auth'])->group(function () {
-    // Ruta para obtener el horario (GET)
+    // Rutas de horarios
     Route::get('/get-schedule', [ScheduleController::class, 'getSchedule'])->name('get-schedule');
-    
-    // Ruta para ver el horario (GET) del restaurante
     Route::get('/schedules', [ScheduleController::class, 'index1'])->name('schedules.index1');
-    
-    // Ruta para crear o actualizar el horario (POST)
     Route::post('/schedules/store', [ScheduleController::class, 'store'])->name('schedule.store');
-
-
-    // Ruta para actualizar las horas no disponibles (POST)
     Route::post('/schedules/unavailable', [ScheduleController::class, 'updateUnavailableHours'])->name('schedule.unavailable');
-});
 
-Route::middleware(['auth'])->group(function () {
+    // Rutas del carrito
     Route::get('/cliente/carrito', [CarritoReservaController::class, 'index'])->name('carrito.index');
     Route::post('/cliente/carrito/confirmar', [CarritoReservaController::class, 'confirmarReservas'])->name('carrito.confirmar');
     Route::delete('/carrito/reserva/{id}', [CarritoReservaController::class, 'eliminarReserva'])->name('carrito.eliminar');
 });
 
-use App\Http\Controllers\ReservaController;
-
+// Rutas para reservas (solo usuarios autenticados con rol user)
 Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store')->middleware(['auth', 'role:user']);
 
 // Grupo de rutas protegidas para administradores
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', ProductController::class);
+    Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
-
-// Grupo de rutas protegidas para administradores
+// Grupo de rutas protegidas para restaurantes
 Route::middleware(['auth', 'restaurant'])->prefix('restaurant')->name('restaurant.')->group(function () {
     Route::resource('products', ProductController::class);
 });
 
-
+// Rutas generales
 Route::get('/categories', function (Request $request) {
     return response()->json(Category::all());
 });
@@ -56,25 +68,13 @@ Route::get('/categories', function (Request $request) {
 Route::get('/contacto', [ContactoController::class, 'index'])->middleware(['auth', 'role:user'])->name('contacto');
 Route::get('/nosotros', [NosotrosController::class, 'index'])->middleware(['auth', 'role:user'])->name('nosotros');
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    // Ruta para procesar el formulario de creación de producto
-    Route::post('admin/products', [ProductController::class, 'store'])->name('products.store');
-});
-
 // Página de inicio (welcome.blade.php)
 Route::get('/', [ProductController::class, 'index'])->name('home');
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-
-// Rutas de autenticación
-Auth::routes();
 
 // Redirección después del login según el rol
 Route::get('/home', function () {
     if (Auth::check()) {
-        if (Auth::user()->role == 'restaurant') {
-            return redirect()->route('schedules.index1');
-        }
-        return redirect('/');
+        return Auth::user()->role == 'restaurant' ? redirect()->route('schedules.index1') : redirect('/');
     }
     return redirect()->route('login');
 })->name('home');
