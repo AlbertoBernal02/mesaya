@@ -17,8 +17,9 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 use Laravel\Fortify\Http\Controllers\NewPasswordController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
-// Rutas de autenticación Fortify
+// 🟢 Rutas de autenticación con Fortify
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
@@ -31,47 +32,69 @@ Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
-// Middleware para rutas autenticadas
-Route::middleware(['auth'])->group(function () {
-    // Rutas de horarios
+// 🟢 Rutas de verificación de email
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware(['auth'])->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/')->with('message', 'Tu correo ha sido verificado correctamente.');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    if ($request->user()->hasVerifiedEmail()) {
+        return redirect()->route('home');
+    }
+
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Se ha enviado un nuevo correo de verificación.');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+// 🛑 Todas las rutas privadas requieren autenticación y email verificado
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    // 🟢 Rutas de horarios
     Route::get('/get-schedule', [ScheduleController::class, 'getSchedule'])->name('get-schedule');
     Route::get('/schedules', [ScheduleController::class, 'index1'])->name('schedules.index1');
     Route::post('/schedules/store', [ScheduleController::class, 'store'])->name('schedule.store');
     Route::post('/schedules/unavailable', [ScheduleController::class, 'updateUnavailableHours'])->name('schedule.unavailable');
 
-    // Rutas del carrito
+    // 🟢 Rutas del carrito
     Route::get('/cliente/carrito', [CarritoReservaController::class, 'index'])->name('carrito.index');
     Route::post('/cliente/carrito/confirmar', [CarritoReservaController::class, 'confirmarReservas'])->name('carrito.confirmar');
     Route::delete('/carrito/reserva/{id}', [CarritoReservaController::class, 'eliminarReserva'])->name('carrito.eliminar');
+
+    // 🟢 Rutas para reservas (solo usuarios autenticados con rol user)
+    Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store')->middleware('role:user');
+
+    // 🟢 Grupo de rutas protegidas para administradores (requieren email verificado)
+    Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::resource('products', ProductController::class);
+        Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    });
+
+    // 🟢 Grupo de rutas protegidas para restaurantes (requieren email verificado)
+    Route::middleware(['restaurant'])->prefix('restaurant')->name('restaurant.')->group(function () {
+        Route::resource('products', ProductController::class);
+    });
+
+    // 🟢 Rutas generales protegidas
+    Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
+    Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 });
 
-// Rutas para reservas (solo usuarios autenticados con rol user)
-Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store')->middleware(['auth', 'role:user']);
-
-// Grupo de rutas protegidas para administradores
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('products', ProductController::class);
-    Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-});
-
-// Grupo de rutas protegidas para restaurantes
-Route::middleware(['auth', 'restaurant'])->prefix('restaurant')->name('restaurant.')->group(function () {
-    Route::resource('products', ProductController::class);
-});
-
-// Rutas generales
+// 🟢 Rutas públicas (no requieren autenticación)
 Route::get('/categories', function (Request $request) {
     return response()->json(Category::all());
 });
 
-Route::get('/contacto', [ContactoController::class, 'index'])->middleware(['auth', 'role:user'])->name('contacto');
-Route::get('/nosotros', [NosotrosController::class, 'index'])->middleware(['auth', 'role:user'])->name('nosotros');
-
-// Página de inicio (welcome.blade.php)
+// 🟢 Página de inicio
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
-// Redirección después del login según el rol
+// 🟢 Redirección después del login según el rol
 Route::get('/home', function () {
     if (Auth::check()) {
         return Auth::user()->role == 'restaurant' ? redirect()->route('schedules.index1') : redirect('/');

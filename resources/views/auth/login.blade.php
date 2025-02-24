@@ -8,6 +8,23 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    @if (session('message'))
+                        <div class="alert alert-warning">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    @if (Auth::check() && !Auth::user()->hasVerifiedEmail())
+                        <div class="alert alert-danger">
+                            Tu cuenta no está verificada. Por favor, revisa tu correo electrónico para confirmarla.
+
+                            <form method="POST" action="{{ route('verification.send') }}" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-link">Reenviar correo</button>
+                            </form>
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
