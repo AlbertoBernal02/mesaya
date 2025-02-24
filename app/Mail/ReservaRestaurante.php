@@ -37,7 +37,7 @@ class ReservaRestaurante extends Mailable
         ]);
 
         // Definir la carpeta donde se guardará el PDF
-        $facturasPath = storage_path('app/public/facturas/');
+        $facturasPath = storage_path('facturas/');
 
         // Asegurar que la carpeta exista
         if (!File::exists($facturasPath)) {
