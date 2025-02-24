@@ -79,6 +79,12 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+
+        // Verificar permisos
+        if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
+            return redirect()->route('home')->with('error', 'No tienes permiso para editar este restaurante.');
+        }
+
         $categories = Category::all();
         return view('admin.products.edit', compact('product', 'categories'));
     }
@@ -86,6 +92,11 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+
+        // Verificar permisos
+        if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
+            return redirect()->route('home')->with('error', 'No tienes permiso para actualizar este restaurante.');
+        }
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -125,6 +136,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
+
+        // Verificar permisos
+        if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
+            return redirect()->route('home')->with('error', 'No tienes permiso para ocultar este restaurante.');
+        }
+
         $product->update(['visible' => false]);
 
         // Desactivar usuario y modificar email
@@ -142,6 +159,12 @@ class ProductController extends Controller
     public function restore(Request $request)
     {
         $product = Product::findOrFail($request->product_id);
+
+        // Verificar permisos
+        if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
+            return redirect()->route('home')->with('error', 'No tienes permiso para restaurar este restaurante.');
+        }
+
         $product->update(['visible' => true]);
 
         $user = User::where('id', $product->user_id)->first();
