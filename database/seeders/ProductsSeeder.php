@@ -16,6 +16,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 1',
                 'capacity' => 100,
                 'user_id' => 1,
+                'visible' => true, // Nuevo campo
             ],
             [
                 'name' => 'La Mafia Se Sienta A La Mesa',
@@ -25,6 +26,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 2',
                 'capacity' => 100,
                 'user_id' => 2,
+                'visible' => true,
             ],
             [
                 'name' => 'Maquiavelo',
@@ -34,6 +36,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 3',
                 'capacity' => 100,
                 'user_id' => 3,
+                'visible' => true,
             ],
             [
                 'name' => 'Blanca Paloma',
@@ -43,6 +46,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 4',
                 'capacity' => 100,
                 'user_id' => 4,
+                'visible' => true,
             ],
             [
                 'name' => 'Río Grande',
@@ -52,6 +56,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 5',
                 'capacity' => 100,
                 'user_id' => 5,
+                'visible' => true,
             ],
             [
                 'name' => 'Bilio',
@@ -61,6 +66,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 6',
                 'capacity' => 100,
                 'user_id' => 6,
+                'visible' => true,
             ],
             [
                 'name' => 'Abades Triana',
@@ -70,6 +76,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 7',
                 'capacity' => 100,
                 'user_id' => 7,
+                'visible' => true,
             ],
             [
                 'name' => 'Las Dunas',
@@ -79,6 +86,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 8',
                 'capacity' => 100,
                 'user_id' => 8,
+                'visible' => true,
             ],
             [
                 'name' => 'Taberna Bocanegra',
@@ -88,6 +96,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 9',
                 'capacity' => 100,
                 'user_id' => 9,
+                'visible' => true,
             ],
             [
                 'name' => 'Taberna Coloniales',
@@ -97,6 +106,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 10',
                 'capacity' => 100,
                 'user_id' => 10,
+                'visible' => true,
             ],
             [
                 'name' => 'Taberna El Arenal',
@@ -106,6 +116,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 11',
                 'capacity' => 100,
                 'user_id' => 11,
+                'visible' => true,
             ],
             [
                 'name' => 'Taberna Antonio Romero',
@@ -115,15 +126,17 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 12',
                 'capacity' => 100,
                 'user_id' => 12,
+                'visible' => true,
             ],
             [
-                'name' => 'Restaurante San Marco (Santa Cruz,Sevilla)',
+                'name' => 'Restaurante San Marco (Santa Cruz, Sevilla)',
                 'total_price' => 35.50,
                 'categories_id' => 2,
                 'image' => '../../img/SanMarco.jpg',
                 'ubication' => 'Calle Hola 13',
                 'capacity' => 100,
                 'user_id' => 13,
+                'visible' => true,
             ],
             [
                 'name' => 'María Trifulca',
@@ -133,6 +146,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 14',
                 'capacity' => 100,
                 'user_id' => 14,
+                'visible' => true,
             ],
             [
                 'name' => 'Taberna Almazara',
@@ -142,6 +156,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 15',
                 'capacity' => 100,
                 'user_id' => 15,
+                'visible' => true,
             ],
             [
                 'name' => 'Patio San Eloy (Triana)',
@@ -151,6 +166,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 16',
                 'capacity' => 100,
                 'user_id' => 16,
+                'visible' => true,
             ],
             [
                 'name' => 'Patio San Eloy (Santa Catalina)',
@@ -160,6 +176,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 17',
                 'capacity' => 100,
                 'user_id' => 17,
+                'visible' => true,
             ],
             [
                 'name' => 'Bar Casemiro',
@@ -169,6 +186,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 18',
                 'capacity' => 100,
                 'user_id' => 18,
+                'visible' => true,
             ],
             [
                 'name' => 'Amanecer (Alameda de Hércules, Sevilla)',
@@ -178,6 +196,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 19',
                 'capacity' => 100,
                 'user_id' => 19,
+                'visible' => true,
             ],
             [
                 'name' => 'Avelino',
@@ -187,6 +206,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 20',
                 'capacity' => 100,
                 'user_id' => 20,
+                'visible' => true,
             ],
             [
                 'name' => 'Aderezo',
@@ -196,6 +216,7 @@ class ProductsSeeder extends Seeder {
                 'ubication' => 'Calle Hola 21',
                 'capacity' => 100,
                 'user_id' => 21,
+                'visible' => true,
             ],
         ]);
     }

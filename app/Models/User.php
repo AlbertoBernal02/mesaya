@@ -15,6 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail // Implementa Must
         'name',
         'email',
         'password',
-        'role',  // Mantienes el campo role
+        'role',  // Sigue usando 'role' como un string en la tabla 'users'
+        'active',
     ];
 }

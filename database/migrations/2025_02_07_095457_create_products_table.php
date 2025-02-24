@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('ubication');
             $table->integer('capacity');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->boolean('visible')->default(true); // Nuevo campo para ocultar productos
             $table->timestamps();
         });
     }
@@ -23,4 +24,5 @@ return new class extends Migration {
         Schema::dropIfExists('products');
     }
 };
+
 
