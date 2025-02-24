@@ -69,7 +69,10 @@
                                     <label for="closing_time" class="form-label">Hora de Cierre</label>
                                     <input type="time" class="form-control" id="closing_time" name="closing_time" value="23:00" required>
                                 </div>
-
+                                <div class="mb-3">
+    <label for="email" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+</div>
                                 <button type="submit" class="btn btn-primary">Añadir Producto</button>
                             </form>
                         </div>
