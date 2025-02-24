@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\ReservaConfirmada;
+use App\Models\Product;
+use App\Models\User;
 use App\Mail\ReservaConfirmada as ReservaConfirmadaMail;
+use App\Mail\ReservaRestaurante as ReservaRestauranteMail; // Nuevo mail para el restaurante
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;  // Importar Mail
+use Illuminate\Support\Facades\Mail;
 
 class CarritoReservaController extends Controller
 {
@@ -17,27 +20,27 @@ class CarritoReservaController extends Controller
         // Obtener todas las reservas del usuario
         $reservas = Reserva::where('user_id', Auth::id())->get();
 
-        // Obtener el número de reservas pendientes de confirmación
+        // Contar reservas pendientes de confirmación
         $reservasPendientes = $reservas->where('confirmada', false)->count();
 
-        // Pasar el número de reservas pendientes a la vista
         return view('cliente.carrito.index', compact('reservas', 'reservasPendientes'));
     }
 
-    // Confirmar las reservas y moverlas a reservas_confirmadas
+    // Confirmar las reservas y enviarlas por correo
     public function confirmarReservas()
     {
-        // Obtener las reservas del usuario
         $reservas = Reserva::where('user_id', Auth::id())->get();
-        
-        $reservasConfirmadasData = []; // Asegurarse de definir la variable
+        $reservasConfirmadasData = [];
 
         foreach ($reservas as $reserva) {
-            // Obtener el nombre del restaurante desde la tabla 'products' usando el ID
-            $restaurante = \App\Models\Product::find($reserva->restaurante);  // 'restaurante' es el ID del restaurante
-            $nombreRestaurante = $restaurante ? $restaurante->name : 'Restaurante no encontrado';  // Obtener el nombre o un mensaje si no lo encuentra
+            // Buscar el restaurante asociado
+            $restaurante = Product::find($reserva->restaurante);
+            $nombreRestaurante = $restaurante ? $restaurante->name : 'Restaurante no encontrado';
 
-            // Crear la reserva confirmada (se activará el evento 'created')
+            // Obtener el usuario del restaurante
+            $usuarioRestaurante = User::find($restaurante->user_id ?? null);
+
+            // Crear la reserva confirmada
             $reservaConfirmada = ReservaConfirmada::create([
                 'user_id' => $reserva->user_id,
                 'restaurante' => $nombreRestaurante,
@@ -46,17 +49,21 @@ class CarritoReservaController extends Controller
                 'num_comensales' => $reserva->num_comensales,
             ]);
 
-            // Guardar los datos de la reserva confirmada para enviarlos por correo
             $reservasConfirmadasData[] = $reservaConfirmada;
+
+            // 🔹 Enviar correo al restaurante si se encuentra su usuario
+            if ($usuarioRestaurante && $usuarioRestaurante->email) {
+                Mail::to($usuarioRestaurante->email)->send(new ReservaRestauranteMail($reservaConfirmada));
+            }
         }
 
-        // Eliminar las reservas originales
+        // Eliminar reservas temporales
         Reserva::where('user_id', Auth::id())->delete();
 
-        // Enviar el correo con las reservas confirmadas
+        // 🔹 Enviar correo de confirmación al usuario
         Mail::to(Auth::user()->email)->send(new ReservaConfirmadaMail($reservasConfirmadasData));
 
-        return redirect()->route('carrito.index')->with('success', 'Reservas confirmadas exitosamente.');
+        return redirect()->route('carrito.index')->with('success', 'Reservas confirmadas y notificación enviada a los restaurantes.');
     }
 
     // Eliminar una reserva
