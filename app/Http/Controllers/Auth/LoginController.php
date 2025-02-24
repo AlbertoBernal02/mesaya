@@ -20,7 +20,6 @@ class LoginController extends Controller
     }
 
     /**
-<<<<<<< HEAD
      * Bloquear acceso si el usuario no ha verificado su email.
      */
     protected function authenticated(Request $request, $user)
@@ -29,9 +28,10 @@ class LoginController extends Controller
             Auth::logout(); // Cierra la sesión inmediatamente
             return redirect('/login')->with('message', 'Debes verificar tu correo antes de continuar.');
         }
-=======
-     * Sobrescribir el método de intento de login
-     * para bloquear usuarios desactivados.
+    }
+
+    /**
+     * Sobrescribir el método de intento de login para bloquear usuarios desactivados.
      */
     protected function attemptLogin(Request $request)
     {
@@ -55,6 +55,5 @@ class LoginController extends Controller
         throw \Illuminate\Validation\ValidationException::withMessages([
             'email' => [trans('auth.failed')],
         ]);
->>>>>>> 4ffeeb0393cccf9c91303f83b120488bfa473359
     }
 }
