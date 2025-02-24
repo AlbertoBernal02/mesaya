@@ -15,5 +15,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role',  // Sigue usando 'role' como un string en la tabla 'users'
+        'active',
     ];
 }

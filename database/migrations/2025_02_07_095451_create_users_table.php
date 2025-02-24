@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->string('password', 255);
             $table->rememberToken();
             $table->string('role')->default('user');
+            $table->boolean('active')->default(true); // Nueva columna para activar/desactivar usuarios
             $table->timestamps();
         });
     }
@@ -22,6 +23,3 @@ return new class extends Migration {
         Schema::dropIfExists('users');
     }
 };
-
-
-

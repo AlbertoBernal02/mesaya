@@ -78,3 +78,9 @@ Route::get('/home', function () {
     }
     return redirect()->route('login');
 })->name('home');
+
+
+
+Route::post('/admin/products/restore', [ProductController::class, 'restore'])->name('admin.products.restore');
+
+
