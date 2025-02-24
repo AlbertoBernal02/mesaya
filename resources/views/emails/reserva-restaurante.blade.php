@@ -17,7 +17,7 @@
     <p><strong>Hora:</strong> {{ $reserva->hora }}</p>
     <p><strong>Número de Comensales:</strong> {{ $reserva->num_comensales }}</p>
     
-    <p>Revisa tu panel de administración para gestionar las reservas.</p>
+    <p>Adjunto encontrarás la factura por 1€ correspondiente a esta reserva.</p>
 
     <p>Saludos,<br>
     <strong>Equipo Lumiere</strong></p>
