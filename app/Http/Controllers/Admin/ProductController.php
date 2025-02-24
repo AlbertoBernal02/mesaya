@@ -115,7 +115,7 @@ class ProductController extends Controller
             'total_price' => $request->total_price,
             'capacity' => $request->capacity,
             'ubication' => $request->ubication,
-            'visible' => $request->has('visible'),
+            'visible' => $request->input('visible', $product->visible),
         ]);
 
         if ($request->hasFile('image')) {
