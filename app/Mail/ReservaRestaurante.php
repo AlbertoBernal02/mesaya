@@ -26,11 +26,14 @@ class ReservaRestaurante extends Mailable
         $this->reserva = $reserva;
         $this->cliente = User::find($reserva->user_id);
 
+        // Calcular el monto: 1€ por cada comensal
+        $montoTotal = $reserva->num_comensales * 1.00;
+
         // Crear la factura en la BD
         $this->factura = Factura::create([
             'reserva_id' => $reserva->id,
             'restaurante' => $reserva->restaurante,
-            'monto' => 1.00,
+            'monto' => $montoTotal, // Ahora el monto depende del número de comensales
         ]);
 
         // Definir la carpeta donde se guardará el PDF
@@ -44,8 +47,8 @@ class ReservaRestaurante extends Mailable
         // Definir la ruta del archivo de la factura
         $this->pdfPath = $facturasPath . "factura_{$this->factura->id}.pdf";
 
-        // Generar el PDF
-        $pdf = Pdf::loadView('facturas.pdf', ['factura' => $this->factura]);
+        // Generar el PDF con la cantidad correcta
+        $pdf = Pdf::loadView('facturas.pdf', ['factura' => $this->factura, 'reserva' => $this->reserva]);
 
         // Guardar el PDF
         file_put_contents($this->pdfPath, $pdf->output());
@@ -59,7 +62,7 @@ class ReservaRestaurante extends Mailable
                         'reserva' => $this->reserva,
                         'cliente' => $this->cliente,
                     ])
-                    ->attach($this->pdfPath, [ // Aquí usamos la ruta corregida
+                    ->attach($this->pdfPath, [
                         'as' => "factura_{$this->factura->id}.pdf",
                         'mime' => 'application/pdf',
                     ]);

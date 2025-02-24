@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             ],
             [
                 'name' => 'Restaurant2',
-                'email' => 'restaurant@yopmail.com',
+                'email' => 'restaurant2@yopmail.com',
                 'password' => Hash::make('restaurant2'),
                 'role' => 'restaurant', 
                 'email_verified_at' => Carbon::now(),

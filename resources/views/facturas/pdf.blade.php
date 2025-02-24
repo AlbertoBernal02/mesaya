@@ -21,7 +21,8 @@
         <div class="details">
             <p><strong>Restaurante:</strong> {{ $factura->restaurante }}</p>
             <p><strong>Reserva ID:</strong> {{ $factura->reserva_id }}</p>
-            <p><strong>Monto:</strong> 1.00€</p>
+            <p><strong>Número de Comensales:</strong> {{ $reserva->num_comensales }}</p>
+            <p><strong>Monto Total:</strong> {{ number_format($factura->monto, 2) }}€</p>
         </div>
         <div class="footer">
             <p>Gracias por usar nuestra plataforma.</p>

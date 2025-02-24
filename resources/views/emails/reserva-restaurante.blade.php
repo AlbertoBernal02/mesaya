@@ -17,7 +17,10 @@
     <p><strong>Hora:</strong> {{ $reserva->hora }}</p>
     <p><strong>Número de Comensales:</strong> {{ $reserva->num_comensales }}</p>
     
-    <p>Adjunto encontrarás la factura por 1€ correspondiente a esta reserva.</p>
+    <h3>💰 Coste de la Reserva:</h3>
+    <p>Se ha generado una factura de <strong>{{ number_format($reserva->num_comensales * 1.00, 2) }}€</strong> (1€ por cada comensal).</p>
+
+    <p>Adjunto encontrarás la factura con el detalle del importe.</p>
 
     <p>Saludos,<br>
     <strong>Equipo Lumiere</strong></p>
