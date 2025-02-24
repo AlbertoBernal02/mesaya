@@ -48,7 +48,6 @@ Route::post('/email/verification-notification', function (Request $request) {
     }
 
     $request->user()->sendEmailVerificationNotification();
-
     return back()->with('message', 'Se ha enviado un nuevo correo de verificación.');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
@@ -94,16 +93,18 @@ Route::get('/categories', function (Request $request) {
 // 🟢 Página de inicio
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
-// 🟢 Redirección después del login según el rol
+// 🟢 Redirección después del login según el rol (Bloqueado para usuarios no verificados)
 Route::get('/home', function () {
-    if (Auth::check()) {
-        return Auth::user()->role == 'restaurant' ? redirect()->route('schedules.index1') : redirect('/');
+    if (!Auth::check()) {
+        return redirect()->route('login'); // Si no está autenticado, lo manda a login
     }
-    return redirect()->route('login');
-})->name('home');
 
+    if (!Auth::user()->email_verified_at) { // Verificación correcta
+        Auth::logout(); // Cierra la sesión inmediatamente
+        return redirect('/login')->with('message', 'Debes verificar tu correo antes de continuar.');
+    }
 
+    return Auth::user()->role == 'restaurant' ? redirect()->route('schedules.index1') : redirect('/');
+})->name('home')->middleware(['auth']);
 
 Route::post('/admin/products/restore', [ProductController::class, 'restore'])->name('admin.products.restore');
-
-
