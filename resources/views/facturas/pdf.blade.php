@@ -27,8 +27,6 @@
             <div>
                 <h3>Datos del Cliente</h3>
                 <p><strong>Nombre:</strong> {{ $factura->restaurante }}</p>
-                <p><strong>Dirección:</strong> </p>
-                <p><strong>Mail:</strong> </p>
             </div>
             <div>
                 <h3>Datos de la Empresa</h3>
