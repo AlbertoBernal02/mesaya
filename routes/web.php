@@ -101,8 +101,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     // 🟢 Rutas generales protegidas
-    Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto')->middleware('auth');
-    Route::post('/contacto/enviar', [ContactoController::class, 'enviarMensaje'])->name('contacto.enviar')->middleware('auth');
+  // 🟢 Rutas de contacto (permitido solo para users y restaurants, no para admins)
+Route::get('/contacto', function () {
+    if (Auth::check() && Auth::user()->role === 'admin') {
+        return redirect()->route('home')->with('error', 'Los administradores no pueden acceder a la sección de contacto.');
+    }
+    return app()->call('App\Http\Controllers\ContactoController@index');
+})->name('contacto')->middleware('auth');
+
+Route::post('/contacto/enviar', function (Request $request) {
+    if (Auth::check() && Auth::user()->role === 'admin') {
+        return redirect()->route('home')->with('error', 'Los administradores no pueden enviar mensajes de contacto.');
+    }
+    return app()->call('App\Http\Controllers\ContactoController@enviarMensaje', ['request' => $request]);
+})->name('contacto.enviar')->middleware('auth');
+
     Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 });
 
