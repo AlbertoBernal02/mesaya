@@ -18,7 +18,7 @@ class CarritoReservaController extends Controller
     public function index()
     {
         // Obtener todas las reservas del usuario
-        $reservas = Reserva::where('user_id', Auth::id())->get();
+        $reservas = Reserva::where('user_id', Auth::id())->paginate(5);
 
         // Contar reservas pendientes de confirmación
         $reservasPendientes = $reservas->where('confirmada', false)->count();

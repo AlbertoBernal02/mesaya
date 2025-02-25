@@ -46,6 +46,16 @@
             </tbody>
         </table>
     </div>
+    <!-- 🟢 PAGINACIÓN MEJORADA -->
+@if($reservas->hasPages())
+<div class="d-flex justify-content-center align-items-center mt-4">
+    <nav aria-label="Paginación">
+        <ul class="pagination pagination-sm mb-0">
+            {!! $reservas->links('pagination::bootstrap-4') !!}
+        </ul>
+    </nav>
+</div>
+@endif
 </div>
 
 <!-- Modal de Confirmación -->
