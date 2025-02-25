@@ -10,6 +10,7 @@ use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\RestaurantReservaController;
 
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
@@ -128,3 +129,10 @@ Route::get('/home', function () {
 })->name('home')->middleware(['auth']);
 
 Route::post('/admin/products/restore', [ProductController::class, 'restore'])->name('admin.products.restore');
+
+
+
+
+Route::middleware(['auth', 'role:restaurant'])->group(function () {
+    Route::get('/restaurant/reservas', [RestaurantReservaController::class, 'verReservas'])->name('restaurant.reservas');
+});
