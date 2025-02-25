@@ -23,19 +23,30 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'categories_id' => 'required|integer',
-            'total_price' => 'required|numeric',
-            'image' => 'nullable|image',
-            'capacity' => 'required|integer',
-            'ubication' => 'required|string|max:255',
+            'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ-]+$/',
+            'categories_id' => 'required|integer|exists:categories,id',
+            'total_price' => 'required|numeric|min:0|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'capacity' => 'required|integer|min:1|max:500',
+            'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
             'opening_time' => 'required|date_format:H:i',
-            'closing_time' => 'required|date_format:H:i',
-            'email' => 'required|email|unique:users,email',
+            'closing_time' => 'required|date_format:H:i|after:opening_time',
+            'email' => 'required|email|max:255|unique:users,email',
         ]);
 
+        // 🔹 Limpieza de entradas con `htmlspecialchars()`
+        $cleanedData = [
+            'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
+            'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
+            'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
+            'opening_time' => htmlspecialchars($request->opening_time, ENT_QUOTES, 'UTF-8'),
+            'closing_time' => htmlspecialchars($request->closing_time, ENT_QUOTES, 'UTF-8'),
+            'total_price' => filter_var($request->total_price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+            'capacity' => filter_var($request->capacity, FILTER_SANITIZE_NUMBER_INT),
+        ];
+
         // 🔹 Crear usuario
-        $user = $this->create($request->all());
+        $user = $this->create($cleanedData + $request->all());
 
         // 🔹 Disparar evento Registered para la verificación
         event(new Registered($user));
@@ -49,23 +60,23 @@ class ProductController extends Controller
             $imagePath = '../../img/' . $imageName;
         }
 
-        // 🔹 Crear producto (restaurante) asegurando que se asigne `user_id`
+        // 🔹 Crear producto (restaurante)
         $product = Product::create([
-            'name' => $request->name,
+            'name' => $cleanedData['name'],
             'categories_id' => $request->categories_id,
-            'total_price' => $request->total_price,
-            'capacity' => $request->capacity,
-            'ubication' => $request->ubication,
+            'total_price' => $cleanedData['total_price'],
+            'capacity' => $cleanedData['capacity'],
+            'ubication' => $cleanedData['ubication'],
             'image' => $imagePath,
-            'user_id' => $user->id, // 🔹 Aquí nos aseguramos de asignarlo correctamente
+            'user_id' => $user->id,
             'visible' => true,
         ]);
 
         // Crear horario
         \App\Models\Schedule::create([
             'product_id' => $product->id,
-            'opening_time' => $request->opening_time,
-            'closing_time' => $request->closing_time,
+            'opening_time' => $cleanedData['opening_time'],
+            'closing_time' => $cleanedData['closing_time'],
         ]);
 
         return redirect()->route('home')->with('success', 'Restaurante y usuario creados correctamente. Se ha enviado un email de verificación.');
@@ -99,28 +110,37 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Verificar permisos
         if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
             return redirect()->route('home')->with('error', 'No tienes permiso para actualizar este restaurante.');
         }
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'categories_id' => 'required|integer',
-            'total_price' => 'required|numeric',
-            'image' => 'nullable|image',
-            'capacity' => 'required|integer',
-            'ubication' => 'required|string|max:255',
+            'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ-]+$/',
+            'categories_id' => 'required|integer|exists:categories,id',
+            'total_price' => 'required|numeric|min:0|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'capacity' => 'required|integer|min:1|max:500',
+            'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
             'opening_time' => 'required|date_format:H:i',
-            'closing_time' => 'required|date_format:H:i',
+            'closing_time' => 'required|date_format:H:i|after:opening_time',
         ]);
 
+        // 🔹 Limpieza de entradas con `htmlspecialchars()`
+        $cleanedData = [
+            'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
+            'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
+            'total_price' => filter_var($request->total_price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+            'capacity' => filter_var($request->capacity, FILTER_SANITIZE_NUMBER_INT),
+            'opening_time' => htmlspecialchars($request->opening_time, ENT_QUOTES, 'UTF-8'),
+            'closing_time' => htmlspecialchars($request->closing_time, ENT_QUOTES, 'UTF-8'),
+        ];
+
         $product->update([
-            'name' => $request->name,
+            'name' => $cleanedData['name'],
             'categories_id' => $request->categories_id,
-            'total_price' => $request->total_price,
-            'capacity' => $request->capacity,
-            'ubication' => $request->ubication,
+            'total_price' => $cleanedData['total_price'],
+            'capacity' => $cleanedData['capacity'],
+            'ubication' => $cleanedData['ubication'],
             'visible' => $request->input('visible', $product->visible),
         ]);
 
