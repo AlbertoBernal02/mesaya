@@ -197,7 +197,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::where('visible', true)->get();
+        $products = Product::where('visible', true)->paginate(6);
         $hiddenProducts = Product::where('visible', false)->get();
         $reservasPendientes = Auth::check() ? Reserva::where('user_id', Auth::id())->count() : 0;
         $categories = Category::all();
