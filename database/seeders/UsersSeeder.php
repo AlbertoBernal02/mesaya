@@ -161,7 +161,7 @@ class UsersSeeder extends Seeder
             ],
             [
                 'name' => 'Admin MesaYa',
-                'email' => 'admin@mesaya.com',
+                'email' => 'adminmesaya@yopmail.com',
                 'password' => Hash::make('admin'),
                 'role' => 'admin', // ✅ Debe estar aquí
                 'email_verified_at' => Carbon::now(),

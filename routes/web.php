@@ -100,7 +100,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     // 🟢 Rutas generales protegidas
-    Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
+    Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto')->middleware('auth');
+    Route::post('/contacto/enviar', [ContactoController::class, 'enviarMensaje'])->name('contacto.enviar')->middleware('auth');
     Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 });
 
