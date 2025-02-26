@@ -21,5 +21,11 @@ import './reservas.js';
 
 import './imagePreview.js';
 
+import './validateFormWelcome.js';
+
+import './validateFormEdit.js';
+
+
+
 
 
