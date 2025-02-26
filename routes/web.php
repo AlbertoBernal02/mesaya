@@ -19,6 +19,20 @@ use Laravel\Fortify\Http\Controllers\NewPasswordController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 
+
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    if ($request->has('lang')) {
+        App::setLocale($request->query('lang'));
+    }
+    return view('welcome'); // Reemplaza con la vista de inicio
+});
+
+
+
+
 // 🟢 Rutas de autenticación con Fortify (Bloqueadas para usuarios autenticados con `guest`)
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
