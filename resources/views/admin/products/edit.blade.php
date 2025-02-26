@@ -97,17 +97,7 @@
     </form>
 </div>
 
-<script>
-    // Función para actualizar la vista previa de la imagen
-    function previewImage(event) {
-        const reader = new FileReader();
-        reader.onload = function() {
-            const output = document.getElementById('imagePreview');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

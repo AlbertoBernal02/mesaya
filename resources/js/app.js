@@ -19,4 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 import './reservas.js';
 
+import './imagePreview.js';
+
+
 
