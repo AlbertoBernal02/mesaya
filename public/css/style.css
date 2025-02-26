@@ -1,4 +1,4 @@
-/* Asegurar que el body y html ocupen toda la pantalla */
+/* Ajustes generales */
 html, body {
     height: 100%;
     display: flex;
@@ -10,165 +10,186 @@ html, body {
     color: #3E3636;
 }
 
-/* Asegurar que el contenido principal empuje el footer hacia abajo */
+/* Ajuste del contenedor principal para empujar el footer hacia abajo */
 .container {
-    flex: 1; /* Hace que el contenido ocupe el espacio disponible */
+    flex: 1;
 }
 
-/* Navbar */
+/* 🌟 NAVBAR */
 .navbar {
     background-color: #12477F;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: white !important;
 }
 .navbar-nav .nav-link {
     color: white !important;
-    margin-right: 15px;
-    font-size: 16px;
+    font-size: 15px;
     transition: color 0.3s;
 }
 .navbar-nav .nav-link:hover {
     color: #51C3F0 !important;
 }
 
-/* Botón de reserva en navbar */
-.btn-accent {
-    background-color: #51C3F0;
-    border-color: #51C3F0;
-    color: white;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+/* Botón de sesión */
+.navbar .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: all 0.3s;
 }
-.btn-accent:hover {
-    background-color: #12477F;
-    border-color: #12477F;
+.navbar .btn:hover {
     transform: scale(1.05);
 }
 
-/* Card */
-.card {
-    border: none;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-.card:hover {
-    transform: translateY(-5px);
-}
-.card-title {
-    font-size: 22px;
-    font-weight: bold;
-}
-.card-text {
-    font-size: 16px;
-}
-
-/* Botón de la tarjeta */
-.btn-primary {
-    background-color: #51C3F0;
-    border-color: #51C3F0;
-    padding: 10px 15px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-}
-.btn-primary:hover {
-    background-color: #12477F;
-    border-color: #12477F;
-    transform: scale(1.05);
-}
-
-/* Footer */
+/* 🌟 FOOTER MÁS COMPACTO Y ESTÉTICO */
 .footer-main {
     background-color: #12477F;
     color: white;
-    padding: 60px 0 30px;
+    padding: 25px 0;
     text-align: center;
     width: 100%;
-    margin-top: auto; /* Empuja el footer hacia abajo */
+    margin-top: auto;
 }
 
+/* Ajustar títulos del footer */
 .footer-main h4 {
-    color: white;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    font-size: 1.4rem;
-}
-
-.footer-main h4::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: #ff6f3c;
-}
-
-.footer-info,
-.footer-contact,
-.footer-social {
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
 }
 
 /* Información */
 .footer-info p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     opacity: 0.8;
 }
 
 /* Contacto */
 .footer-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    margin: 0 auto;
-    max-width: 300px;
 }
-
 .footer-contact ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    gap: 10px;
-    width: 100%;
 }
-
 .footer-contact li {
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-start;
-}
-
-.footer-contact i {
-    color: #ff6f3c;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
 }
 
 /* Redes sociales */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 10px;
 }
-
 .social-links a {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: white;
+    color: #12477F;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+.social-links a:hover {
+    background: #ff6f3c;
+    color: white;
+}
+
+/* Mapa del sitio */
+.footer-social .btn-link {
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-decoration: none;
+}
+.footer-social .btn-link:hover {
+    color: #ff6f3c;
+}
+
+/* Línea divisoria */
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 10px 0;
+}
+
+/* Derechos de autor */
+.footer-bottom {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .footer-main {
+        padding: 20px 0;
+    }
+    .footer-main h4 {
+        font-size: 1rem;
+    }
+    .footer-contact li,
+    .footer-info p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mapa del Sitio */
+.sitemap-list {
+    list-style: none; /* ❌ Quita los puntos de la lista */
+    padding: 0;
+    margin: 10px 0; /* Espaciado superior e inferior */
+    text-align: center;
+}
+
+.sitemap-list li {
+    margin-bottom: 5px; /* Espaciado entre enlaces */
+}
+
+.sitemap-list a {
+    color: white; /* ✅ Enlaces en blanco */
+    text-decoration: none; /* ❌ Quita el subrayado */
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
+
+.sitemap-list a:hover {
+    color: #ff6f3c; /* 🔥 Efecto hover con color llamativo */
+    transform: scale(1.05);
+}
+
+/* Título "Mapa del Sitio" como texto normal */
+.footer-social .sitemap-title {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer; /* 🟢 Hace que parezca clickeable */
+    display: inline-block;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-social .sitemap-title:hover {
+    color: #ff6f3c; /* 🔥 Cambia de color al pasar el cursor */
+}
+
+
+
+
+/* 🔹 Eliminar cualquier línea o borde en los iconos de redes sociales */
+.social-links a {
+    display: inline-flex; /* Asegura que el contenido sea centrado */
     align-items: center;
     justify-content: center;
     width: 40px;
@@ -176,106 +197,23 @@ html, body {
     border-radius: 50%;
     background: white;
     color: #12477F;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transition: all 0.3s ease-in-out;
+    text-decoration: none; /* 🟢 Elimina cualquier subrayado */
+    outline: none; /* 🟢 Elimina el contorno azul */
+    border: none; /* 🟢 Evita líneas inesperadas */
 }
 
-.social-links a:hover {
-    background: #ff6f3c;
-    color: white;
+.social-links a:focus,
+.social-links a:active {
+    outline: none; /* 🟢 Elimina el contorno azul cuando se hace clic */
+    border: none; /* 🟢 Evita que aparezca el borde */
+    box-shadow: none; /* 🟢 Evita el efecto de resplandor */
 }
 
-/* Links generales */
-.footer-link {
-    display: block;
-    margin-top: 10px;
-    color: white;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
-
-.footer-link:hover {
-    color: #ff6f3c;
-}
-
-/* Línea Divisoria */
-.footer-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.3);
-    margin: 30px 0;
-}
-
-/* Parte inferior */
-.footer-bottom {
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-/* Centrar el botón de Mapa del Sitio debajo de las redes sociales */
-.footer-social {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.social-links {
-    margin-bottom: 15px;
-}
-
-/* Estilo del botón/link de Mapa del Sitio */
-.footer-social .btn-link {
-    color: white;
-    text-decoration: none;
+.social-links i {
+    margin: 0; /* 🟢 Evita que el icono tenga espacios no deseados */
     padding: 0;
-    font-size: 1rem;
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-    max-width: 150px;
-    background: transparent;
-    border: none;
-    text-align: center;
+    line-height: 1; /* 🟢 Ajusta el alineado del icono */
 }
 
-.footer-social .btn-link:hover {
-    color: #ff6f3c;
-}
-
-/* Mapa del sitio desplegable */
-.sitemap-list {
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    text-align: left;
-}
-
-.sitemap-list li {
-    margin-bottom: 10px;
-}
-
-.sitemap-list a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease-in-out;
-}
-
-.sitemap-list a:hover {
-    color: #ff6f3c;
-}
-
-/* Ajustes responsive */
-@media (max-width: 768px) {
-    .footer-social .btn-link {
-        margin: 10px auto;
-        max-width: 120px;
-    }
-}
-
-/* Esto asegura que las tarjetas no se sobrepongan al footer */
-.container {
-    margin-bottom: 60px;
-}
