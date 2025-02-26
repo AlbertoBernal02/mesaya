@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Reservas Confirmadas')
+
 @section('content')
 <div class="container py-4">
     <h2 class="fw-bold text-primary text-center">📆 Reservas Confirmadas</h2>
