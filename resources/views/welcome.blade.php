@@ -119,7 +119,7 @@
         @foreach ($products as $product)
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
-                <img src="{{ asset('img/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}" style="height: 150px; object-fit: cover;">
+                <img src="{{ asset('img/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ $product->name }}</h5>
                     <p class="card-text">{{ $product->category->name ?? 'Sin categoría' }}</p>
@@ -139,7 +139,7 @@
                         </button>
                     @elseif(Auth::check() && Auth::user()->role == 'admin')
                         <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Ocultar</button>

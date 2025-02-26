@@ -217,3 +217,72 @@ html, body {
     line-height: 1; /* 🟢 Ajusta el alineado del icono */
 }
 
+/* 🟢 Estilos para los modales */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los formularios en los modales */
+.modal-body form .form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* 🟢 Botones de acción en los modales */
+.modal-footer .btn {
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+/* Estilos para la tabla de productos */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    background: #12477F;
+    color: white;
+    font-weight: bold;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* 🟢 Asegurar que los modales sean responsivos */
+@media (max-width: 576px) {
+    .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+/* Asegurar que todas las tarjetas tengan la misma altura */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Hace que todas las cards tengan la misma altura */
+}
+
+/* Establece la altura uniforme en todas las tarjetas */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Hace que todas las tarjetas tengan la misma altura */
+}
+
+/* Asegurar que el cuerpo de la tarjeta ocupe el espacio disponible */
+.card-body {
+    flex-grow: 1; /* Permite que el contenido de la card crezca uniformemente */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacia los elementos uniformemente */
+}
+
+/* Asegurar que la imagen no deforme la tarjeta */
+.card-img-top {
+    height: 180px; /* Establece una altura fija para la imagen */
+    object-fit: cover; /* Recorta la imagen para que se ajuste sin deformarse */
+}
