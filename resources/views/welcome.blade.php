@@ -130,7 +130,7 @@
                     @if (Auth::guest())
                         <a href="{{ route('login') }}" class="btn btn-success btn-reservar">Reservar Ahora</a>
                     @elseif (Auth::check() && Auth::user()->role == 'user')
-                        <button class="btn btn-success open-reservation-modal" 
+                        <button class="btn btn-success open-reservation-modal btn-reservar" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#reserveModal" 
                                 data-restaurante="{{ $product->name }}" 
