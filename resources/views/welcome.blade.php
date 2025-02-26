@@ -128,7 +128,7 @@
                     <p class="card-text">Aforo Disponible: {{ $product->capacity }} personas</p>
 
                     @if (Auth::guest())
-                        <a href="{{ route('login') }}" class="btn btn-success">Reservar Ahora</a>
+                        <a href="{{ route('login') }}" class="btn btn-success btn-reservar">Reservar Ahora</a>
                     @elseif (Auth::check() && Auth::user()->role == 'user')
                         <button class="btn btn-success open-reservation-modal" 
                                 data-bs-toggle="modal" 

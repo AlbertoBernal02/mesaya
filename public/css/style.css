@@ -286,3 +286,13 @@ html, body {
     height: 180px; /* Establece una altura fija para la imagen */
     object-fit: cover; /* Recorta la imagen para que se ajuste sin deformarse */
 }
+
+.btn-reservar{
+    background-color: #d7182b;
+    border-color: #d7182b;;
+}
+
+.btn-reservar:hover{
+    background-color: #9c1523;
+    border-color: #9c1523;
+}
