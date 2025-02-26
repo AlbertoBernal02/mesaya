@@ -25,6 +25,9 @@ import './validateFormWelcome.js';
 
 import './validateFormEdit.js';
 
+import './validarPassword.js';
+
+
 
 
 
