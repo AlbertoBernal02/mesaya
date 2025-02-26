@@ -17,3 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error al cargar las categorías:", error));
 });
 
+import './reservas.js';
+
+
