@@ -92,16 +92,9 @@
             <h4 class="mt-5">{{ __('horas_no_disponibles') }}</h4>
             <div class="mb-3">
                 <label for="unavailable_hours" class="form-label">{{ __('selecciona_horas_bloquear') }}</label>
-                <select class="form-select" id="unavailable_hours" name="unavailable_hours[]" multiple size="10">
-                    @for ($hour = strtotime('00:00'); $hour < strtotime('24:00'); $hour += 1800)
-                        <option value="{{ date('H:i', $hour) }}" @if (in_array(date('H:i', $hour), old('unavailable_hours', $schedule->unavailable_hours ?? []))) selected @endif>
-                            {{ date('H:i', $hour) }}
-                        </option>
-                    @endfor
-                </select>
+                <select class="form-select" id="unavailable_hours" name="unavailable_hours[]" multiple size="10"></select>
                 <small class="form-text text-muted">{{ __('mantener_ctrl_seleccionar') }}</small>
             </div>
-
 
             <button type="submit" class="btn btn-primary">{{ __('guardar_cambios') }}</button>
         </form>
