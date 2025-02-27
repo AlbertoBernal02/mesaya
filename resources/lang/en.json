@@ -141,5 +141,6 @@
     "reserva_tu_mesa": "Book Your Table",
     "fecha_reserva": "Reservation Date",
     "numero_personas": "Number of People",
-    "reservar": "Book Now"
+    "reservar": "Book Now",
+    "panel_restaurante_h2": "Restaurant Administration Panel"
 }

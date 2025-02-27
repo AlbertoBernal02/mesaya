@@ -10,9 +10,17 @@
 @guest
 @else
     @if (Auth::user()->role && Auth::user()->role == 'admin')
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">{{ __('añadir_restaurante') }}</button>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#restoreProductModal">{{ __('restaurar_restaurante') }}</button>
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <button class="btn btn-primary-custom btn-custom"
+                    data-bs-toggle="modal" data-bs-target="#addProductModal">
+                <i class="fas fa-plus-circle"></i> {{ __('añadir_restaurante') }}
+            </button>
 
+            <button class="btn btn-secondary-custom btn-custom"
+                    data-bs-toggle="modal" data-bs-target="#restoreProductModal">
+                <i class="fas fa-undo-alt"></i> {{ __('restaurar_restaurante') }}
+            </button>
+        </div>
 
         <!-- Modal para añadir producto -->
         <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
@@ -20,7 +28,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addProductModalLabel">{{ __('añadir_producto') }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('cerrar') }}"></button>
+                            <button type="button" class="btn btn-secondary-custom btn-custom" data-bs-dismiss="modal" aria-label="{{ __('cerrar') }}"><i class="fas fa-times"></i></button>
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
@@ -84,7 +92,10 @@
                                     <label for="email" class="form-label">{{ __('correo_electronico') }}</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('añadir_producto') }}</button>
+
+                                <button type="submit" class="btn btn-primary-custom btn-custom w-100">
+    <i class="fas fa-plus-circle"></i> {{ __('añadir_producto') }}
+</button>
                             </form>
                         </div>
                     </div>
@@ -100,7 +111,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="restoreProductModalLabel">{{ __('restaurar_restaurante_oculto') }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('cerrar') }}"></button>
+                            <button type="button" class="btn btn-secondary-custom btn-custom" data-bs-dismiss="modal" aria-label="{{ __('cerrar') }}"><i class="fas fa-times"></i></button>
                         </div>
                         <div class="modal-body">
                             <form action="{{ route('admin.products.restore') }}" method="POST">
@@ -114,7 +125,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-success w-100">{{ __('restaurar_restaurante') }}</button>
+
+                                <button type="submit" class="btn btn-success-custom btn-custom w-100">
+    <i class="fas fa-undo-alt"></i> {{ __('restaurar_restaurante') }}
+</button>
                             </form>
                         </div>
                     </div>
@@ -147,21 +161,28 @@
 
 
                     @if (Auth::guest())
-                        <a href="{{ route('login') }}" class="btn btn-success btn-reservar">{{ __('reservar_ahora') }}</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary-custom btn-custom btn-reservar">
+        <i class="fas fa-calendar-check"></i> {{ __('reservar_ahora') }}
+    </a>
+
+                        
                     @elseif (Auth::check() && Auth::user()->role == 'user')
-                        <button class="btn btn-success open-reservation-modal btn-reservar"
+                        <button class="btn btn-primary-custom btn-custom btn-reservar open-reservation-modal"
                                 data-bs-toggle="modal"
                                 data-bs-target="#reserveModal"
                                 data-restaurante="{{ $product->name }}"
                                 data-restaurante-id="{{ $product->id }}">
-                            {{ __('reservar_ahora') }}
+                                <i class="fas fa-calendar-check"></i> {{ __('reservar_ahora') }}
                         </button>
                     @elseif(Auth::check() && Auth::user()->role == 'admin')
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">{{ __('editar') }}</a>
-                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+                    
+                    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning-custom btn-custom"><i class="fas fa-edit"></i> {{ __('editar') }}</a>
+                    
+                    
+                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">{{ __('ocultar') }}</button>
+                            <button type="submit" class="btn btn-danger-custom btn-custom"><i class="fas fa-trash-alt"></i>{{ __('ocultar') }}</button>
                         </form>
                     @endif
                 </div>
@@ -190,7 +211,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="reserveModalLabel">{{ __('reserva_tu_mesa') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('cerrar') }}"></button>
+                <button type="button" class="btn btn-secondary-custom btn-custom" data-bs-dismiss="modal" aria-label="{{ __('cerrar') }}"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <form id="reservationForm" action="{{ route('reservas.store') }}" method="POST">

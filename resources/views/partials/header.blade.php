@@ -20,10 +20,10 @@
                 @else
                     @if (Auth::user()->role == 'user')
                         <li class="nav-item">
-                            <a class="btn btn-warning me-2 position-relative" href="{{ route('carrito.index') }}">
-                                📆 {{ __('confirmar_reservas') }}
+                        <a class="btn btn-reservas btn-custom position-relative" href="{{ route('carrito.index') }}">
+                                <i class="fas fa-calendar-check"></i> {{ __('confirmar_reservas') }}
                                 @if($reservasPendientes > 0)
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <span class="badge badge-danger position-absolute top-0 start-100 translate-middle">
                                         {{ $reservasPendientes }}
                                     </span>
                                 @endif
@@ -31,9 +31,9 @@
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="btn btn-danger" href="{{ route('logout') }}"
+                    <a class="btn btn-logout btn-custom" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('cerrar_sesion') }}
+                            <i class="fas fa-sign-out-alt"></i> {{ __('cerrar_sesion') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -43,10 +43,12 @@
 
                 <!-- Botón para cambiar el idioma sin usar sesión -->
                 <li class="nav-item">
-    <a href="{{ url()->current() }}?lang={{ app()->getLocale() == 'es' ? 'en' : 'es' }}" class="btn btn-outline-secondary">
-        {{ app()->getLocale() == 'es' ? '🇬🇧 English' : '🇪🇸 Español' }}
-    </a>
-</li>
+                    <a href="{{ url()->current() }}?lang={{ app()->getLocale() == 'es' ? 'en' : 'es' }}" class="btn btn-language">
+                        {{ app()->getLocale() == 'es' ? '🇬🇧 English' : '🇪🇸 Español' }}
+                    </a>
+                </li>
+
+
 
             </ul>
         </div>
