@@ -30,7 +30,7 @@ class ProductController extends Controller
             'capacity' => 'required|integer|min:1|max:500',
             'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
             'opening_time' => 'required|date_format:H:i',
-            'closing_time' => 'required|date_format:H:i|after:opening_time',
+            'closing_time' => 'required|date_format:H:i',
             'email' => 'required|email|max:255|unique:users,email',
         ]);
 
@@ -39,8 +39,6 @@ class ProductController extends Controller
             'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
             'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
             'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
-            'opening_time' => htmlspecialchars($request->opening_time, ENT_QUOTES, 'UTF-8'),
-            'closing_time' => htmlspecialchars($request->closing_time, ENT_QUOTES, 'UTF-8'),
             'total_price' => filter_var($request->total_price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
             'capacity' => filter_var($request->capacity, FILTER_SANITIZE_NUMBER_INT),
         ];
@@ -75,8 +73,8 @@ class ProductController extends Controller
         // Crear horario
         \App\Models\Schedule::create([
             'product_id' => $product->id,
-            'opening_time' => $cleanedData['opening_time'],
-            'closing_time' => $cleanedData['closing_time'],
+            'opening_time' => $request->opening_time,
+            'closing_time' => $request->closing_time,
         ]);
 
         return redirect()->route('home')->with('success', 'Restaurante y usuario creados correctamente. Se ha enviado un email de verificación.');
