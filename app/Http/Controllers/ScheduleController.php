@@ -65,7 +65,7 @@ public function store(Request $request) {
     // Validar los datos
     $request->validate([
         'opening_time' => 'required|date_format:H:i',
-        'closing_time' => 'required|date_format:H:i|after:opening_time',
+        'closing_time' => 'required|date_format:H:i',
         'unavailable_hours' => 'nullable|array',
     ]);
 

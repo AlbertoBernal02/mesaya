@@ -120,7 +120,8 @@ class ProductController extends Controller
             'capacity' => 'required|integer|min:1|max:500',
             'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
             'opening_time' => 'required|date_format:H:i',
-            'closing_time' => 'required|date_format:H:i|after:opening_time',
+            'closing_time' => 'required|date_format:H:i',
+            'unavailable_hours' => 'nullable|array',
         ]);
 
         // 🔹 Limpieza de entradas con `htmlspecialchars()`
@@ -129,8 +130,7 @@ class ProductController extends Controller
             'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
             'total_price' => filter_var($request->total_price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
             'capacity' => filter_var($request->capacity, FILTER_SANITIZE_NUMBER_INT),
-            'opening_time' => htmlspecialchars($request->opening_time, ENT_QUOTES, 'UTF-8'),
-            'closing_time' => htmlspecialchars($request->closing_time, ENT_QUOTES, 'UTF-8'),
+            
         ];
 
         $product->update([
@@ -153,6 +153,16 @@ class ProductController extends Controller
             $imagePath = '../../img/' . $imageName;
             $product->update(['image' => $imagePath]);
         }
+
+        // 🔹 Actualizar o crear el horario en la tabla Schedule
+    \App\Models\Schedule::updateOrCreate(
+        ['product_id' => $product->id], // Clave para encontrar el registro correcto
+        [
+            'opening_time' => $request->opening_time,
+            'closing_time' => $request->closing_time,
+            'unavailable_hours' => $request->unavailable_hours ?? [], // Si es null, guardar un array vacío
+        ]
+    );
 
         return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
     }
