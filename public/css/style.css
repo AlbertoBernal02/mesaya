@@ -734,6 +734,14 @@ html, body {
     box-shadow: 0 0 10px var(--negro-transparente-hover);
 }
 
+.form-select {
+    border-radius: 5px;
+    border: 2px solid var(--gris-borde);
+}
+.form-select:focus {
+border-color: var(--rojo-brillante);
+}
+
 /* 🟢 Botones de acción dentro del modal */
 .modal-footer .btn-custom {
     font-size: 1rem;
@@ -776,4 +784,13 @@ html, body {
     background-color: var(--rojo-peligro-oscuro);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--negro-transparente-hover);
+}
+
+
+.form-control {
+    border-radius: 5px;
+    border: 2px solid var(--gris-borde);
+}
+.form-control:focus {
+border-color: var(--rojo-brillante);
 }
