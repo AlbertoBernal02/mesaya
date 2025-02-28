@@ -574,3 +574,43 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+
+/* Hero Section con Parallax */
+.hero {
+    position: relative;
+    background: url('../img/6.jpg') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    border-radius: 0;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--dorado-brillante);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    color: var(--blanco-roto);
+}
+
+.carousel-inner .carousel-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+#logo {
+    height: 60px;
+}

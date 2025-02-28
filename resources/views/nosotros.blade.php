@@ -5,91 +5,42 @@
 
 
 @section('content')    
- <!-- Imagen y Texto sobre nuestra empresa -->
-<div class="d-flex flex-column min-vh-100">
-    <!-- Gif alargado que ocupa todo el ancho con altura reducida -->
-    <div class="w-100">
-        <img src="../../img/anuncio.gif" alt="{{ __('gif_ejemplo') }}" style="width: 100%; height: 35vh;">
-    </div>
-
-
-    <!-- Texto sobre la empresa centrado -->
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 40vh; margin-top: 5vh;">
-        <div class="text-center">
-            <h1>{{ __('descripcion_empresa') }}</h1>
+ <!-- Sección Hero con Parallax -->
+ <section class="hero">
+        <div class="text-center text-white hero-content">
+            <h1>Texto</h1>
+            <p>Descripcion</p>
         </div>
-    </div>
 
-
-    <!-- Título adicional "Disfruta de nuestras ventajas" -->
-    <div class="container text-center mb-4" style= "min-height: 20vh";>
-        <h2>{{ __('disfruta_ventajas') }}</h2>
-    </div>
-
-
- <!-- Tres Cards con diseño mejorado usando Bootstrap -->
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-md-3 mb-4">
-            <div class="card border-0 shadow-lg hover-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="{{ asset('../../img/reloj.png') }}" class="card-img-top" alt="{{ __('card_1') }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ __('tienes_prisa') }}</h5>
+        <!-- Sección de Carrusel dentro del Parallax -->
+        <div id="carousel-section" class="mt-5">
+            <div class="container">
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Imágenes del carrusel -->
+                        <div class="carousel-item active">
+                            <img src="img/1.jpg" class="d-block w-100 rounded" alt="Catering 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/2.png" class="d-block w-100 rounded" alt="Catering 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/3.png" class="d-block w-100 rounded" alt="Catering 3">
                         </div>
                     </div>
-                    <div class="card-back d-flex justify-content-center align-items-center text-center">
-                        <div class="card-body">
-                            <p class="card-text">{{ __('texto_card_1') }}</p>
-                        </div>
-                    </div>
+                    <!-- Controles del carrusel -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
                 </div>
             </div>
         </div>
-
-
-        <!-- Card 2 -->
-        <div class="col-md-3 mb-4">
-            <div class="card border-0 shadow-lg hover-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="{{ asset('../../img/vip.png') }}" class="card-img-top" alt="{{ __('card_2') }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ __('fidelidad') }}</h5>
-                        </div>
-                    </div>
-                    <div class="card-back d-flex justify-content-center align-items-center text-center">
-                        <div class="card-body">
-                            <p class="card-text">{{ __('texto_card_2') }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Card 3 -->
-        <div class="col-md-3 mb-4">
-            <div class="card border-0 shadow-lg hover-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="{{ asset('../../img/ahorro.png') }}" class="card-img-top" alt="{{ __('card_3') }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ __('ofertas_exclusivas') }}</h5>
-                        </div>
-                    </div>
-                    <div class="card-back d-flex justify-content-center align-items-center text-center">
-                        <div class="card-body">
-                            <p class="card-text">{{ __('texto_card_3') }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
 @endsection
 
 
