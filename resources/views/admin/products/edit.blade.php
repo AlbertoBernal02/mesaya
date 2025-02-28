@@ -9,8 +9,7 @@
     </div>
 
     <div class="card shadow-lg p-4">
-        <form
-            action="{{ route(Auth::user()->role == 'restaurant' ? 'restaurant.products.update' : 'admin.products.update', $product->id) }}"
+        <form action="{{ route(Auth::user()->role == 'restaurant' ? 'restaurant.products.update' : 'admin.products.update', $product->id) }}"
             method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -40,7 +39,7 @@
                 <label for="image" class="form-label">{{ __('imagen') }}</label>
                 <div class="image-preview mb-2">
                     <img id="imagePreview" src="{{ $product->image ? asset('storage/' . $product->image) : asset('img/default.png') }}"
-                        alt="{{ __('imagen_roducto') }}">
+                        alt="{{ __('imagen_producto') }}">
                 </div>
                 <input type="file" class="form-control input-custom" id="image" name="image" onchange="previewImage(event)">
             </div>
@@ -64,23 +63,34 @@
             </div>
 
             <div class="row">
-            <div class="col-md-6 mb-3">
-        <label for="opening_time" class="form-label">{{ __('hora_apertura') }}</label>
-        <input type="time" class="form-control input-custom" id="opening_time" name="opening_time" 
-            value="{{ $product->schedule->opening_time}}">
-    </div>
-    <div class="col-md-6 mb-3">
-        <label for="closing_time" class="form-label">{{ __('hora_cierre') }}</label>
-        <input type="time" class="form-control input-custom" id="closing_time" name="closing_time" 
-            value="{{ $product->schedule->closing_time}}">
-    </div>
+                <div class="col-md-6 mb-3">
+                    <label for="opening_time" class="form-label">{{ __('hora_apertura') }}</label>
+                    <input type="time" class="form-control input-custom" id="opening_time" name="opening_time" 
+                        value="{{ $product->schedule->opening_time }}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="closing_time" class="form-label">{{ __('hora_cierre') }}</label>
+                    <input type="time" class="form-control input-custom" id="closing_time" name="closing_time" 
+                        value="{{ $product->schedule->closing_time }}">
+                </div>
             </div>
 
             <h4 class="mt-4">{{ __('Horas No Disponibles') }}</h4>
             <div class="mb-3">
-                <label for="unavailable_hours" class="form-label">{{ __('selecciona_horas_bloquear') }}</label>
-                <select class="form-select input-custom" id="unavailable_hours" name="unavailable_hours[]" multiple size="10"></select>
-                <small class="form-text text-muted">{{ __('mantener_ctrl_seleccionar') }}</small>
+                <button type="button" id="toggle-all" class="btn btn-secondary mb-2">
+                    Seleccionar/Deseleccionar Todas
+                </button>
+                <div id="unavailable-hours-container" class="row">
+                    @foreach($product->schedule->unavailable_hours ?? [] as $hour)
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input unavailable-hour" type="checkbox" 
+                                    name="unavailable_hours[]" value="{{ $hour }}" id="hora_{{ $hour }}" checked>
+                                <label class="form-check-label" for="hora_{{ $hour }}">{{ $hour }}</label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -91,7 +101,4 @@
         </form>
     </div>
 </div>
-
-
 @endsection
-
