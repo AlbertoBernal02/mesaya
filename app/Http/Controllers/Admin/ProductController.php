@@ -77,7 +77,7 @@ class ProductController extends Controller
             'closing_time' => $request->closing_time,
         ]);
 
-        return redirect()->route('home')->with('success', 'Restaurante y usuario creados correctamente. Se ha enviado un email de verificación.');
+        return redirect()->back()->with('success', 'Restaurante creado con éxito. Se ha enviado un email de verificación al restaurante para que confirme su cuenta. Na mas que el restaurante confirme su cuenta deberá darle a "¿Olvidaste tu contraseña?" para elegir su contraseña de acceso.');
     }
 
     protected function create(array $data)
@@ -187,7 +187,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Restaurante ocultado y usuario desactivado.');
+        return redirect()->back()->with('success', 'Restaurante aliminado con éxito, si en algún futuro te gustaría recuperarlo, sólo le tendrías que dar a "Restaurar Restaurante".');
     }
 
     public function restore(Request $request)
@@ -220,7 +220,7 @@ class ProductController extends Controller
             $product->update(['user_id' => $newUser->id]);
         }
 
-        return redirect()->back()->with('success', 'Restaurante restaurado y usuario reactivado.');
+        return redirect()->back()->with('success', 'Restaurante restaurado con éxito.');
     }
 
     public function index()
