@@ -146,9 +146,17 @@ html, body {
     font-size: 0.9rem;
     margin-top: 5px;
     text-decoration: none;
+    
 }
-.footer-social .btn-link:hover {
+
+
+.btn-link:hover {
     color: var(--rojo-brillante);
+    text-decoration: none;
+}
+
+.btn-link{
+    text-decoration: none;
 }
 
 /* Línea divisoria */
@@ -214,7 +222,7 @@ html, body {
     transition: color 0.3s ease-in-out;
 }
 
-.footer-social .sitemap-title:hover {
+.sitemap-title:hover {
     color: var(--rojo-brillante); /* 🔥 Cambia de color al pasar el cursor */
 }
 
@@ -744,6 +752,10 @@ html, body {
     background-color: var(--verde);
     border: none;
     color: var(--blanco-roto);
+}
+
+.btn-primary:hover{
+    color: var(--rojo-brillante);
 }
 
 .btn-primary-custom:hover {
