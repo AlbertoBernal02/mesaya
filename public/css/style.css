@@ -40,6 +40,11 @@ html, body {
     font-size: 14px;
     padding: 8px 12px;
     transition: all 0.3s;
+    margin: 0 5px; /* 🔥 Aumenta el espacio a los lados */
+
+    height: 38px; /* Establece una altura uniforme */
+    
+    
 }
 .navbar .btn:hover {
     transform: scale(1.05);
