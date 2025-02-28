@@ -23,9 +23,9 @@
             <div class="col-lg-4 col-md-6 footer-social">
                 <h4>{{ __('siguenos') }}</h4>
                 <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61573327006966"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/mesayareservas/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/mesa-ya-374001354/"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
 
 

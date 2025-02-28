@@ -77,6 +77,6 @@ class CarritoReservaController extends Controller
 
         $reserva->delete();
 
-        return redirect()->route('carrito.index')->with('success', 'Reserva eliminada correctamente.');
+        return redirect()->route('carrito.index')->with('success', 'Reserva eliminada con éxito.');
     }
 }
