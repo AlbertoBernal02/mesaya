@@ -12,8 +12,7 @@ class RoleMiddleware
     {
         // Verifica si el usuario está autenticado y si tiene el rol adecuado
         if (!Auth::check() || Auth::user()->role !== $role) {
-            return response("No tienes acceso a esta ruta", 403);
-            /*return redirect('/');  // Redirige a la página de inicio si no tiene el rol adecuado*/
+            return response()->view('acceso_denegado', [], 403);
         }
 
         return $next($request);
