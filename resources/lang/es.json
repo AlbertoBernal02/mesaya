@@ -138,5 +138,7 @@
     "fecha_reserva": "Fecha de Reserva",
     "numero_personas": "Número de Personas",
     "reservar": "Reservar",
-    "panel_restaurante_h2": "Panel de Administración del Restaurante"
+    "panel_restaurante_h2": "Panel de Administración del Restaurante",
+    "imagen_roducto": "Imagen del producto"
+    
 }

@@ -142,5 +142,6 @@
     "fecha_reserva": "Reservation Date",
     "numero_personas": "Number of People",
     "reservar": "Book Now",
-    "panel_restaurante_h2": "Restaurant Administration Panel"
+    "panel_restaurante_h2": "Restaurant Administration Panel",
+    "imagen_roducto": "Product image"
 }
