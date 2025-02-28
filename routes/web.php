@@ -104,10 +104,12 @@ Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 
 // Redirección login según rol
 Route::get('/home', function () {
-    if (!Auth::check()) return redirect()->route('login');
+    if (!Auth::check()) return redirect('/'); // 🔴 Ahora redirige a '/' en vez de 'login'
+
     if (!Auth::user()->email_verified_at) {
         Auth::logout();
         return redirect('/login')->with('message', 'Debes verificar tu correo antes de continuar.');
     }
+
     return Auth::user()->role == 'restaurant' ? redirect()->route('schedules.index1') : redirect('/');
 })->name('home');

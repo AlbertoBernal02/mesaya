@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ auth()->check() ? (auth()->user()->role === 'restaurant' ? route('schedules.index1') : route('home')) : route('home') }}">
             <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px; margin-right: 10px;">
             MesaYa
         </a>
