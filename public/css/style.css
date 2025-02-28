@@ -398,6 +398,12 @@ html, body {
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
+.btn-secondary:hover {
+    
+    color: var(--rojo-brillante);
+    
+}
+
 /* ❌ Botón de eliminación */
 .btn-danger-custom {
     background-color: var(--rojo-peligro);

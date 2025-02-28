@@ -75,10 +75,10 @@
                 </div>
             </div>
 
-            <h4 class="mt-4">{{ __('Horas No Disponibles') }}</h4>
+            <h4 class="mt-4">{{ __('horas_no_disponibles') }}</h4>
             <div class="mb-3">
                 <button type="button" id="toggle-all" class="btn btn-secondary mb-2">
-                    Seleccionar/Deseleccionar Todas
+                     {{ __('seleccionar_deseleccionar') }}
                 </button>
                 <div id="unavailable-hours-container" class="row">
                     @foreach($product->schedule->unavailable_hours ?? [] as $hour)
