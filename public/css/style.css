@@ -1,3 +1,31 @@
+:root {
+    --rojo-brillante: #d7182b;  /* Rojo fuerte para botones y acciones */
+    --dorado: #ffd700;         /* Dorado para detalles premium */
+    --blanco-roto: #f7f7f7;    /* Blanco roto para los fondos */
+    --gris-oscuro: #333333;    /* Gris oscuro para textos y detalles */
+    --negro: #000000;          /* Negro para bordes y textos secundarios */
+    --azul-oscuro: #12477F;    /* Azul oscuro para la navbar y footer */
+    --azul-claro: #51C3F0;     /* Azul claro para hover en enlaces */
+    --naranja: #ff6f3c;        /* Naranja para hover en redes sociales */
+    --gris-claro: #F1F1F1;     /* Gris claro para el fondo */
+    --marron: #3E3636;         /* Marrón para el texto */
+    --verde: #27ae60;          /* Verde para botones de éxito */
+    --verde-oscuro: #1e8449;   /* Verde oscuro para hover en botones de éxito */
+    --naranja-oscuro: #d68910; /* Naranja oscuro para hover en botones de advertencia */
+    --rojo-oscuro: #b81526;    /* Rojo oscuro para hover en botones */
+    --rojo-peligro: #e74c3c;   /* Rojo para botones de eliminación */
+    --rojo-peligro-oscuro: #c0392b; /* Rojo oscuro para hover en botones de eliminación */
+    --gris-elegante: #6c757d;  /* Gris elegante para botones secundarios */
+    --gris-elegante-oscuro: #545b62; /* Gris oscuro para hover en botones secundarios */
+    --gris-borde: #ccc;        /* Gris para bordes */
+    --blanco-transparente: rgba(255, 255, 255, 0.3); /* Blanco transparente */
+    --blanco-transparente-hover: rgba(255, 255, 255, 0.1); /* Blanco transparente para hover */
+    --blanco-transparente-borde: rgba(255, 255, 255, 0.5); /* Blanco transparente para bordes */
+    --blanco-transparente-hover-borde: rgba(255, 255, 255, 0.7); /* Blanco transparente para hover en bordes */
+    --negro-transparente: rgba(0, 0, 0, 0.2); /* Negro transparente */
+    --negro-transparente-hover: rgba(0, 0, 0, 0.3); /* Negro transparente para hover */
+}
+
 /* Ajustes generales */
 html, body {
     height: 100%;
@@ -6,8 +34,8 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #F1F1F1;
-    color: #3E3636;
+    background-color: var(--gris-claro);
+    color: var(--marron);
 }
 
 /* Ajuste del contenedor principal para empujar el footer hacia abajo */
@@ -17,22 +45,22 @@ html, body {
 
 /* 🌟 NAVBAR */
 .navbar {
-    background-color: #12477F;
+    background-color: var(--azul-oscuro);
     padding: 10px 0;
 }
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
     font-size: 22px;
     font-weight: bold;
-    color: white !important;
+    color: var(--blanco-roto) !important;
 }
 .navbar-nav .nav-link {
-    color: white !important;
+    color: var(--blanco-roto) !important;
     font-size: 15px;
     transition: color 0.3s;
 }
 .navbar-nav .nav-link:hover {
-    color: #51C3F0 !important;
+    color: var(--azul-claro) !important;
 }
 
 /* Botón de sesión */
@@ -52,8 +80,8 @@ html, body {
 
 /* 🌟 FOOTER MÁS COMPACTO Y ESTÉTICO */
 .footer-main {
-    background-color: #12477F;
-    color: white;
+    background-color: var(--azul-oscuro);
+    color: var(--blanco-roto);
     padding: 25px 0;
     text-align: center;
     width: 100%;
@@ -101,32 +129,32 @@ html, body {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background: white;
-    color: #12477F;
+    background: var(--blanco-roto);
+    color: var(--azul-oscuro);
     font-size: 1rem;
     transition: all 0.3s ease-in-out;
 }
 .social-links a:hover {
-    background: #ff6f3c;
-    color: white;
+    background: var(--naranja);
+    color: var(--blanco-roto);
 }
 
 /* Mapa del sitio */
 .footer-social .btn-link {
-    color: white;
+    color: var(--blanco-roto);
     font-size: 0.9rem;
     margin-top: 5px;
     text-decoration: none;
 }
 .footer-social .btn-link:hover {
-    color: #ff6f3c;
+    color: var(--naranja);
 }
 
 /* Línea divisoria */
 .footer-divider {
     width: 100%;
     height: 1px;
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--blanco-transparente);
     margin: 10px 0;
 }
 
@@ -163,20 +191,20 @@ html, body {
 }
 
 .sitemap-list a {
-    color: white; /* ✅ Enlaces en blanco */
+    color: var(--blanco-roto); /* ✅ Enlaces en blanco */
     text-decoration: none; /* ❌ Quita el subrayado */
     font-size: 1rem;
     transition: color 0.3s ease-in-out, transform 0.2s;
 }
 
 .sitemap-list a:hover {
-    color: #ff6f3c; /* 🔥 Efecto hover con color llamativo */
+    color: var(--naranja); /* 🔥 Efecto hover con color llamativo */
     transform: scale(1.05);
 }
 
 /* Título "Mapa del Sitio" como texto normal */
 .footer-social .sitemap-title {
-    color: white;
+    color: var(--blanco-roto);
     font-size: 1rem;
     font-weight: bold;
     margin-top: 10px;
@@ -186,7 +214,7 @@ html, body {
 }
 
 .footer-social .sitemap-title:hover {
-    color: #ff6f3c; /* 🔥 Cambia de color al pasar el cursor */
+    color: var(--naranja); /* 🔥 Cambia de color al pasar el cursor */
 }
 
 
@@ -200,8 +228,8 @@ html, body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: white;
-    color: #12477F;
+    background: var(--blanco-roto);
+    color: var(--azul-oscuro);
     font-size: 1.4rem;
     transition: all 0.3s ease-in-out;
     text-decoration: none; /* 🟢 Elimina cualquier subrayado */
@@ -225,7 +253,7 @@ html, body {
 /* 🟢 Estilos para los modales */
 .modal-content {
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* Estilos para los formularios en los modales */
@@ -242,14 +270,14 @@ html, body {
 
 /* Estilos para la tabla de productos */
 .table {
-    background: white;
+    background: var(--blanco-roto);
     border-radius: 10px;
     overflow: hidden;
 }
 
 .table th {
-    background: #12477F;
-    color: white;
+    background: var(--azul-oscuro);
+    color: var(--blanco-roto);
     font-weight: bold;
 }
 
@@ -293,13 +321,13 @@ html, body {
 }
 
 .btn-reservar{
-    background-color: #d7182b;
-    border-color: #d7182b;;
+    background-color: var(--rojo-brillante);
+    border-color: var(--rojo-brillante);
 }
 
 .btn-reservar:hover{
-    background-color: #9c1523;
-    border-color: #9c1523;
+    background-color: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
 }
 
 
@@ -320,79 +348,79 @@ html, body {
 
 /* 🔴 Botón principal en rojo */
 .btn-primary-custom {
-    background-color: #d7182b;
+    background-color: var(--rojo-brillante);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-primary-custom:hover {
-    background-color: #b81526;
+    background-color: var(--rojo-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🟡 Botón de advertencia (para edición) */
 .btn-warning-custom {
-    background-color: #f39c12;
+    background-color: var(--naranja);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-warning-custom:hover {
-    background-color: #d68910;
+    background-color: var(--naranja-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* ⚪ Botón secundario (gris elegante) */
 .btn-secondary-custom {
-    background-color: #6c757d;
+    background-color: var(--gris-elegante);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-secondary-custom:hover {
-    background-color: #545b62;
+    background-color: var(--gris-elegante-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* ❌ Botón de eliminación */
 .btn-danger-custom {
-    background-color: #e74c3c;
+    background-color: var(--rojo-peligro);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-danger-custom:hover {
-    background-color: #c0392b;
+    background-color: var(--rojo-peligro-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🟢 Botón de éxito (verde) */
 .btn-success-custom {
-    background-color: #27ae60;
+    background-color: var(--verde);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-success-custom:hover {
-    background-color: #1e8449;
+    background-color: var(--verde-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 📌 Estilos para los botones de reserva */
 .btn-reservar {
-    background-color: #d7182b;
+    background-color: var(--rojo-brillante);
     border: none;
     font-size: 1rem;
     font-weight: bold;
 }
 
 .btn-reservar:hover {
-    background-color: #9c1523;
+    background-color: var(--rojo-oscuro);
     transform: translateY(-2px);
 }
 
@@ -417,50 +445,50 @@ html, body {
 
 /* 📅 Botón de "Confirmar Reservas" (Amarillo) */
 .btn-reservas {
-    background-color: #f39c12;
+    background-color: var(--naranja);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-reservas:hover {
-    background-color: #d68910;
+    background-color: var(--naranja-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🔴 Botón de "Cerrar Sesión" (Rojo) */
 .btn-logout {
-    background-color: #d7182b;
+    background-color: var(--rojo-brillante);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-logout:hover {
-    background-color: #b81526;
+    background-color: var(--rojo-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🌍 Botón de cambio de idioma (Elegante) */
 .btn-language {
     background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255, 0.7);
+    border: 2px solid var(--blanco-transparente-borde);
+    color: var(--blanco-transparente-hover-borde);
     font-size: 0.9rem;
     padding: 8px 14px;
     transition: all 0.3s ease-in-out;
 }
 
 .btn-language:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    color: white;
+    background-color: var(--blanco-transparente-hover);
+    border-color: var(--blanco-roto);
+    color: var(--blanco-roto);
 }
 
 /* 🎨 Estilos generales para el formulario de contacto */
 .card {
     border-radius: 12px;
-    background: white;
+    background: var(--blanco-roto);
     border: none;
 }
 
@@ -468,20 +496,20 @@ html, body {
 .input-custom {
     border-radius: 8px;
     padding: 12px;
-    border: 2px solid #ccc;
+    border: 2px solid var(--gris-borde);
     transition: all 0.3s ease-in-out;
 }
 
 .input-custom:focus {
-    border-color: #d7182b;
-    box-shadow: 0 0 8px rgba(215, 24, 43, 0.2);
+    border-color: var(--rojo-brillante);
+    box-shadow: 0 0 8px var(--negro-transparente);
 }
 
 /* ✉️ Botón de enviar */
 .btn-submit {
-    background-color: #d7182b;
+    background-color: var(--rojo-brillante);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
     font-size: 1rem;
     font-weight: bold;
     padding: 12px 20px;
@@ -490,9 +518,9 @@ html, body {
 }
 
 .btn-submit:hover {
-    background-color: #b81526;
+    background-color: var(--rojo-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🎨 Botones personalizados para el panel del restaurante */
@@ -510,34 +538,34 @@ html, body {
 
 /* 🟡 Botón de "Editar Restaurante" */
 .btn-edit {
-    background-color: #f39c12;
+    background-color: var(--naranja);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-edit:hover {
-    background-color: #d68910;
+    background-color: var(--naranja-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🔴 Botón de "Ir a Reservas" */
 .btn-reservas {
-    background-color: #d7182b;
+    background-color: var(--rojo-brillante);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-reservas:hover {
-    background-color: #b81526;
+    background-color: var(--rojo-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 /* 🎨 Estilos generales del formulario */
 .card {
     border-radius: 12px;
-    background: white;
+    background: var(--blanco-roto);
     border: none;
 }
 
@@ -545,27 +573,27 @@ html, body {
 .input-custom {
     border-radius: 8px;
     padding: 12px;
-    border: 2px solid #ccc;
+    border: 2px solid var(--gris-borde);
     transition: all 0.3s ease-in-out;
 }
 
 .input-custom:focus {
-    border-color: #d7182b;
-    box-shadow: 0 0 8px rgba(215, 24, 43, 0.2);
+    border-color: var(--rojo-brillante);
+    box-shadow: 0 0 8px var(--negro-transparente);
 }
 
 /* 🖼️ Estilo para la previsualización de la imagen */
 .image-preview img {
     max-width: 150px;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px var(--negro-transparente);
 }
 
 /* ✉️ Botón de enviar */
 .btn-submit {
-    background-color: #d7182b;
+    background-color: var(--rojo-brillante);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
     font-size: 1rem;
     font-weight: bold;
     padding: 12px 20px;
@@ -574,9 +602,9 @@ html, body {
 }
 
 .btn-submit:hover {
-    background-color: #b81526;
+    background-color: var(--rojo-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
 
@@ -593,7 +621,7 @@ html, body {
 }
 
 .hero-content {
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--negro-transparente);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -602,7 +630,7 @@ html, body {
 
 .hero h1 {
     font-size: 3rem;
-    color: var(--dorado-brillante);
+    color: var(--dorado);
 }
 
 .hero p {
@@ -642,8 +670,8 @@ html, body {
 .modal-content {
     border-radius: 12px;
     border: none;
-    background: rgba(255, 255, 255, 0.30); /* ✅ Más transparente */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: var(--blanco-transparente);
+    box-shadow: 0 10px 30px var(--negro-transparente-hover);
     backdrop-filter: blur(10px); /* ✅ Efecto vidrio esmerilado */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
     padding: 20px;
@@ -659,33 +687,33 @@ html, body {
 .modal-title {
     font-size: 1.6rem;
     font-weight: bold;
-    color: #12477F;
+    color: var(--azul-oscuro);
 }
 
 /* ❌ Botón de cerrar con diseño elegante */
 .modal-header .btn-custom {
     background: none;
     border: none;
-    color: #d7182b;
+    color: var(--rojo-brillante);
     font-size: 1.5rem;
     transition: color 0.3s ease-in-out;
 }
 
 .modal-header .btn-custom:hover {
-    color: #9c1523;
+    color: var(--rojo-oscuro);
 }
 
 /* 📝 Estilos para los inputs del formulario */
 .modal-body form .form-control {
     border-radius: 8px;
-    border: 2px solid #ccc;
+    border: 2px solid var(--gris-borde);
     transition: all 0.3s ease-in-out;
     padding: 12px;
 }
 
 .modal-body form .form-control:focus {
-    border-color: #d7182b;
-    box-shadow: 0 0 10px rgba(215, 24, 43, 0.3);
+    border-color: var(--rojo-brillante);
+    box-shadow: 0 0 10px var(--negro-transparente-hover);
 }
 
 /* 🟢 Botones de acción dentro del modal */
@@ -703,26 +731,26 @@ html, body {
 
 /* ✅ Botón de confirmar */
 .btn-primary-custom {
-    background-color: #27ae60;
+    background-color: var(--verde);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-primary-custom:hover {
-    background-color: #1e8449;
+    background-color: var(--verde-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px var(--negro-transparente-hover);
 }
 
 /* 🔴 Botón de cancelar */
 .btn-danger-custom {
-    background-color: #e74c3c;
+    background-color: var(--rojo-peligro);
     border: none;
-    color: white;
+    color: var(--blanco-roto);
 }
 
 .btn-danger-custom:hover {
-    background-color: #c0392b;
+    background-color: var(--rojo-peligro-oscuro);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px var(--negro-transparente-hover);
 }
