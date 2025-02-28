@@ -60,7 +60,7 @@ html, body {
     transition: color 0.3s;
 }
 .navbar-nav .nav-link:hover {
-    color: var(--azul-claro) !important;
+    color: var(--rojo-brillante) !important;
 }
 
 /* Botón de sesión */
@@ -76,6 +76,7 @@ html, body {
 }
 .navbar .btn:hover {
     transform: scale(1.05);
+    color: var(--rojo-brillante);
 }
 
 /* 🌟 FOOTER MÁS COMPACTO Y ESTÉTICO */
@@ -135,7 +136,7 @@ html, body {
     transition: all 0.3s ease-in-out;
 }
 .social-links a:hover {
-    background: var(--naranja);
+    background: var(--rojo-brillante);
     color: var(--blanco-roto);
 }
 
@@ -147,7 +148,7 @@ html, body {
     text-decoration: none;
 }
 .footer-social .btn-link:hover {
-    color: var(--naranja);
+    color: var(--rojo-brillante);
 }
 
 /* Línea divisoria */
@@ -198,7 +199,7 @@ html, body {
 }
 
 .sitemap-list a:hover {
-    color: var(--naranja); /* 🔥 Efecto hover con color llamativo */
+    color: var(--rojo-brillante); /* 🔥 Efecto hover con color llamativo */
     transform: scale(1.05);
 }
 
@@ -214,7 +215,7 @@ html, body {
 }
 
 .footer-social .sitemap-title:hover {
-    color: var(--naranja); /* 🔥 Cambia de color al pasar el cursor */
+    color: var(--rojo-brillante); /* 🔥 Cambia de color al pasar el cursor */
 }
 
 
@@ -327,6 +328,7 @@ html, body {
 
 .btn-reservar:hover{
     background-color: var(--rojo-oscuro);
+    color: var(--rojo-brillante);
     border-color: var(--rojo-oscuro);
 }
 
@@ -355,6 +357,7 @@ html, body {
 
 .btn-primary-custom:hover {
     background-color: var(--rojo-oscuro);
+    color: var(--rojo-brillante);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
@@ -368,6 +371,7 @@ html, body {
 
 .btn-warning-custom:hover {
     background-color: var(--naranja-oscuro);
+    color: var(--rojo-brillante);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
@@ -381,6 +385,7 @@ html, body {
 
 .btn-secondary-custom:hover {
     background-color: var(--gris-elegante-oscuro);
+    color: var(--rojo-brillante);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
@@ -407,6 +412,7 @@ html, body {
 
 .btn-success-custom:hover {
     background-color: var(--verde-oscuro);
+    color: var(--rojo-brillante);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
@@ -421,6 +427,7 @@ html, body {
 
 .btn-reservar:hover {
     background-color: var(--rojo-oscuro);
+    color: var(--rojo-brillante);
     transform: translateY(-2px);
 }
 
@@ -452,6 +459,7 @@ html, body {
 
 .btn-reservas:hover {
     background-color: var(--naranja-oscuro);
+    color: var(--rojo-brillante);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
@@ -482,6 +490,7 @@ html, body {
 .btn-language:hover {
     background-color: var(--blanco-transparente-hover);
     border-color: var(--blanco-roto);
+    color: var(--rojo-brillante);
     color: var(--blanco-roto);
 }
 
@@ -546,6 +555,7 @@ html, body {
 .btn-edit:hover {
     background-color: var(--naranja-oscuro);
     transform: translateY(-2px);
+    color: var(--rojo-brillante);
     box-shadow: 0 4px 10px var(--negro-transparente);
 }
 
@@ -739,6 +749,7 @@ html, body {
 .btn-primary-custom:hover {
     background-color: var(--verde-oscuro);
     transform: translateY(-2px);
+    color: var(--rojo-brillante);
     box-shadow: 0 4px 10px var(--negro-transparente-hover);
 }
 
