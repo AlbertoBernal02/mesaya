@@ -8,14 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
 {
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        // Verifica si el usuario está autenticado y si tiene el rol adecuado
-        if (!Auth::check() || Auth::user()->role !== $role) {
-            return response()->view('acceso_denegado', [], 403);
+        if (!Auth::check()) {
+            abort(403);
+        }
+
+        $userRole = Auth::user()->role;
+
+        if (!in_array($userRole, $roles)) {
+            abort(403);
         }
 
         return $next($request);
     }
 }
-
