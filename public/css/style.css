@@ -636,3 +636,93 @@ html, body {
     max-width: 250px; /* Ancho máximo para evitar botones demasiado largos */
     text-align: center; /* Centrar el texto e iconos */
 }
+
+
+/* 🎨 ESTILOS PREMIUM PARA LOS MODALES */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.30); /* ✅ Más transparente */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* ✅ Efecto vidrio esmerilado */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 Mejorar el título del modal */
+.modal-header {
+    border-bottom: none;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #12477F;
+}
+
+/* ❌ Botón de cerrar con diseño elegante */
+.modal-header .btn-custom {
+    background: none;
+    border: none;
+    color: #d7182b;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.modal-header .btn-custom:hover {
+    color: #9c1523;
+}
+
+/* 📝 Estilos para los inputs del formulario */
+.modal-body form .form-control {
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease-in-out;
+    padding: 12px;
+}
+
+.modal-body form .form-control:focus {
+    border-color: #d7182b;
+    box-shadow: 0 0 10px rgba(215, 24, 43, 0.3);
+}
+
+/* 🟢 Botones de acción dentro del modal */
+.modal-footer .btn-custom {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* ✅ Botón de confirmar */
+.btn-primary-custom {
+    background-color: #27ae60;
+    border: none;
+    color: white;
+}
+
+.btn-primary-custom:hover {
+    background-color: #1e8449;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔴 Botón de cancelar */
+.btn-danger-custom {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+}
+
+.btn-danger-custom:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
