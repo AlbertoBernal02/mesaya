@@ -12,13 +12,13 @@
     <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(169, 169, 169, 0.5); z-index: 0;"></div>
 
     <div class="container text-center mb-5" style="position: relative; z-index: 1;">
-        <h1 class="fw-bold display-3 text-uppercase text-white">{{ __('quienes_somos') }}</h1>
+        <h1 class="fw-bold display-3 text-white">{{ __('quienes_somos') }}</h1>
         <p class="lead fs-4 text-white">{{ __('descripcion_empresa') }}</p>
     </div>
     
     <!-- Mensaje de ventajas -->
     <div class="container text-center mb-4" style="position: relative; z-index: 1;">
-        <h2 class="fw-bold display-5 text-uppercase text-white">{{ __('disfruta_ventajas') }}</h2>
+        <h2 class="fw-bold display-5 text-white">{{ __('disfruta_ventajas') }}</h2>
     </div>
     
     <!-- Carrusel -->
