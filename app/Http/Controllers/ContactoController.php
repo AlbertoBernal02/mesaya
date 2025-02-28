@@ -45,7 +45,7 @@ class ContactoController extends Controller
 
             Mail::to($admin->email)->send(new ContactoMailable($datos));
 
-            return back()->with('success', 'Mensaje enviado correctamente.');
+            return back()->with('success', 'Mensaje enviado con éxito, nos pondremos en contacto con usted lo antes posible.');
         }
 
         return back()->with('error', 'No se encontró un administrador para recibir el mensaje.');

@@ -63,7 +63,7 @@ class CarritoReservaController extends Controller
         // 🔹 Enviar correo de confirmación al usuario
         Mail::to(Auth::user()->email)->send(new ReservaConfirmadaMail($reservasConfirmadasData));
 
-        return redirect()->route('carrito.index')->with('success', 'Reservas confirmadas y notificación enviada a los restaurantes.');
+        return redirect()->route('carrito.index')->with('success', 'Reserva/as confirmada/as con éxito, la confirmación se mandará a tu correo.');
     }
 
     // Eliminar una reserva

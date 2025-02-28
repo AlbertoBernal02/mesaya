@@ -29,5 +29,51 @@
 
     @include('partials.footer')
 
+
+    <!-- Toast de Notificaciones -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        @if(session('success'))
+            <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{ session('success') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div id="toastError" class="toast align-items-center text-white bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{ session('error') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
+    </div>
+
+    <script>
+        // Ocultar los toasts después de 5 segundos
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(() => {
+                let successToast = document.getElementById("toastSuccess");
+                let errorToast = document.getElementById("toastError");
+
+                if (successToast) {
+                    let toast = new bootstrap.Toast(successToast);
+                    toast.hide();
+                }
+
+                if (errorToast) {
+                    let toast = new bootstrap.Toast(errorToast);
+                    toast.hide();
+                }
+            }, 5000);
+        });
+    </script>
+
 </body>
 </html>

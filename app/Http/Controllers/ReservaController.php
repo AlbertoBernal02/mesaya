@@ -41,6 +41,6 @@ class ReservaController extends Controller
             'num_comensales' => $cleanedData['num_comensales'],
         ]);
 
-        return redirect()->back()->with('success', 'Reserva realizada con éxito.');
+        return redirect()->back()->with('success', 'Reserva realizada con éxito, ve a "Confirmar Reservas" para confirmarla o eliminarla.');
     }
 }
