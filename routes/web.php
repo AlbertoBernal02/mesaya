@@ -94,12 +94,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/get-schedule', [ScheduleController::class, 'getSchedule'])->name('get-schedule');
     });
 
-    Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
+    
 });
 
 // 🌎 Rutas públicas
 Route::get('/categories', fn(Request $request) => response()->json(Category::all()));
 Route::get('/', [ProductController::class, 'index'])->name('home');
+Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 
 // Redirección login según rol
 Route::get('/home', function () {
