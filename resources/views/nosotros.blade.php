@@ -6,41 +6,49 @@
 
 @section('content')    
  <!-- Sección Hero con Parallax -->
- <section class="hero">
-        <div class="text-center text-white hero-content">
-            <h1>Texto</h1>
-            <p>Descripcion</p>
-        </div>
+ <section class="hero d-flex flex-column align-items-center justify-content-center py-5" style="min-height: 100vh; position: relative; overflow: hidden;">
+    <!-- Imagen de fondo con parallax -->
+    <div class="parallax-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('../../img/paralax.png'); background-attachment: fixed; background-size: cover; background-position: center; z-index: -1;"></div>
 
-        <!-- Sección de Carrusel dentro del Parallax -->
-        <div id="carousel-section" class="mt-5">
-            <div class="container">
-                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- Imágenes del carrusel -->
-                        <div class="carousel-item active">
-                            <img src="img/1.jpg" class="d-block w-100 rounded" alt="Catering 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/2.png" class="d-block w-100 rounded" alt="Catering 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/3.png" class="d-block w-100 rounded" alt="Catering 3">
-                        </div>
-                    </div>
-                    <!-- Controles del carrusel -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+    <!-- Capa con fondo gris claro para resaltar el texto -->
+    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(169, 169, 169, 0.5); z-index: 0;"></div>
+
+    <div class="container text-center mb-5" style="position: relative; z-index: 1;">
+        <h1 class="fw-bold display-3 text-uppercase text-white">¿Quiénes Somos?</h1>
+        <p class="lead fs-4 text-white">Somos una plataforma que conecta a los amantes de la gastronomía con los mejores restaurantes locales. Nuestra misión es facilitar reservas y mejorar la experiencia de comer fuera de casa, brindando un servicio cómodo, rápido y eficiente para todos nuestros clientes.</p>
+    </div>
+    
+    <!-- Mensaje de ventajas -->
+    <div class="container text-center mb-4" style="position: relative; z-index: 1;">
+        <h2 class="fw-bold display-5 text-uppercase text-white">Disfruta de nuestras ventajas</h2>
+    </div>
+    
+    <!-- Carrusel -->
+    <div class="container d-flex justify-content-center mb-5" style="position: relative; z-index: 1;">
+        <div id="carouselExample" class="carousel slide carousel-fade w-100" data-bs-ride="carousel" style="max-width: 700px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); overflow: hidden;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../../img/1carrusel.png" class="d-block w-100" alt="Catering 1" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../img/2carrusel.png" class="d-block w-100" alt="Catering 2" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../img/3carrusel.png" class="d-block w-100" alt="Catering 3" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
                 </div>
             </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" aria-label="Anterior">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" aria-label="Siguiente">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
-    </section>
+    </div>
+</section>
+
+
 @endsection
 
 
