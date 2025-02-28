@@ -794,3 +794,9 @@ border-color: var(--rojo-brillante);
 .form-control:focus {
 border-color: var(--rojo-brillante);
 }
+
+/* 🔴 Cambiar el color cuando se pasa el cursor */
+.pagination .page-link:hover {
+    color: var(--blanco-roto) !important; /* Rojo más oscuro en hover */
+    background-color: var(--rojo-oscuro) !important; /* Fondo blanco roto */
+}
