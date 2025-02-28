@@ -64,14 +64,16 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="opening_time" class="form-label">{{ __('hora_apertura') }}</label>
-                    <input type="time" class="form-control input-custom" id="opening_time" name="opening_time" value="09:00" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="closing_time" class="form-label">{{ __('hora_cierre') }}</label>
-                    <input type="time" class="form-control input-custom" id="closing_time" name="closing_time" value="23:00" required>
-                </div>
+            <div class="col-md-6 mb-3">
+        <label for="opening_time" class="form-label">{{ __('hora_apertura') }}</label>
+        <input type="time" class="form-control input-custom" id="opening_time" name="opening_time" 
+            value="{{ $product->schedule->opening_time}}">
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="closing_time" class="form-label">{{ __('hora_cierre') }}</label>
+        <input type="time" class="form-control input-custom" id="closing_time" name="closing_time" 
+            value="{{ $product->schedule->closing_time}}">
+    </div>
             </div>
 
             <h4 class="mt-4">{{ __('Horas No Disponibles') }}</h4>

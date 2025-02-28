@@ -105,67 +105,67 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
+{
+    $product = Product::findOrFail($id);
 
-        if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
-            return redirect()->route('home')->with('error', 'No tienes permiso para actualizar este restaurante.');
+    if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
+        return redirect()->route('home')->with('error', 'No tienes permiso para actualizar este restaurante.');
+    }
+
+    $request->validate([
+        'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ-]+$/',
+        'categories_id' => 'required|integer|exists:categories,id',
+        'total_price' => 'required|numeric|min:0|max:1000',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'capacity' => 'required|integer|min:1|max:500',
+        'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
+        'opening_time' => 'nullable|string',
+        'closing_time' => 'nullable|string',
+        'unavailable_hours' => 'nullable|array',
+    ]);
+
+    // 🔹 Obtener los horarios previos del restaurante
+    $schedule = \App\Models\Schedule::where('product_id', $product->id)->first();
+
+    $opening_time = $request->opening_time ?? ($schedule ? $schedule->opening_time : '09:00');
+    $closing_time = $request->closing_time ?? ($schedule ? $schedule->closing_time : '23:00');
+
+    // 🔹 Actualizar los datos del restaurante
+    $product->update([
+        'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
+        'categories_id' => $request->categories_id,
+        'total_price' => $request->total_price,
+        'capacity' => $request->capacity,
+        'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
+        'visible' => $request->input('visible', $product->visible),
+    ]);
+
+    if ($request->hasFile('image')) {
+        if ($product->image && file_exists(public_path($product->image))) {
+            unlink(public_path($product->image));
         }
 
-        $request->validate([
-            'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ-]+$/',
-            'categories_id' => 'required|integer|exists:categories,id',
-            'total_price' => 'required|numeric|min:0|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'capacity' => 'required|integer|min:1|max:500',
-            'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
-            'opening_time' => 'required|date_format:H:i',
-            'closing_time' => 'required|date_format:H:i',
-            'unavailable_hours' => 'nullable|array',
-        ]);
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('img'), $imageName);
+        $imagePath = '../../img/' . $imageName;
+        $product->update(['image' => $imagePath]);
+    }
 
-        // 🔹 Limpieza de entradas con `htmlspecialchars()`
-        $cleanedData = [
-            'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
-            'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
-            'total_price' => filter_var($request->total_price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-            'capacity' => filter_var($request->capacity, FILTER_SANITIZE_NUMBER_INT),
-            
-        ];
-
-        $product->update([
-            'name' => $cleanedData['name'],
-            'categories_id' => $request->categories_id,
-            'total_price' => $cleanedData['total_price'],
-            'capacity' => $cleanedData['capacity'],
-            'ubication' => $cleanedData['ubication'],
-            'visible' => $request->input('visible', $product->visible),
-        ]);
-
-        if ($request->hasFile('image')) {
-            if ($product->image && file_exists(public_path($product->image))) {
-                unlink(public_path($product->image));
-            }
-
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('img'), $imageName);
-            $imagePath = '../../img/' . $imageName;
-            $product->update(['image' => $imagePath]);
-        }
-
-        // 🔹 Actualizar o crear el horario en la tabla Schedule
+    // 🔹 Actualizar o crear el horario en la tabla Schedule
     \App\Models\Schedule::updateOrCreate(
-        ['product_id' => $product->id], // Clave para encontrar el registro correcto
+        ['product_id' => $product->id], // Buscar por el ID del restaurante
         [
-            'opening_time' => $request->opening_time,
-            'closing_time' => $request->closing_time,
-            'unavailable_hours' => $request->unavailable_hours ?? [], // Si es null, guardar un array vacío
+            'opening_time' => $opening_time,
+            'closing_time' => $closing_time,
+            'unavailable_hours' => $request->unavailable_hours ?? [],
         ]
     );
 
-        return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
-    }
+    return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
+}
+
+
 
     public function destroy($id)
     {
