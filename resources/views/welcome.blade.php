@@ -176,14 +176,20 @@
                         </button>
                     @elseif(Auth::check() && Auth::user()->role == 'admin')
                     
-                    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning-custom btn-custom"><i class="fas fa-edit"></i> {{ __('editar') }}</a>
-                    
-                    
-                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger-custom btn-custom"><i class="fas fa-trash-alt"></i>{{ __('ocultar') }}</button>
-                        </form>
+                    <div class="button-group">
+    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning-custom btn-custom">
+        <i class="fas fa-edit"></i> {{ __('editar') }}
+    </a>
+
+    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger-custom btn-custom">
+            <i class="fas fa-trash-alt"></i> {{ __('ocultar') }}
+        </button>
+    </form>
+</div>
+
                     @endif
                 </div>
             </div>

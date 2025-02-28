@@ -619,3 +619,20 @@ html, body {
 #logo {
     height: 60px;
 }
+
+
+/* Contenedor de los botones */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaciado entre los botones */
+    width: 100%;
+}
+
+/* Estilo uniforme para los botones */
+.button-group .btn {
+    width: 100%;  /* Que ocupen todo el ancho posible */
+    max-width: 250px; /* Ancho máximo para evitar botones demasiado largos */
+    text-align: center; /* Centrar el texto e iconos */
+}
