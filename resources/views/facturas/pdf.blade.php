@@ -3,17 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Factura</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .container { width: 80%; margin: auto; }
-        .header { text-align: center; margin-bottom: 20px; }
-        .details { display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .details div { width: 48%; }
-        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .table, .table th, .table td { border: 1px solid black; }
-        .table th, .table td { padding: 8px; text-align: left; }
-        .footer { margin-top: 20px; font-size: 12px; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="file://{{ public_path('css/pdf.css') }}">
+
 </head>
 <body>
     <div class="container">
