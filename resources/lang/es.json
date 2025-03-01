@@ -147,5 +147,9 @@
     "carrusel22": "En Mesaya premiamos tu fidelidad con nuestras ofertas.",
     "carrusel31": "¿No tienes suficiente dinero para permitirte una cena lujosa?",
     "carrusel32": "En Mesaya encontrarás mucha variedad de restaurantes con precios para todos los públicos.",
-    "seleccionar_deseleccionar": "Seleccionar/Deseleccionar Todas"
+    "seleccionar_deseleccionar": "Seleccionar/Deseleccionar Todas",
+    "carrusel1alt": "Primera imagen del carrousel",
+    "carrusel2alt": "Segunda imagen del carrousel",
+    "carrusel3alt": "Tercera imagen del carrousel",
+    "logoalt": "Imagen del logotipo"
 }

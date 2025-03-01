@@ -27,17 +27,17 @@
             <div class="carousel-inner">
                 <div class="carousel-item active text-center">
                     <h3 class="text-white">{{ __('carrusel11') }}</h3>
-                    <img src="../../img/carrousel1.svg" class="d-block w-100" alt="Catering 1" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
+                    <img src="../../img/carrousel1.svg" class="d-block w-100" alt="{{ __('carrusel1alt') }}" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
                     <p class="text-white">{{ __('carrusel12') }}</p>
                 </div>
                 <div class="carousel-item text-center">
                     <h3 class="text-white">{{ __('carrusel21') }}</h3>
-                    <img src="../../img/carrousel2.svg" class="d-block w-100" alt="Catering 2" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
+                    <img src="../../img/carrousel2.svg" class="d-block w-100" alt="{{ __('carrusel2alt') }}" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
                     <p class="text-white">{{ __('carrusel22') }}</p>
                 </div>
                 <div class="carousel-item text-center">
                     <h3 class="text-white">{{ __('carrusel31') }}</h3>
-                    <img src="../../img/carrousel3.svg" class="d-block w-100" alt="Catering 3" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
+                    <img src="../../img/carrousel3.svg" class="d-block w-100" alt="{{ __('carrusel3alt') }}" style="object-fit: contain; height: 500px; width: 100%; margin: auto;">
                     <p class="text-white">{{ __('carrusel32') }}</p>
                 </div>
             </div>

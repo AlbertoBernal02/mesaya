@@ -11,6 +11,7 @@ use App\Mail\ReservaConfirmada as ReservaConfirmadaMail;
 use App\Mail\ReservaRestaurante as ReservaRestauranteMail; // Nuevo mail para el restaurante
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
 
 class CarritoReservaController extends Controller
 {
