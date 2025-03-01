@@ -806,3 +806,8 @@ border-color: var(--rojo-brillante);
     color: var(--blanco-roto) !important; /* Rojo más oscuro en hover */
     background-color: var(--rojo-oscuro) !important; /* Fondo blanco roto */
 }
+
+.boton-arriba {
+    text-decoration: none;
+    color: var(--rojo-brillante);
+}

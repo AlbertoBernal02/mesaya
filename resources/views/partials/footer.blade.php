@@ -49,6 +49,11 @@
             <small>© 2025 MesaYa. {{ __('todos_derechos') }}</small>
         </div>
     </div>
+    
+    <!-- Botón "Volver Arriba" -->
+    <a href="#" id="volver-arriba" class="boton-arriba">
+        ↑ Volver Arriba
+    </a>
 </footer>
 
 
