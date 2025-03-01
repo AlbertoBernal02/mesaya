@@ -1,4 +1,5 @@
 :root {
+    /* Definición de variables de color */
     --rojo-brillante: #d7182b;  /* Rojo fuerte para botones y acciones */
     --dorado: #ffd700;         /* Dorado para detalles premium */
     --blanco-roto: #f7f7f7;    /* Blanco roto para los fondos */
@@ -28,777 +29,759 @@
 
 /* Ajustes generales */
 html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--gris-claro);
-    color: var(--marron);
+    height: 100%; /* Altura completa */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    margin: 0; /* Sin margen */
+    padding: 0; /* Sin padding */
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat */
+    background-color: var(--gris-claro); /* Fondo gris claro */
+    color: var(--marron); /* Texto marrón */
 }
 
 /* Ajuste del contenedor principal para empujar el footer hacia abajo */
 .container {
-    flex: 1;
+    flex: 1; /* Flexibilidad para ocupar el espacio disponible */
 }
 
 /* 🌟 NAVBAR */
 .navbar {
-    background-color: var(--azul-oscuro);
-    padding: 10px 0;
+    background-color: var(--azul-oscuro); /* Fondo azul oscuro */
+    padding: 10px 0; /* Padding vertical */
 }
 .navbar-brand {
-    font-family: 'Poppins', sans-serif;
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--blanco-roto) !important;
+    font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+    font-size: 22px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: var(--blanco-roto) !important; /* Color blanco roto */
 }
 .navbar-nav .nav-link {
-    color: var(--blanco-roto) !important;
-    font-size: 15px;
-    transition: color 0.3s;
+    color: var(--blanco-roto) !important; /* Color blanco roto */
+    font-size: 15px; /* Tamaño de fuente */
+    transition: color 0.3s; /* Transición de color */
 }
 .navbar-nav .nav-link:hover {
-    color: var(--rojo-brillante) !important;
+    color: var(--rojo-brillante) !important; /* Color rojo brillante al pasar el cursor */
 }
 
 /* Botón de sesión */
 .navbar .btn {
-    font-size: 14px;
-    padding: 8px 12px;
-    transition: all 0.3s;
-    margin: 0 5px; /* 🔥 Aumenta el espacio a los lados */
-
-    height: 38px; /* Establece una altura uniforme */
-    
-    
+    font-size: 14px; /* Tamaño de fuente */
+    padding: 8px 12px; /* Padding */
+    transition: all 0.3s; /* Transición */
+    margin: 0 5px; /* Margen lateral */
+    height: 38px; /* Altura uniforme */
 }
 .navbar .btn:hover {
-    transform: scale(1.05);
-    color: var(--rojo-brillante);
+    transform: scale(1.05); /* Escalar al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
 }
 
 /* 🌟 FOOTER MÁS COMPACTO Y ESTÉTICO */
 .footer-main {
-    background-color: var(--azul-oscuro);
-    color: var(--blanco-roto);
-    padding: 25px 0;
-    text-align: center;
-    width: 100%;
-    margin-top: auto;
+    background-color: var(--azul-oscuro); /* Fondo azul oscuro */
+    color: var(--blanco-roto); /* Texto blanco roto */
+    padding: 25px 0; /* Padding vertical */
+    text-align: center; /* Texto centrado */
+    width: 100%; /* Ancho completo */
+    margin-top: auto; /* Margen superior automático */
 }
 
 /* Ajustar títulos del footer */
 .footer-main h4 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-    font-weight: bold;
+    font-size: 1.2rem; /* Tamaño de fuente */
+    margin-bottom: 0.8rem; /* Margen inferior */
+    font-weight: bold; /* Negrita */
 }
 
 /* Información */
 .footer-info p {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 0.9rem; /* Tamaño de fuente */
+    opacity: 0.8; /* Opacidad */
 }
 
 /* Contacto */
 .footer-contact {
-    text-align: center;
+    text-align: center; /* Texto centrado */
 }
 .footer-contact ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* Sin estilo de lista */
+    padding: 0; /* Sin padding */
+    margin: 0; /* Sin margen */
 }
 .footer-contact li {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+    font-size: 0.9rem; /* Tamaño de fuente */
+    margin-bottom: 5px; /* Margen inferior */
 }
 
 /* Redes sociales */
 .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    display: flex; /* Usar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    gap: 10px; /* Espacio entre elementos */
+    margin-bottom: 10px; /* Margen inferior */
 }
 .social-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: var(--blanco-roto);
-    color: var(--azul-oscuro);
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
+    display: inline-flex; /* Usar flexbox en línea */
+    align-items: center; /* Alinear verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    width: 35px; /* Ancho */
+    height: 35px; /* Altura */
+    border-radius: 50%; /* Bordes redondeados */
+    background: var(--blanco-roto); /* Fondo blanco roto */
+    color: var(--azul-oscuro); /* Color azul oscuro */
+    font-size: 1rem; /* Tamaño de fuente */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 .social-links a:hover {
-    background: var(--rojo-brillante);
-    color: var(--blanco-roto);
+    background: var(--rojo-brillante); /* Fondo rojo brillante al pasar el cursor */
+    color: var(--blanco-roto); /* Color blanco roto al pasar el cursor */
 }
 
 /* Mapa del sitio */
 .footer-social .btn-link {
-    color: var(--blanco-roto);
-    font-size: 0.9rem;
-    margin-top: 5px;
-    text-decoration: none;
-    
+    color: var(--blanco-roto); /* Color blanco roto */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    margin-top: 5px; /* Margen superior */
+    text-decoration: none; /* Sin subrayado */
 }
-
 
 .btn-link:hover {
-    color: var(--rojo-brillante);
-    text-decoration: none;
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    text-decoration: none; /* Sin subrayado */
 }
 
-.btn-link{
-    text-decoration: none;
+.btn-link {
+    text-decoration: none; /* Sin subrayado */
 }
 
 /* Línea divisoria */
 .footer-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--blanco-transparente);
-    margin: 10px 0;
+    width: 100%; /* Ancho completo */
+    height: 1px; /* Altura */
+    background: var(--blanco-transparente); /* Fondo blanco transparente */
+    margin: 10px 0; /* Margen vertical */
 }
 
 /* Derechos de autor */
 .footer-bottom {
-    font-size: 0.8rem;
-    opacity: 0.7;
+    font-size: 0.8rem; /* Tamaño de fuente */
+    opacity: 0.7; /* Opacidad */
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .footer-main {
-        padding: 20px 0;
+        padding: 20px 0; /* Padding vertical */
     }
     .footer-main h4 {
-        font-size: 1rem;
+        font-size: 1rem; /* Tamaño de fuente */
     }
     .footer-contact li,
     .footer-info p {
-        font-size: 0.8rem;
+        font-size: 0.8rem; /* Tamaño de fuente */
     }
 }
 
 /* Mapa del Sitio */
 .sitemap-list {
-    list-style: none; /* ❌ Quita los puntos de la lista */
-    padding: 0;
-    margin: 10px 0; /* Espaciado superior e inferior */
-    text-align: center;
+    list-style: none; /* Sin estilo de lista */
+    padding: 0; /* Sin padding */
+    margin: 10px 0; /* Margen vertical */
+    text-align: center; /* Texto centrado */
 }
 
 .sitemap-list li {
-    margin-bottom: 5px; /* Espaciado entre enlaces */
+    margin-bottom: 5px; /* Margen inferior */
 }
 
 .sitemap-list a {
-    color: var(--blanco-roto); /* ✅ Enlaces en blanco */
-    text-decoration: none; /* ❌ Quita el subrayado */
-    font-size: 1rem;
-    transition: color 0.3s ease-in-out, transform 0.2s;
+    color: var(--blanco-roto); /* Color blanco roto */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 1rem; /* Tamaño de fuente */
+    transition: color 0.3s ease-in-out, transform 0.2s; /* Transición */
 }
 
 .sitemap-list a:hover {
-    color: var(--rojo-brillante); /* 🔥 Efecto hover con color llamativo */
-    transform: scale(1.05);
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: scale(1.05); /* Escalar al pasar el cursor */
 }
 
 /* Título "Mapa del Sitio" como texto normal */
 .footer-social .sitemap-title {
-    color: var(--blanco-roto);
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer; /* 🟢 Hace que parezca clickeable */
-    display: inline-block;
-    transition: color 0.3s ease-in-out;
+    color: var(--blanco-roto); /* Color blanco roto */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    margin-top: 10px; /* Margen superior */
+    cursor: pointer; /* Cursor de puntero */
+    display: inline-block; /* Mostrar en línea */
+    transition: color 0.3s ease-in-out; /* Transición */
 }
 
 .sitemap-title:hover {
-    color: var(--rojo-brillante); /* 🔥 Cambia de color al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
 }
-
-
-
 
 /* 🔹 Eliminar cualquier línea o borde en los iconos de redes sociales */
 .social-links a {
-    display: inline-flex; /* Asegura que el contenido sea centrado */
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--blanco-roto);
-    color: var(--azul-oscuro);
-    font-size: 1.4rem;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none; /* 🟢 Elimina cualquier subrayado */
-    outline: none; /* 🟢 Elimina el contorno azul */
-    border: none; /* 🟢 Evita líneas inesperadas */
+    display: inline-flex; /* Usar flexbox en línea */
+    align-items: center; /* Alinear verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    width: 40px; /* Ancho */
+    height: 40px; /* Altura */
+    border-radius: 50%; /* Bordes redondeados */
+    background: var(--blanco-roto); /* Fondo blanco roto */
+    color: var(--azul-oscuro); /* Color azul oscuro */
+    font-size: 1.4rem; /* Tamaño de fuente */
+    transition: all 0.3s ease-in-out; /* Transición */
+    text-decoration: none; /* Sin subrayado */
+    outline: none; /* Sin contorno */
+    border: none; /* Sin borde */
 }
 
 .social-links a:focus,
 .social-links a:active {
-    outline: none; /* 🟢 Elimina el contorno azul cuando se hace clic */
-    border: none; /* 🟢 Evita que aparezca el borde */
-    box-shadow: none; /* 🟢 Evita el efecto de resplandor */
+    outline: none; /* Sin contorno al hacer clic */
+    border: none; /* Sin borde */
+    box-shadow: none; /* Sin sombra */
 }
 
 .social-links i {
-    margin: 0; /* 🟢 Evita que el icono tenga espacios no deseados */
-    padding: 0;
-    line-height: 1; /* 🟢 Ajusta el alineado del icono */
+    margin: 0; /* Sin margen */
+    padding: 0; /* Sin padding */
+    line-height: 1; /* Altura de línea */
 }
 
 /* 🟢 Estilos para los modales */
 .modal-content {
-    border-radius: 10px;
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* Estilos para los formularios en los modales */
 .modal-body form .form-control {
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Padding */
 }
 
 /* 🟢 Botones de acción en los modales */
 .modal-footer .btn {
-    border-radius: 5px;
-    padding: 10px 15px;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Padding */
 }
 
 /* Estilos para la tabla de productos */
 .table {
-    background: var(--blanco-roto);
-    border-radius: 10px;
-    overflow: hidden;
+    background: var(--blanco-roto); /* Fondo blanco roto */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Ocultar desbordamiento */
 }
 
 .table th {
-    background: var(--azul-oscuro);
-    color: var(--blanco-roto);
-    font-weight: bold;
+    background: var(--azul-oscuro); /* Fondo azul oscuro */
+    color: var(--blanco-roto); /* Color blanco roto */
+    font-weight: bold; /* Negrita */
 }
 
 .table td {
-    vertical-align: middle;
+    vertical-align: middle; /* Alinear verticalmente */
 }
 
 /* 🟢 Asegurar que los modales sean responsivos */
 @media (max-width: 576px) {
     .modal-dialog {
-        max-width: 90%;
+        max-width: 90%; /* Ancho máximo */
     }
 }
 
 /* Asegurar que todas las tarjetas tengan la misma altura */
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch; /* Hace que todas las cards tengan la misma altura */
+    display: flex; /* Usar flexbox */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    align-items: stretch; /* Alinear verticalmente */
 }
 
 /* Establece la altura uniforme en todas las tarjetas */
 .card {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Hace que todas las tarjetas tengan la misma altura */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    height: 100%; /* Altura completa */
 }
 
 /* Asegurar que el cuerpo de la tarjeta ocupe el espacio disponible */
 .card-body {
-    flex-grow: 1; /* Permite que el contenido de la card crezca uniformemente */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Espacia los elementos uniformemente */
+    flex-grow: 1; /* Permitir que el contenido crezca */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    justify-content: space-between; /* Espaciar los elementos uniformemente */
 }
 
 /* Asegurar que la imagen no deforme la tarjeta */
 .card-img-top {
-    height: 180px; /* Establece una altura fija para la imagen */
-    object-fit: cover; /* Recorta la imagen para que se ajuste sin deformarse */
+    height: 180px; /* Altura fija */
+    object-fit: cover; /* Ajustar la imagen sin deformarse */
 }
 
-.btn-reservar{
-    background-color: var(--rojo-brillante);
-    border-color: var(--rojo-brillante);
+.btn-reservar {
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border-color: var(--rojo-brillante); /* Borde rojo brillante */
 }
 
-.btn-reservar:hover{
-    background-color: var(--rojo-oscuro);
-    color: var(--rojo-brillante);
-    border-color: var(--rojo-oscuro);
+.btn-reservar:hover {
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    border-color: var(--rojo-oscuro); /* Borde rojo oscuro al pasar el cursor */
 }
-
-
-
 
 /* 🎨 ESTILOS MEJORADOS PARA BOTONES */
 .btn-custom {
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 12px 18px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
+    font-size: 1.1rem; /* Tamaño de fuente */
+    font-weight: 600; /* Negrita */
+    padding: 12px 18px; /* Padding */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear verticalmente */
+    gap: 8px; /* Espacio entre elementos */
+    justify-content: center; /* Centrar horizontalmente */
 }
 
 /* 🔴 Botón principal en rojo */
 .btn-primary-custom {
-    background-color: var(--rojo-brillante);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-primary-custom:hover {
-    background-color: var(--rojo-oscuro);
-    color: var(--rojo-brillante);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🟡 Botón de advertencia (para edición) */
 .btn-warning-custom {
-    background-color: var(--naranja);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--naranja); /* Fondo naranja */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-warning-custom:hover {
-    background-color: var(--naranja-oscuro);
-    color: var(--rojo-brillante);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--naranja-oscuro); /* Fondo naranja oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* ⚪ Botón secundario (gris elegante) */
 .btn-secondary-custom {
-    background-color: var(--gris-elegante);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--gris-elegante); /* Fondo gris elegante */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-secondary-custom:hover {
-    background-color: var(--gris-elegante-oscuro);
-    color: var(--rojo-brillante);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--gris-elegante-oscuro); /* Fondo gris oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 .btn-secondary:hover {
-    
-    color: var(--rojo-brillante);
-    
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
 }
 
 /* ❌ Botón de eliminación */
 .btn-danger-custom {
-    background-color: var(--rojo-peligro);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--rojo-peligro); /* Fondo rojo peligro */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-danger-custom:hover {
-    background-color: var(--rojo-peligro-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--rojo-peligro-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🟢 Botón de éxito (verde) */
 .btn-success-custom {
-    background-color: var(--verde);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--verde); /* Fondo verde */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-success-custom:hover {
-    background-color: var(--verde-oscuro);
-    color: var(--rojo-brillante);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--verde-oscuro); /* Fondo verde oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 📌 Estilos para los botones de reserva */
 .btn-reservar {
-    background-color: var(--rojo-brillante);
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border: none; /* Sin borde */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
 }
 
 .btn-reservar:hover {
-    background-color: var(--rojo-oscuro);
-    color: var(--rojo-brillante);
-    transform: translateY(-2px);
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
 }
 
 /* 📌 Añadir efecto al hacer clic */
 .btn-custom:active {
-    transform: scale(0.98);
+    transform: scale(0.98); /* Escalar al hacer clic */
 }
-
 
 /* 🎨 Estilos mejorados para los botones en la navbar */
 .navbar .btn-custom {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 10px 18px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: 600; /* Negrita */
+    padding: 10px 18px; /* Padding */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear verticalmente */
+    gap: 8px; /* Espacio entre elementos */
+    justify-content: center; /* Centrar horizontalmente */
 }
 
 /* 📅 Botón de "Confirmar Reservas" (Amarillo) */
 .btn-reservas {
-    background-color: var(--naranja);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--naranja); /* Fondo naranja */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-reservas:hover {
-    background-color: var(--naranja-oscuro);
-    color: var(--rojo-brillante);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--naranja-oscuro); /* Fondo naranja oscuro al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🔴 Botón de "Cerrar Sesión" (Rojo) */
 .btn-logout {
-    background-color: var(--rojo-brillante);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-logout:hover {
-    background-color: var(--rojo-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🌍 Botón de cambio de idioma (Elegante) */
 .btn-language {
-    background-color: transparent;
-    border: 2px solid var(--blanco-transparente-borde);
-    color: var(--blanco-transparente-hover-borde);
-    font-size: 0.9rem;
-    padding: 8px 14px;
-    transition: all 0.3s ease-in-out;
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid var(--blanco-transparente-borde); /* Borde blanco transparente */
+    color: var(--blanco-transparente-hover-borde); /* Color blanco transparente */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    padding: 8px 14px; /* Padding */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 
 .btn-language:hover {
-    background-color: var(--blanco-transparente-hover);
-    border-color: var(--blanco-roto);
-    color: var(--rojo-brillante);
-    color: var(--blanco-roto);
+    background-color: var(--blanco-transparente-hover); /* Fondo blanco transparente al pasar el cursor */
+    border-color: var(--blanco-roto); /* Borde blanco roto al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 /* 🎨 Estilos generales para el formulario de contacto */
 .card {
-    border-radius: 12px;
-    background: var(--blanco-roto);
-    border: none;
+    border-radius: 12px; /* Bordes redondeados */
+    background: var(--blanco-roto); /* Fondo blanco roto */
+    border: none; /* Sin borde */
 }
 
 /* 📝 Estilos para los inputs y textarea */
 .input-custom {
-    border-radius: 8px;
-    padding: 12px;
-    border: 2px solid var(--gris-borde);
-    transition: all 0.3s ease-in-out;
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 12px; /* Padding */
+    border: 2px solid var(--gris-borde); /* Borde gris */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 
 .input-custom:focus {
-    border-color: var(--rojo-brillante);
-    box-shadow: 0 0 8px var(--negro-transparente);
+    border-color: var(--rojo-brillante); /* Borde rojo brillante al enfocar */
+    box-shadow: 0 0 8px var(--negro-transparente); /* Sombra */
 }
 
 /* ✉️ Botón de enviar */
 .btn-submit {
-    background-color: var(--rojo-brillante);
-    border: none;
-    color: var(--blanco-roto);
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    padding: 12px 20px; /* Padding */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 
 .btn-submit:hover {
-    background-color: var(--rojo-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🎨 Botones personalizados para el panel del restaurante */
 .btn-custom {
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 12px 18px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
+    font-size: 1.1rem; /* Tamaño de fuente */
+    font-weight: 600; /* Negrita */
+    padding: 12px 18px; /* Padding */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear verticalmente */
+    gap: 8px; /* Espacio entre elementos */
+    justify-content: center; /* Centrar horizontalmente */
 }
 
 /* 🟡 Botón de "Editar Restaurante" */
 .btn-edit {
-    background-color: var(--naranja);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--naranja); /* Fondo naranja */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-edit:hover {
-    background-color: var(--naranja-oscuro);
-    transform: translateY(-2px);
-    color: var(--rojo-brillante);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--naranja-oscuro); /* Fondo naranja oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🔴 Botón de "Ir a Reservas" */
 .btn-reservas {
-    background-color: var(--rojo-brillante);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-reservas:hover {
-    background-color: var(--rojo-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
 
 /* 🎨 Estilos generales del formulario */
 .card {
-    border-radius: 12px;
-    background: var(--blanco-roto);
-    border: none;
+    border-radius: 12px; /* Bordes redondeados */
+    background: var(--blanco-roto); /* Fondo blanco roto */
+    border: none; /* Sin borde */
 }
 
 /* 📝 Estilos para los inputs y textarea */
 .input-custom {
-    border-radius: 8px;
-    padding: 12px;
-    border: 2px solid var(--gris-borde);
-    transition: all 0.3s ease-in-out;
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 12px; /* Padding */
+    border: 2px solid var(--gris-borde); /* Borde gris */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 
 .input-custom:focus {
-    border-color: var(--rojo-brillante);
-    box-shadow: 0 0 8px var(--negro-transparente);
+    border-color: var(--rojo-brillante); /* Borde rojo brillante al enfocar */
+    box-shadow: 0 0 8px var(--negro-transparente); /* Sombra */
 }
 
 /* 🖼️ Estilo para la previsualización de la imagen */
 .image-preview img {
-    max-width: 150px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px var(--negro-transparente);
+    max-width: 150px; /* Ancho máximo */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 6px var(--negro-transparente); /* Sombra */
 }
 
 /* ✉️ Botón de enviar */
 .btn-submit {
-    background-color: var(--rojo-brillante);
-    border: none;
-    color: var(--blanco-roto);
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
+    background-color: var(--rojo-brillante); /* Fondo rojo brillante */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    padding: 12px 20px; /* Padding */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 
 .btn-submit:hover {
-    background-color: var(--rojo-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente);
+    background-color: var(--rojo-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente); /* Sombra */
 }
-
 
 /* Hero Section con Parallax */
 .hero {
-    position: relative;
-    background: url('../img/6.jpg') center/cover no-repeat fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 0;
-    border-radius: 0;
+    position: relative; /* Posición relativa */
+    background: url('../img/6.jpg') center/cover no-repeat fixed; /* Fondo con imagen */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+    z-index: 0; /* Índice z */
+    border-radius: 0; /* Sin bordes redondeados */
 }
 
 .hero-content {
-    background: var(--negro-transparente);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    z-index: 1;
+    background: var(--negro-transparente); /* Fondo negro transparente */
+    padding: 20px; /* Padding */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Texto centrado */
+    z-index: 1; /* Índice z */
 }
 
 .hero h1 {
-    font-size: 3rem;
-    color: var(--dorado);
+    font-size: 3rem; /* Tamaño de fuente */
+    color: var(--dorado); /* Color dorado */
 }
 
 .hero p {
-    font-size: 1.4rem;
-    color: var(--blanco-roto);
+    font-size: 1.4rem; /* Tamaño de fuente */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .carousel-inner .carousel-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
+    width: 100%; /* Ancho completo */
+    height: 300px; /* Altura */
+    object-fit: contain; /* Ajustar la imagen sin deformarse */
 }
 
 #logo {
-    height: 60px;
+    height: 60px; /* Altura */
 }
-
 
 /* Contenedor de los botones */
 .button-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; /* Espaciado entre los botones */
-    width: 100%;
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    align-items: center; /* Centrar horizontalmente */
+    gap: 10px; /* Espacio entre elementos */
+    width: 100%; /* Ancho completo */
 }
 
 /* Estilo uniforme para los botones */
 .button-group .btn {
-    width: 100%;  /* Que ocupen todo el ancho posible */
-    max-width: 250px; /* Ancho máximo para evitar botones demasiado largos */
-    text-align: center; /* Centrar el texto e iconos */
+    width: 100%; /* Ancho completo */
+    max-width: 250px; /* Ancho máximo */
+    text-align: center; /* Texto centrado */
 }
-
 
 /* 🎨 ESTILOS PREMIUM PARA LOS MODALES */
 .modal-content {
-    border-radius: 12px;
-    border: none;
-    background: var(--blanco-transparente);
-    box-shadow: 0 10px 30px var(--negro-transparente-hover);
-    backdrop-filter: blur(10px); /* ✅ Efecto vidrio esmerilado */
+    border-radius: 12px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    background: var(--blanco-transparente); /* Fondo blanco transparente */
+    box-shadow: 0 10px 30px var(--negro-transparente-hover); /* Sombra */
+    backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
-    padding: 20px;
-    transition: all 0.3s ease-in-out;
+    padding: 20px; /* Padding */
+    transition: all 0.3s ease-in-out; /* Transición */
 }
 
 /* 🔹 Mejorar el título del modal */
 .modal-header {
-    border-bottom: none;
-    text-align: center;
+    border-bottom: none; /* Sin borde inferior */
+    text-align: center; /* Texto centrado */
 }
 
 .modal-title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--azul-oscuro);
+    font-size: 1.6rem; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: var(--azul-oscuro); /* Color azul oscuro */
 }
 
 /* ❌ Botón de cerrar con diseño elegante */
 .modal-header .btn-custom {
-    background: none;
-    border: none;
-    color: var(--rojo-brillante);
-    font-size: 1.5rem;
-    transition: color 0.3s ease-in-out;
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: var(--rojo-brillante); /* Color rojo brillante */
+    font-size: 1.5rem; /* Tamaño de fuente */
+    transition: color 0.3s ease-in-out; /* Transición */
 }
 
 .modal-header .btn-custom:hover {
-    color: var(--rojo-oscuro);
+    color: var(--rojo-oscuro); /* Color rojo oscuro al pasar el cursor */
 }
 
 /* 📝 Estilos para los inputs del formulario */
 .modal-body form .form-control {
-    border-radius: 8px;
-    border: 2px solid var(--gris-borde);
-    transition: all 0.3s ease-in-out;
-    padding: 12px;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 2px solid var(--gris-borde); /* Borde gris */
+    transition: all 0.3s ease-in-out; /* Transición */
+    padding: 12px; /* Padding */
 }
 
 .modal-body form .form-control:focus {
-    border-color: var(--rojo-brillante);
-    box-shadow: 0 0 10px var(--negro-transparente-hover);
+    border-color: var(--rojo-brillante); /* Borde rojo brillante al enfocar */
+    box-shadow: 0 0 10px var(--negro-transparente-hover); /* Sombra */
 }
 
 .form-select {
-    border-radius: 5px;
-    border: 2px solid var(--gris-borde);
+    border-radius: 5px; /* Bordes redondeados */
+    border: 2px solid var(--gris-borde); /* Borde gris */
 }
 .form-select:focus {
-border-color: var(--rojo-brillante);
+    border-color: var(--rojo-brillante); /* Borde rojo brillante al enfocar */
 }
 
 /* 🟢 Botones de acción dentro del modal */
 .modal-footer .btn-custom {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 12px 18px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: 600; /* Negrita */
+    padding: 12px 18px; /* Padding */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear verticalmente */
+    gap: 8px; /* Espacio entre elementos */
+    justify-content: center; /* Centrar horizontalmente */
 }
 
 /* ✅ Botón de confirmar */
 .btn-primary-custom {
-    background-color: var(--verde);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--verde); /* Fondo verde */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
-.btn-primary:hover{
-    color: var(--rojo-brillante);
+.btn-primary:hover {
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
 }
 
 .btn-primary-custom:hover {
-    background-color: var(--verde-oscuro);
-    transform: translateY(-2px);
-    color: var(--rojo-brillante);
-    box-shadow: 0 4px 10px var(--negro-transparente-hover);
+    background-color: var(--verde-oscuro); /* Fondo verde oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    color: var(--rojo-brillante); /* Color rojo brillante al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente-hover); /* Sombra */
 }
 
 /* 🔴 Botón de cancelar */
 .btn-danger-custom {
-    background-color: var(--rojo-peligro);
-    border: none;
-    color: var(--blanco-roto);
+    background-color: var(--rojo-peligro); /* Fondo rojo peligro */
+    border: none; /* Sin borde */
+    color: var(--blanco-roto); /* Color blanco roto */
 }
 
 .btn-danger-custom:hover {
-    background-color: var(--rojo-peligro-oscuro);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--negro-transparente-hover);
+    background-color: var(--rojo-peligro-oscuro); /* Fondo rojo oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Mover hacia arriba al pasar el cursor */
+    box-shadow: 0 4px 10px var(--negro-transparente-hover); /* Sombra */
 }
-
 
 .form-control {
-    border-radius: 5px;
-    border: 2px solid var(--gris-borde);
+    border-radius: 5px; /* Bordes redondeados */
+    border: 2px solid var(--gris-borde); /* Borde gris */
 }
 .form-control:focus {
-border-color: var(--rojo-brillante);
+    border-color: var(--rojo-brillante); /* Borde rojo brillante al enfocar */
 }
 
 /* 🔴 Cambiar el color cuando se pasa el cursor */
@@ -808,68 +791,68 @@ border-color: var(--rojo-brillante);
 }
 
 .boton-arriba {
-    text-decoration: none;
-    color: var(--rojo-brillante);
+    text-decoration: none; /* Sin subrayado */
+    color: var(--rojo-brillante); /* Color rojo brillante */
 }
 
 .c1 {
-    position: relative; 
-    z-index: 1;
+    position: relative; /* Posición relativa */
+    z-index: 1; /* Índice z */
 }
 
 .c2 {
-    max-width: 700px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    overflow: hidden;
+    max-width: 700px; /* Ancho máximo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    overflow: hidden; /* Ocultar desbordamiento */
 }
 
 .ci {
-    object-fit: contain; 
-    height: 500px; 
-    width: 100%; 
-    margin: auto;
+    object-fit: contain; /* Ajustar la imagen sin deformarse */
+    height: 500px; /* Altura */
+    width: 100%; /* Ancho completo */
+    margin: auto; /* Margen automático */
 }
 
 .sh {
-    min-height: 100vh; 
-    position: relative; 
-    overflow: hidden;
+    min-height: 100vh; /* Altura mínima */
+    position: relative; /* Posición relativa */
+    overflow: hidden; /* Ocultar desbordamiento */
 }
 
 .fp {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-image: url('../../img/paralax.png'); 
-    background-attachment: fixed; 
-    background-size: cover; 
-    background-position: center; 
-    z-index: -1;
+    position: absolute; /* Posición absoluta */
+    top: 0; /* Superior */
+    left: 0; /* Izquierda */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    background-image: url('../../img/paralax.png'); /* Fondo con imagen */
+    background-attachment: fixed; /* Fondo fijo */
+    background-size: cover; /* Cubrir */
+    background-position: center; /* Centrar */
+    z-index: -1; /* Índice z */
 }
 
 .rt {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(169, 169, 169, 0.5); 
-    z-index: 0;
+    position: absolute; /* Posición absoluta */
+    top: 0; /* Superior */
+    left: 0; /* Izquierda */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    background-color: rgba(169, 169, 169, 0.5); /* Fondo gris transparente */
+    z-index: 0; /* Índice z */
 }
 
 .ad {
-    max-width: 600px; 
-    background: rgba(255, 255, 255, 0.9);
+    max-width: 600px; /* Ancho máximo */
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco transparente */
 }
 
 .hi {
-    height: 40px; 
-    margin-right: 10px;
+    height: 40px; /* Altura */
+    margin-right: 10px; /* Margen derecho */
 }
 
 .hf {
-    display: none;
+    display: none; /* No mostrar */
 }

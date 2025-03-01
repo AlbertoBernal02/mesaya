@@ -32,11 +32,13 @@ class FortifyServiceProvider extends ServiceProvider
     {
 
         Fortify::requestPasswordResetLinkView(function () {
-            return View::make('auth.forgot-password'); // 👈 Usa la vista que creamos
+            // Devuelve la vista forgot-password
+            return View::make('auth.forgot-password'); 
         });
     
         Fortify::resetPasswordView(function () {
-            return View::make('auth.reset-password'); // 👈 Usa la vista de reset
+            // Devuelve la vista reset-password
+            return View::make('auth.reset-password'); 
         });
 
         Fortify::createUsersUsing(CreateNewUser::class);
@@ -47,10 +49,12 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
+            // Devuelve el límite de 5 intentos máximos por minuto
             return Limit::perMinute(5)->by($throttleKey);
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
+            // Devuelve el límite de 5 intentos máximos por minuto
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
     }

@@ -26,38 +26,39 @@ class ReservaRestaurante extends Mailable
         $this->reserva = $reserva;
         $this->cliente = User::find($reserva->user_id);
 
-        // Calcular el monto: 1€ por cada comensal
+        // Calcula el monto a cobrar (1€ por cada comensal)
         $montoTotal = $reserva->num_comensales * 1.00;
 
-        // Crear la factura en la BD
+        // Crea la factura en la BBDDD
         $this->factura = Factura::create([
             'reserva_id' => $reserva->id,
             'restaurante' => $reserva->restaurante,
             'monto' => $montoTotal,
         ]);
 
-        // 📌 Asegurar que la carpeta `public/facturas/` existe
+        // Asegura que la carpeta "public/facturas/" existe
         $facturasPath = public_path('facturas/');
 
         if (!File::exists($facturasPath)) {
             File::makeDirectory($facturasPath, 0755, true);
         }
 
-        // 📌 Definir la ruta del archivo en `public/facturas/`
+        // Define la ruta del archivo en "public/facturas/"
         $this->pdfPath = $facturasPath . "factura_{$this->factura->id}.pdf";
 
-        // 📌 URL pública de la factura
+        // URL pública de la factura
         $this->publicPath = asset("facturas/factura_{$this->factura->id}.pdf");
 
-        // 📌 Generar el PDF
+        // Genera el PDF
         $pdf = Pdf::loadView('facturas.pdf', ['factura' => $this->factura, 'reserva' => $this->reserva]);
 
-        // 📌 Guardar el PDF en `public/facturas/`
+        // Guarda el PDF en "public/facturas/"
         file_put_contents($this->pdfPath, $pdf->output());
     }
 
     public function build()
     {
+        // Devolvuelve el asunto, la vista del cuerpo del correo y los datos
         return $this->subject('Nueva reserva en tu restaurante')
                     ->view('emails.reserva-restaurante')
                     ->with([

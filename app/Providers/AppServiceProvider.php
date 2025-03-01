@@ -35,18 +35,22 @@ class AppServiceProvider extends ServiceProvider
 
 
         Fortify::loginView(function () {
-            return view('auth.login'); // Asegúrate de tener esta vista
+            // Devuelve la vista login
+            return view('auth.login');
         });
 
         Fortify::registerView(function () {
-            return view('auth.register'); // Asegúrate de tener esta vista
+            // Devuelve la vista register
+            return view('auth.register');
         });
 
         Fortify::requestPasswordResetLinkView(function () {
+            // Devuelve la vista forgot-password
             return view('auth.forgot-password');
         });
 
         Fortify::resetPasswordView(function () {
+            // Devuelve la vista reset-password
             return view('auth.reset-password');
         });
     }

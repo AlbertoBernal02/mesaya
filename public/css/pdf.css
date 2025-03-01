@@ -1,10 +1,44 @@
+body { 
+    font-family: Arial, sans-serif; /* Fuente Arial */
+}
 
-        body { font-family: Arial, sans-serif; }
-        .container { width: 80%; margin: auto; }
-        .header { text-align: center; margin-bottom: 20px; }
-        .details { display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .details div { width: 48%; }
-        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .table, .table th, .table td { border: 1px solid black; }
-        .table th, .table td { padding: 8px; text-align: left; }
-        .footer { margin-top: 20px; font-size: 12px; text-align: center; }
+.container {
+    width: 80%; /* Ancho del contenedor */
+    margin: auto; /* Centrar el contenedor */
+}
+
+.header {
+    text-align: center; /* Texto centrado */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+.details {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espaciar elementos */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+.details div {
+    width: 48%; /* Ancho de cada div */
+}
+
+.table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsar bordes */
+    margin-top: 20px; /* Margen superior */
+}
+
+.table, .table th, .table td {
+    border: 1px solid black; /* Bordes negros */
+}
+
+.table th, .table td {
+    padding: 8px; /* Padding */
+    text-align: left; /* Texto alineado a la izquierda */
+}
+
+.footer {
+    margin-top: 20px; /* Margen superior */
+    font-size: 12px; /* Tamaño de fuente */
+    text-align: center; /* Texto centrado */
+}

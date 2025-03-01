@@ -19,6 +19,7 @@ class ReservaConfirmada extends Mailable
 
     public function build()
     {
+        // Devolvuelve el asunto, la vista del cuerpo del correo y los datos
         return $this->subject('Confirmación de Reservas')
                     ->view('emails.reserva_confirmada')
                     ->with([

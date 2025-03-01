@@ -16,6 +16,4 @@ class RestaurantController extends Controller
             return $next($request);
         });
     }
-
-    // ...existing code...
 }

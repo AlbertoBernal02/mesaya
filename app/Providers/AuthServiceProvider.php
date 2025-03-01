@@ -25,10 +25,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('isAdmin', function (User $user) {
+            // Decuelve el rol del usuario y el rol del usurio Administrador
             return $user->role && $user->role->role_name === 'Administrador';
         });
 
         Gate::define('isClient', function (User $user) {
+            // Decuelve el rol del usuario y el rol del usurio Cliente
             return $user->role && $user->role->role_name === 'Cliente';
         });
     }

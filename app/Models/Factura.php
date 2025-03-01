@@ -11,6 +11,7 @@ class Factura extends Model
 
     protected $fillable = ['reserva_id', 'restaurante', 'monto'];
 
+    // Relación con reserva
     public function reserva()
     {
         return $this->belongsTo(ReservaConfirmada::class, 'reserva_id');

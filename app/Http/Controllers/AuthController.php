@@ -1,5 +1,4 @@
 <?php
-// app/Http/Controllers/AuthController.php
 
 namespace App\Http\Controllers;
 
@@ -13,6 +12,7 @@ class AuthController extends Controller
     // Muestra el formulario de login
     public function showLoginForm()
     {
+        // Decuelve la vista login
         return view('auth.login');
     }
 
@@ -30,12 +30,14 @@ class AuthController extends Controller
             return redirect()->intended('/home');  // Redirige a la página principal o la que tengas configurada
         }
 
+        // Decuelve la vista anterior y un mensaje de error
         return back()->withErrors(['email' => 'Credenciales incorrectas.']);
     }
 
     // Muestra el formulario de registro
     public function showRegisterForm()
     {
+        // Decuelve la vista register
         return view('auth.register');
     }
 
@@ -54,19 +56,22 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user',  // Aquí puedes definir el rol por defecto
+            'role' => 'user',  // Pone el rol a user por defecto
         ]);
 
         // Inicia sesión automáticamente
         Auth::login($user);
 
-        return redirect()->route('home');  // Redirige a la página principal o la que tengas configurada
+        // Decuelve la vista home
+        return redirect()->route('home');  
     }
 
     // Cierra la sesión
     public function logout()
     {
+        // Cierra sesión al usuario
         Auth::logout();
+        // Decuelve la vista raiz
         return redirect('/');
     }
 }

@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RestauranteMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
         // Comprobamos si el usuario está autenticado y si tiene el rol de 'usuario'
@@ -22,7 +15,7 @@ class RestauranteMiddleware
             return $next($request);
         }
 
-        // Si no cumple la condición, redirigimos a otra página, por ejemplo, al inicio
+        // Si no cumple la condición, redirigimos al inicio
         return redirect('/');
     }
 }

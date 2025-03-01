@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuarioMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
         // Comprobamos si el usuario está autenticado y si tiene el rol de 'usuario'

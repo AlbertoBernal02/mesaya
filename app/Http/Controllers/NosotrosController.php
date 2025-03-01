@@ -10,9 +10,10 @@ class NosotrosController extends Controller
 {
     public function index()
     {
-        // Contar las reservas pendientes para el usuario autenticado
+        // Cuenta las reservas pendientes para el usuario autenticado
         $reservasPendientes = Reserva::where('user_id', Auth::id())->count();
 
+        // Decuelve la vista nosotros
         return view('nosotros', compact('reservasPendientes'));
     }
 }

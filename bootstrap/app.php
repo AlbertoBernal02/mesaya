@@ -14,7 +14,7 @@ use App\Providers\FortifyServiceProvider;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withProviders([
-        FortifyServiceProvider::class, // Asegura que Laravel Fortify se cargue
+        FortifyServiceProvider::class, // Asegura que Fortify se cargue
     ])  
     ->withRouting(
         web: __DIR__.'/../routes/web.php',

@@ -11,7 +11,9 @@ class Reserva extends Model
 
     protected $fillable = ['user_id', 'restaurante', 'fecha', 'hora', 'num_comensales'];
 
-    public function user()
+
+// Relación con user
+public function user()
     {
         return $this->belongsTo(User::class);
     }

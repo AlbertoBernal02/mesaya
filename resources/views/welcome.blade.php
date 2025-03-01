@@ -22,7 +22,7 @@
             </button>
         </div>
 
-        <!-- Modal para añadir producto -->
+        <!-- Modal para añadir un restaurante -->
         <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -105,7 +105,7 @@
 
 
 
-            <!-- Modal para restaurar productos ocultos -->
+            <!-- Modal para restaurar restaurantes ocultos -->
             <div class="modal fade" id="restoreProductModal" tabindex="-1" aria-labelledby="restoreProductModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -197,7 +197,7 @@
         @endforeach
 
 
-        <!-- 🟢 PAGINACIÓN MEJORADA -->
+        <!-- Paginación -->
 <div class="d-flex justify-content-center align-items-center mt-4">
     <nav aria-label="Paginación">
         <ul class="pagination pagination-sm mb-0">
@@ -211,7 +211,7 @@
 </div>
 
 
-<!-- 🟢 MODAL DE RESERVA -->
+<!-- Modal de reserva -->
 <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

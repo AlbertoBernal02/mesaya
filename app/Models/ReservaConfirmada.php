@@ -21,11 +21,11 @@ class ReservaConfirmada extends Model
     protected static function booted()
     {
         static::created(function ($reserva) {
-            // Buscar el restaurante por su nombre
+            // Busca el restaurante por su nombre
             $restaurante = Product::where('name', $reserva->restaurante)->first();
 
             if ($restaurante) {
-                // Restar el número de comensales de la capacidad
+                // Resta el número de comensales de la capacidad
                 $restaurante->capacity = max(0, $restaurante->capacity - $reserva->num_comensales);
                 $restaurante->save();
             }

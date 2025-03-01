@@ -12,26 +12,26 @@ class ScheduleController extends Controller {
 
     public function index(Request $request)
 {
-    // Obtener el restaurant_id desde el parámetro de la consulta (URL)
+    // Obtiene el restaurant_id desde el parámetro de la consulta (URL)
     $restaurantId = $request->query('restaurant_id');
     
-    // Buscar el restaurante por el ID del usuario autenticado
+    // Busca el restaurante por el ID del usuario autenticado
     $restaurant = Product::where('user_id', Auth::id())->first();
 
-    // Verificar si el restaurante existe y si el ID coincide
+    // Verifica si el restaurante existe y si el ID coincide
     if (!$restaurant || $restaurant->id != $restaurantId) {
         return response()->json(['message' => 'No se encuentra el restaurante o no coincide con el ID proporcionado.'], 404);
     }
 
-    // Obtener el horario del restaurante
+    // Obtiene el horario del restaurante
     $schedule = $restaurant->schedule;
 
-    // Verificar si se encontró el horario
+    // Verifica si se encontró el horario
     if (!$schedule) {
         return response()->json(['message' => 'No se ha encontrado el horario para este restaurante.'], 404);
     }
 
-    // Retornar el horario en formato JSON
+    // Devuelve el horario en formato JSON
     return response()->json($schedule);
 }
 

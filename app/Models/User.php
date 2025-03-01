@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable implements MustVerifyEmail // Implementa MustVerifyEmail correctamente
+class User extends Authenticatable implements MustVerifyEmail 
 {
     use HasFactory, Notifiable;
 
@@ -17,16 +17,13 @@ class User extends Authenticatable implements MustVerifyEmail // Implementa Must
         'password',
         'role',
         'active',
-        'email_verified_at', // Este campo es crucial para la verificación
+        'email_verified_at',
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime', // Asegura que email_verified_at sea un timestamp
     ];
 
-    /**
-     * Sobrescribir boot para verificar automáticamente los administradores.
-     */
     protected static function boot()
     {
         parent::boot();
@@ -38,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail // Implementa Must
         });
     }
 
+    // Relación con product
     public function product()
 {
     return $this->hasOne(Product::class, 'user_id');

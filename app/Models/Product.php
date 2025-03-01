@@ -20,17 +20,19 @@ class Product extends Model
         'visible',
     ];
 
-    // Modelo Product
+    // Relación con categorías
     public function category()
     {
         return $this->belongsTo(Category::class, 'categories_id'); // Asegúrate de que 'categories_id' es el nombre correcto del campo en la base de datos
     }
+
+    // Relación con user
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-// En el modelo Product
+// Relación con schedule
 public function schedule() {
     return $this->hasOne(Schedule::class, 'product_id');
 }

@@ -19,6 +19,7 @@ class ContactoMailable extends Mailable
 
     public function build()
     {
+        // Devolvuelve el asunto, la vista del cuerpo del correo y los datos
         return $this->subject($this->datos['asunto'])
                     ->view('emails.contacto')
                     ->with('datos', $this->datos);
