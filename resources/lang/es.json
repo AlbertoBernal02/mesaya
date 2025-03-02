@@ -5,29 +5,21 @@
     "registrarse": "Registrarse",
     "confirmar_reservas": "Confirmar Reservas",
     "cerrar_sesion": "Cerrar Sesión",
-
-
-   
-        "mesa_ya": "MESA YA",
-        "descubre_experiencias": "Descubre experiencias únicas con los restaurantes gracias a Mesa YA",
-       
-        "direccion": "Av. Principal 123, Ciudad",
-        "telefono": "+123 456 789",
-        "email_contacto": "adminmesaya@yopmail.com",
-        "siguenos": "Síguenos",
-        "mapa_sitio": "Mapa del Sitio",
-        "inicio": "Inicio",
-       
-        "todos_derechos": "Todos los derechos reservados.",
-
-
+    "mesa_ya": "MESA YA",
+    "descubre_experiencias": "Descubre experiencias únicas con los restaurantes gracias a Mesa YA",
+    "direccion": "Av. Principal 123, Ciudad",
+    "telefono": "+123 456 789",
+    "email_contacto": "adminmesaya@yopmail.com",
+    "siguenos": "Síguenos",
+    "mapa_sitio": "Mapa del Sitio",
+    "inicio": "Inicio",
+    "todos_derechos": "Todos los derechos reservados.",
     "contacto_mensaje": "Si tienes alguna pregunta, por favor completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible.",
     "nombre": "Nombre",
     "correo_electronico": "Correo Electrónico",
     "asunto": "Asunto",
     "mensaje": "Mensaje",
     "enviar_mensaje": "Enviar Mensaje",
-   
     "gif_ejemplo": "GIF de ejemplo",
     "descripcion_empresa": "Somos una plataforma que conecta a los amantes de la gastronomía con los mejores restaurantes locales. Nuestra misión es facilitar reservas y mejorar la experiencia de comer fuera de casa, brindando un servicio cómodo, rápido y eficiente para todos.",
     "disfruta_ventajas": "Disfruta de nuestras ventajas",
@@ -37,13 +29,9 @@
     "texto_card_2": "Tendrás más opciones de eventos organizados por nosotros y descuentos en nuestros restaurantes.",
     "ofertas_exclusivas": "Ofertas Exclusivas",
     "texto_card_3": "Accede a promociones y descuentos exclusivos solo para usuarios de MesaYa.",
-
-
     "panel_restaurante": "Panel Restaurante",
     "editar_restaurante": "Editar Restaurante",
     "ir_a_reservas": "Ir a Reservas",
-
-
     "reservas_confirmadas": "Reservas Confirmadas",
     "no_reservas_confirmadas": "No hay reservas confirmadas en este momento.",
     "cliente": "Cliente",
@@ -51,9 +39,6 @@
     "hora": "Hora",
     "num_comensales": "Nº Comensales",
     "usuario_desconocido": "Usuario desconocido",
-
-
-   
     "revisar_gestionar_reservas": "Revisa y gestiona tus reservas antes de confirmarlas.",
     "restaurante": "Restaurante",
     "acciones": "Acciones",
@@ -66,10 +51,6 @@
     "si_eliminar": "Sí, eliminar",
     "cancelar": "Cancelar",
     "confirmar_reserva": "Confirmar Reserva",
-
-
-
-
     "editar_producto": "Editar Producto",
     "nombre_producto": "Nombre del Producto",
     "categoria": "Categoría",
@@ -84,46 +65,27 @@
     "selecciona_horas_bloquear": "Selecciona las horas a bloquear",
     "mantener_ctrl_seleccionar": "Mantén presionada la tecla Ctrl o Cmd para seleccionar múltiples horas.",
     "guardar_cambios": "Guardar Cambios",
-
-
-   
     "cuenta_no_verificada": "Tu cuenta no está verificada. Por favor, revisa tu correo electrónico para confirmarla.",
     "reenviar_correo": "Reenviar correo",
     "contrasena": "Contraseña",
     "olvido_contrasena": "¿Olvidaste tu contraseña?",
-
-
     "confirmar_contrasena": "Confirmar Contraseña",
-
-
     "recuperar_contrasena": "Recuperar Contraseña",
     "olvidaste_contrasena": "¿Olvidaste tu contraseña?",
     "ingresa_correo_para_restaurar": "Ingresa tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
     "enviar_enlace_restauracion": "Enviar Enlace de Restablecimiento",
-
-
     "restablecer_contrasena": "Restablecer Contraseña",
     "introducir_nueva_contrasena": "Introduce una nueva contraseña para tu cuenta.",
     "nueva_contrasena": "Nueva Contraseña",
-
-
     "verificacion_correo": "Verificación de Correo",
     "correo_verificacion_enviado": "Hemos enviado un correo de verificación a tu dirección de email. Por favor, revisa tu bandeja de entrada y haz clic en el enlace para activar tu cuenta.",
     "reenviar_correo_mensaje": "Si no has recibido el correo, puedes solicitar que te lo reenviemos:",
     "reenviar_correo_verificacion": "Reenviar Correo de Verificación",
-
-
     "añadir_restaurante": "Añadir Restaurante",
     "restaurar_restaurante": "Restaurar Restaurante",
-
-
     "añadir_producto": "Añadir Producto",
-
-
     "restaurar_restaurante_oculto": "Restaurar Restaurante Oculto",
     "seleccionar_restaurante": "Selecciona un Restaurante",
-
-
     "no_hay_restaurantes": "No hay restaurantes disponibles.",
     "sin_categoria": "Sin categoría",
     "sin_ubicacion": "Sin ubicación",
@@ -132,8 +94,6 @@
     "reservar_ahora": "Reservar Ahora",
     "editar": "Editar",
     "ocultar": "Eliminar",
-
-
     "reserva_tu_mesa": "Reserva tu mesa",
     "fecha_reserva": "Fecha de Reserva",
     "numero_personas": "Número de Personas",
@@ -151,5 +111,6 @@
     "carrusel1alt": "Primera imagen del carrousel",
     "carrusel2alt": "Segunda imagen del carrousel",
     "carrusel3alt": "Tercera imagen del carrousel",
-    "logoalt": "Imagen del logotipo"
+    "logoalt": "Imagen del logotipo",
+    "mensaje_aqui": "Escribe tu mensaje aquí..."
 }

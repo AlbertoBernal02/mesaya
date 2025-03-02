@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="mensaje" class="form-label">{{ __('mensaje') }}</label> <!-- Etiqueta para el mensaje -->
-                <textarea class="form-control input-custom" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea> <!-- Área de texto para el mensaje -->
+                <textarea class="form-control input-custom" id="mensaje" name="mensaje" rows="5" placeholder="{{ __('mensaje_aqui') }}" required></textarea> <!-- Área de texto para el mensaje -->
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-submit btn-custom">

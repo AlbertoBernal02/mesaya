@@ -79,7 +79,7 @@ class ProductController extends Controller
         ]);
 
         // Devuelve la vista anterior y un mensaje de éxito
-        return redirect()->back()->with('success', 'Restaurante creado con éxito. Se ha enviado un email de verificación al restaurante para que confirme su cuenta. Na mas que el restaurante confirme su cuenta deberá darle a "¿Olvidaste tu contraseña?" para elegir su contraseña de acceso.');
+        return redirect()->back()->with('success', 'Restaurante creado con éxito. Se ha enviado un email de verificación al restaurante para que confirme su cuenta. Nada mas que el restaurante confirme su cuenta deberá darle a "¿Olvidaste tu contraseña?" para elegir su contraseña de acceso.');
     }
 
     protected function create(array $data)

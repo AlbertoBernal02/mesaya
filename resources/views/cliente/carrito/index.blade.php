@@ -97,7 +97,7 @@
 <div class="text-center mt-4">
     @if ($reservas->isNotEmpty())
     <form method="POST" action="{{ route('carrito.confirmar') }}">
-        @csrf // Token CSRF para seguridad
+        @csrf <!-- Token CSRF para seguridad -->
         <button type="submit" class="btn btn-success btn-lg">
             🟢 {{ __('confirmar_reserva') }} <!-- Botón para confirmar la reserva -->
         </button>

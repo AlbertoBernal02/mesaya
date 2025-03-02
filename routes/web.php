@@ -18,10 +18,9 @@ use Laravel\Fortify\Http\Controllers\NewPasswordController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
 
 // Ruta página de inicio
-Route::get('/', function (\Illuminate\Http\Request $request) {
+Route::get('/', function (Request $request) {
     if ($request->has('lang')) {
         App::setLocale($request->query('lang'));
     }

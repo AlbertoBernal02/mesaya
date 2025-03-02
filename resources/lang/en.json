@@ -5,31 +5,21 @@
     "registrarse": "Register",
     "confirmar_reservas": "Confirm Reservations",
     "cerrar_sesion": "Logout",
-
-
-
-
-
-
-   
-        "mesa_ya": "MESA YA",
-        "descubre_experiencias": "Discover unique experiences with restaurants thanks to Mesa YA",
-        "direccion": "Av. Principal 123, City",
-        "telefono": "+123 456 789",
-        "email_contacto": "adminmesaya@yopmail.com",
-        "siguenos": "Follow us",
-        "mapa_sitio": "Site Map",
-        "inicio": "Home",
-        "todos_derechos": "All rights reserved.",
-
-
+    "mesa_ya": "MESA YA",
+    "descubre_experiencias": "Discover unique experiences with restaurants thanks to Mesa YA",
+    "direccion": "Av. Principal 123, City",
+    "telefono": "+123 456 789",
+    "email_contacto": "adminmesaya@yopmail.com",
+    "siguenos": "Follow us",
+    "mapa_sitio": "Site Map",
+    "inicio": "Home",
+    "todos_derechos": "All rights reserved.",
     "contacto_mensaje": "If you have any questions, please fill out the form below and we will get in touch with you as soon as possible.",
     "nombre": "Name",
     "correo_electronico": "Email",
     "asunto": "Subject",
     "mensaje": "Message",
     "enviar_mensaje": "Send Message",
-   
     "gif_ejemplo": "Example GIF",
     "descripcion_empresa": "We are a platform that connects food lovers with the best local restaurants. Our mission is to facilitate reservations and enhance the dining experience by providing a comfortable, fast, and efficient service for everyone.",
     "disfruta_ventajas": "Enjoy Our Benefits",
@@ -39,13 +29,9 @@
     "texto_card_2": "You will have more options for events organized by us and discounts at our restaurants.",
     "ofertas_exclusivas": "Exclusive Offers",
     "texto_card_3": "Access promotions and exclusive discounts available only for MesaYa users.",
-
-
     "panel_restaurante": "Restaurant Panel",
     "editar_restaurante": "Edit Restaurant",
     "ir_a_reservas": "Go to Reservations",
-
-
     "reservas_confirmadas": "Confirmed Reservations",
     "no_reservas_confirmadas": "There are no confirmed reservations at this time.",
     "cliente": "Customer",
@@ -53,12 +39,6 @@
     "hora": "Time",
     "num_comensales": "Number of Guests",
     "usuario_desconocido": "Unknown User",
-
-
-
-
-
-
     "revisar_gestionar_reservas": "Review and manage your reservations before confirming them.",
     "restaurante": "Restaurant",
     "acciones": "Actions",
@@ -71,8 +51,6 @@
     "si_eliminar": "Yes, delete",
     "cancelar": "Cancel",
     "confirmar_reserva": "Confirm Reservation",
-
-
     "editar_producto": "Edit Product",
     "nombre_producto": "Product Name",
     "categoria": "Category",
@@ -87,47 +65,27 @@
     "selecciona_horas_bloquear": "Select hours to block",
     "mantener_ctrl_seleccionar": "Hold down the Ctrl or Cmd key to select multiple hours.",
     "guardar_cambios": "Save Changes",
-
-
-
-
     "cuenta_no_verificada": "Your account is not verified. Please check your email to confirm it.",
     "reenviar_correo": "Resend Email",
     "contrasena": "Password",
     "olvido_contrasena": "Forgot Your Password?",
-
-
     "confirmar_contrasena": "Confirm Password",
-
-
     "recuperar_contrasena": "Recover Password",
     "olvidaste_contrasena": "Forgot your password?",
     "ingresa_correo_para_restaurar": "Enter your email address and we will send you a link to reset your password.",
     "enviar_enlace_restauracion": "Send Reset Link",
-
-
     "restablecer_contrasena": "Reset Password",
     "introducir_nueva_contrasena": "Enter a new password for your account.",
     "nueva_contrasena": "New Password",
-
-
     "verificacion_correo": "Email Verification",
     "correo_verificacion_enviado": "We have sent a verification email to your address. Please check your inbox and click the link to activate your account.",
     "reenviar_correo_mensaje": "If you have not received the email, you can request it to be resent:",
     "reenviar_correo_verificacion": "Resend Verification Email",
-
-
     "añadir_restaurante": "Add Restaurant",
     "restaurar_restaurante": "Restore Restaurant",
-
-
     "añadir_producto": "Add Product",
-
-
     "restaurar_restaurante_oculto": "Restore Hidden Restaurant",
     "seleccionar_restaurante": "Select a Restaurant",
-
-
     "no_hay_restaurantes": "No restaurants available.",
     "sin_categoria": "No category",
     "sin_ubicacion": "No location",
@@ -136,15 +94,12 @@
     "reservar_ahora": "Book Now",
     "editar": "Edit",
     "ocultar": "Delete",
-
-
     "reserva_tu_mesa": "Book Your Table",
     "fecha_reserva": "Reservation Date",
     "numero_personas": "Number of People",
     "reservar": "Book Now",
     "panel_restaurante_h2": "Restaurant Administration Panel",
     "imagen_roducto": "Product image",
-    
     "quienes_somos": "Who Are We?",
     "carrusel11": "Tired of waiting in endless lines to eat?",
     "carrusel12": "At Mesaya, we have the solution to your problem.",
@@ -156,5 +111,6 @@
     "carousel1alt": "First image of the carousel",
     "carousel2alt": "Second image of the carousel",
     "carousel3alt": "Third image of the carousel",
-    "logoalt": "Logo image"
+    "logoalt": "Logo image",
+    "mensaje_aqui": "Write your message here..."
 }
