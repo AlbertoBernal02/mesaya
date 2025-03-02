@@ -29,3 +29,5 @@ import './validateFormEdit.js'; // Importa el archivo validateFormEdit.js
 import './validarPassword.js'; // Importa el archivo validarPassword.js
 
 import './unavailableHours.js'; // Importa el archivo unavailableHours.js
+
+import './confirmDelete.js'; // Importa el archivo confirmDelete.js

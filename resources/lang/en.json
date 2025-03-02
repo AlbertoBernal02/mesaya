@@ -112,5 +112,6 @@
     "carousel2alt": "Second image of the carousel",
     "carousel3alt": "Third image of the carousel",
     "logoalt": "Logo image",
-    "mensaje_aqui": "Write your message here..."
+    "mensaje_aqui": "Write your message here...",
+    "text_delete": "Are you sure you want to delete this restaurant?"
 }

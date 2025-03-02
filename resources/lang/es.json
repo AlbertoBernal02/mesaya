@@ -112,5 +112,6 @@
     "carrusel2alt": "Segunda imagen del carrousel",
     "carrusel3alt": "Tercera imagen del carrousel",
     "logoalt": "Imagen del logotipo",
-    "mensaje_aqui": "Escribe tu mensaje aquí..."
+    "mensaje_aqui": "Escribe tu mensaje aquí...",
+    "text_delete": "¿Estás seguro de que quieres eliminar este restaurante?"
 }

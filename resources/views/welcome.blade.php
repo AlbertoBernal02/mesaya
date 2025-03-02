@@ -184,9 +184,12 @@
                         <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger-custom btn-custom">
+                            <button type="button" class="btn btn-danger-custom btn-custom delete-button"
+                                data-url="{{ route('admin.products.destroy', $product->id) }}"
+                                data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
                                 <i class="fas fa-trash-alt"></i> {{ __('ocultar') }}
                             </button>
+
                         </form>
                     </div>
 
@@ -243,6 +246,31 @@
 
 
                     <button type="submit" class="btn btn-primary w-100">{{ __('reservar') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de confirmación para eliminar restaurante -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmModalLabel">{{ __('confirmar_eliminacion') }}</h5>
+                <button type="button" class="btn btn-secondary-custom btn-custom" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>{{ __('text_delete') }}</p>
+                <form id="deleteForm" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger-custom btn-custom w-100">
+                        <i class="fas fa-trash-alt"></i> {{ __('ocultar') }}
+                    </button>
                 </form>
             </div>
         </div>
