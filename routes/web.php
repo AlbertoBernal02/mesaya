@@ -102,7 +102,7 @@ Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 
 // Redirección login según rol
 Route::get('/home', function () {
-    if (!Auth::check()) return redirect('/'); // 🔴 Ahora redirige a '/' en vez de 'login'
+    if (!Auth::check()) return redirect('/');
 
     if (!Auth::user()->email_verified_at) {
         Auth::logout();
