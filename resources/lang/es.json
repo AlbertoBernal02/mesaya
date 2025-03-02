@@ -113,5 +113,6 @@
     "carrusel3alt": "Tercera imagen del carrousel",
     "logoalt": "Imagen del logotipo",
     "mensaje_aqui": "Escribe tu mensaje aquí...",
-    "text_delete": "¿Estás seguro de que quieres eliminar este restaurante?"
+    "text_delete": "¿Estás seguro de que quieres eliminar este restaurante?",
+    "arriba" : "Volver Arriba"
 }
