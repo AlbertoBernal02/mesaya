@@ -1,66 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# **MesaYa – Sistema de Reservas de Restaurantes en Laravel**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 **Descripción**
 
-## About Laravel
+**MesaYa** es una aplicación web desarrollada en **Laravel 10** que permite gestionar la reserva de mesas en restaurantes. El sistema incluye autenticación de usuarios, generación de PDFs con detalles de la reserva y envío de correos electrónicos de confirmación a través de **Gmail**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+✅ **Laravel Fortify** para autenticación segura.  
+✅ **Generación de PDFs** para confirmar reservas.  
+✅ **Envío de correos con Gmail** sin usar Mailtrap.  
+✅ **Sistema de roles** donde los administradores pueden gestionar restaurantes y los usuarios pueden hacer reservas.  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 **Características**
 
-## Learning Laravel
+- **Gestión de restaurantes y reservas**  
+  - Los administradores pueden agregar, editar y eliminar restaurantes.  
+  - Los usuarios pueden buscar restaurantes y realizar reservas.  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Sistema de autenticación**  
+  - Registro e inicio de sesión con **Laravel Fortify**.  
+  - Protección de rutas según roles de usuario.  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Envío de correos de confirmación**  
+  - El sistema envía un correo automático con los detalles de la reserva.  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Generación de PDFs**  
+  - Se genera un PDF con los detalles de la reserva para descargar o imprimir.  
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📌 **Instalación**
 
-### Premium Partners
+### **1️⃣ Clona el repositorio**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```sh
+git clone https://github.com/tuusuario/mesaya.git
+cd mesaya
+```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **2️⃣ Instala las dependencias**
 
-## Code of Conduct
+```sh
+composer install
+npm install && npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+### **3️⃣ Configura las variables de entorno**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Renombra el archivo de configuración:
 
-## License
+```sh
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Genera la clave de aplicación:
+
+```sh
+php artisan key:generate
+```
+
+Modifica el archivo `.env` para establecer los datos de la base de datos:
+
+```ini
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mesa_ya
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
+
+### **4️⃣ Configurar envío de correos con Gmail**
+
+1. Habilita la autenticación en dos pasos en tu cuenta de Google.
+2. Genera una contraseña de aplicación en [Google Security](https://myaccount.google.com/security).
+3. Configura el archivo `.env`:
+
+```ini
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=tu-email@gmail.com
+MAIL_PASSWORD=tu-clave-generada
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=tu-email@gmail.com
+MAIL_FROM_NAME="MesaYa"
+```
+
+---
+
+### **5️⃣ Configurar Laravel Fortify (Autenticación)**
+
+El sistema ya tiene **Laravel Fortify** instalado, pero si necesitas publicar la configuración:
+
+```sh
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+```
+
+---
+
+### **6️⃣ Configurar generación de PDFs**
+
+El sistema usa **barryvdh/laravel-dompdf**. Si necesitas instalarlo:
+
+```sh
+composer require barryvdh/laravel-dompdf
+```
+
+---
+
+### **7️⃣ Crear la base de datos y ejecutar migraciones**
+
+```sh
+php artisan migrate --seed
+```
+
+---
+
+### **8️⃣ Iniciar el servidor de desarrollo**
+
+```sh
+php artisan serve
+```
+
+La aplicación estará disponible en **`http://127.0.0.1:8000/`**.
+
+Si usas Docker con **Sail**:
+
+```sh
+./vendor/bin/sail up -d
+```
+
+Accede desde `http://localhost`.
+
+---
+
+## 📌 **Uso del Proyecto**
+
+### **1️⃣ Registro e inicio de sesión**
+- Los usuarios pueden registrarse y hacer reservas.  
+- Los administradores pueden gestionar restaurantes.  
+
+**Cuenta de prueba (Administrador):**  
+- **Email:** `admin@mesaya.com`  
+- **Contraseña:** `password`  
+
+---
+
+### **2️⃣ Gestión de Restaurantes**
+- Los administradores pueden agregar, editar y eliminar restaurantes.  
+- Cada restaurante está registrado como un producto en la base de datos.  
+
+---
+
+### **3️⃣ Realizar una Reserva**
+- Los usuarios pueden ver restaurantes y reservar una mesa.  
+- Se genera un **PDF** con los detalles de la reserva.  
+- Se envía un **correo de confirmación** con la información de la reserva.  
+
+---
+
+## 📌 **Despliegue en Producción**
+### **1️⃣ Configurar permisos**
+```sh
+chmod -R 775 storage bootstrap/cache
+```
+
+### **2️⃣ Optimizar la aplicación**
+```sh
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+### **3️⃣ Supervisar tareas en segundo plano**
+```sh
+php artisan queue:work
+```
+
+---
+
+## 📌 **Preguntas Frecuentes**
+### **¿Cómo restablezco la base de datos?**
+```sh
+php artisan migrate:fresh --seed
+```
+
+### **¿Cómo accedo a Laravel Tinker para probar consultas?**
+```sh
+php artisan tinker
+```
+
+### **¿Cómo verifico si Laravel está correctamente instalado?**
+```sh
+php artisan --version
+```
+
+---
+
+🚀 ¡Ya tienes todo listo para usar **MesaYa**!
