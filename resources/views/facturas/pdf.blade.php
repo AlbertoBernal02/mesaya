@@ -24,7 +24,7 @@
             <div>
                 <h3>Datos de la Empresa</h3>
                 <p><strong>Nombre:</strong> MesaYa</p>
-                <p><strong>Dirección:</strong> Calle MesaYa 3</p>
+                <p><strong>Dirección:</strong> Calle Campana 2, Sevilla</p>
                 <p><strong>Mail:</strong> adminmesaya@yopmail.com</p>
             </div>
         </div>
