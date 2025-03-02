@@ -2,9 +2,9 @@
 
 @section('title', __('sobre_nosotros')) <!-- Establece el título de la página -->
 
-@section('content')    
- <!-- Sección Hero con Parallax -->
- <section class="hero d-flex flex-column align-items-center justify-content-center py-5 sh">
+@section('content')
+<!-- Sección Hero con Parallax -->
+<section class="hero d-flex flex-column align-items-center justify-content-center py-5 sh">
     <!-- Imagen de fondo con parallax -->
     <div class="parallax-background fp"></div>
 
@@ -15,12 +15,12 @@
         <h1 class="fw-bold display-3 text-white">{{ __('quienes_somos') }}</h1> <!-- Título de la sección -->
         <p class="lead fs-4 text-white">{{ __('descripcion_empresa') }}</p> <!-- Descripción de la empresa -->
     </div>
-    
+
     <!-- Mensaje de ventajas -->
     <div class="container text-center mb-4 c1">
         <h2 class="fw-bold display-5 text-white">{{ __('disfruta_ventajas') }}</h2> <!-- Título de las ventajas -->
     </div>
-    
+
     <!-- Carrusel -->
     <div class="container d-flex justify-content-center mb-5 c1">
         <div id="carouselExample" class="carousel slide carousel-fade w-100 c2" data-bs-ride="carousel">

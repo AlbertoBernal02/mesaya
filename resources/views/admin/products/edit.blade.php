@@ -23,14 +23,14 @@
                 <label class="form-label">{{ __('categoria') }}</label> <!-- Etiqueta para la categoría -->
                 <div>
                     @foreach ($categories as $category)
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="categories_id"
-                                id="category_{{ $category->id }}" value="{{ $category->id }}"
-                                {{ $product->categories_id == $category->id ? 'checked' : '' }}> <!-- Campo de selección de categoría -->
-                            <label class="form-check-label" for="category_{{ $category->id }}">
-                                {{ $category->name }} <!-- Nombre de la categoría -->
-                            </label>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categories_id"
+                            id="category_{{ $category->id }}" value="{{ $category->id }}"
+                            {{ $product->categories_id == $category->id ? 'checked' : '' }}> <!-- Campo de selección de categoría -->
+                        <label class="form-check-label" for="category_{{ $category->id }}">
+                            {{ $category->name }} <!-- Nombre de la categoría -->
+                        </label>
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -65,12 +65,12 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="opening_time" class="form-label">{{ __('hora_apertura') }}</label> <!-- Etiqueta para la hora de apertura -->
-                    <input type="time" class="form-control input-custom" id="opening_time" name="opening_time" 
+                    <input type="time" class="form-control input-custom" id="opening_time" name="opening_time"
                         value="{{ $product->schedule->opening_time }}"> <!-- Campo de entrada para la hora de apertura -->
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="closing_time" class="form-label">{{ __('hora_cierre') }}</label> <!-- Etiqueta para la hora de cierre -->
-                    <input type="time" class="form-control input-custom" id="closing_time" name="closing_time" 
+                    <input type="time" class="form-control input-custom" id="closing_time" name="closing_time"
                         value="{{ $product->schedule->closing_time }}"> <!-- Campo de entrada para la hora de cierre -->
                 </div>
             </div>
@@ -78,17 +78,17 @@
             <h4 class="mt-4">{{ __('horas_no_disponibles') }}</h4> <!-- Título para las horas no disponibles -->
             <div class="mb-3">
                 <button type="button" id="toggle-all" class="btn btn-secondary mb-2">
-                     {{ __('seleccionar_deseleccionar') }} <!-- Botón para seleccionar/deseleccionar todas las horas -->
+                    {{ __('seleccionar_deseleccionar') }} <!-- Botón para seleccionar/deseleccionar todas las horas -->
                 </button>
                 <div id="unavailable-hours-container" class="row">
                     @foreach($product->schedule->unavailable_hours ?? [] as $hour)
-                        <div class="col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input unavailable-hour" type="checkbox" 
-                                    name="unavailable_hours[]" value="{{ $hour }}" id="hora_{{ $hour }}" checked> <!-- Campo de selección para las horas no disponibles -->
-                                <label class="form-check-label" for="hora_{{ $hour }}">{{ $hour }}</label> <!-- Etiqueta para las horas no disponibles -->
-                            </div>
+                    <div class="col-md-3">
+                        <div class="form-check">
+                            <input class="form-check-input unavailable-hour" type="checkbox"
+                                name="unavailable_hours[]" value="{{ $hour }}" id="hora_{{ $hour }}" checked> <!-- Campo de selección para las horas no disponibles -->
+                            <label class="form-check-label" for="hora_{{ $hour }}">{{ $hour }}</label> <!-- Etiqueta para las horas no disponibles -->
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>

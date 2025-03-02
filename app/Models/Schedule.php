@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schedule extends Model {
+class Schedule extends Model
+{
     use HasFactory;
 
     protected $table = 'schedules'; // Nombre de la tabla en la base de datos
@@ -16,10 +17,8 @@ class Schedule extends Model {
     ];
 
     // Relación con product
-public function product() {
-    return $this->belongsTo(Product::class, 'product_id');
-}
-
-
-
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

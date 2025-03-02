@@ -112,71 +112,71 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    // Busca el producto
-    $product = Product::findOrFail($id);
+    {
+        // Busca el producto
+        $product = Product::findOrFail($id);
 
-    if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
-        // Devuelve la vista de home y un mensaje de error
-        return redirect()->route('home')->with('error', 'No tienes permiso para actualizar este restaurante.');
-    }
-
-    // Valida los datos
-    $request->validate([
-        'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ-]+$/',
-        'categories_id' => 'required|integer|exists:categories,id',
-        'total_price' => 'required|numeric|min:0|max:1000',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        'capacity' => 'required|integer|min:1|max:500',
-        'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
-        'opening_time' => 'nullable|string',
-        'closing_time' => 'nullable|string',
-        'unavailable_hours' => 'nullable|array',
-    ]);
-
-    // Obtiene los horarios previos del restaurante
-    $schedule = \App\Models\Schedule::where('product_id', $product->id)->first();
-
-    // Si los horarios de apertura y cierre son nulos los pone por defecto
-    $opening_time = $request->opening_time ?? ($schedule ? $schedule->opening_time : '09:00');
-    $closing_time = $request->closing_time ?? ($schedule ? $schedule->closing_time : '23:00');
-
-    // Actualiza los datos del restaurante
-    $product->update([
-        'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
-        'categories_id' => $request->categories_id,
-        'total_price' => $request->total_price,
-        'capacity' => $request->capacity,
-        'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
-        'visible' => $request->input('visible', $product->visible),
-    ]);
-
-    // Busca la imagen si existe
-    if ($request->hasFile('image')) {
-        if ($product->image && file_exists(public_path($product->image))) {
-            unlink(public_path($product->image));
+        if (Auth::user()->role === 'restaurant' && Auth::id() !== $product->user_id) {
+            // Devuelve la vista de home y un mensaje de error
+            return redirect()->route('home')->with('error', 'No tienes permiso para actualizar este restaurante.');
         }
 
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('img'), $imageName);
-        $imagePath = '../../img/' . $imageName;
-        $product->update(['image' => $imagePath]);
+        // Valida los datos
+        $request->validate([
+            'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ-]+$/',
+            'categories_id' => 'required|integer|exists:categories,id',
+            'total_price' => 'required|numeric|min:0|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'capacity' => 'required|integer|min:1|max:500',
+            'ubication' => 'required|string|min:3|max:255|regex:/^[a-zA-Z0-9\s,.-]+$/',
+            'opening_time' => 'nullable|string',
+            'closing_time' => 'nullable|string',
+            'unavailable_hours' => 'nullable|array',
+        ]);
+
+        // Obtiene los horarios previos del restaurante
+        $schedule = \App\Models\Schedule::where('product_id', $product->id)->first();
+
+        // Si los horarios de apertura y cierre son nulos los pone por defecto
+        $opening_time = $request->opening_time ?? ($schedule ? $schedule->opening_time : '09:00');
+        $closing_time = $request->closing_time ?? ($schedule ? $schedule->closing_time : '23:00');
+
+        // Actualiza los datos del restaurante
+        $product->update([
+            'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
+            'categories_id' => $request->categories_id,
+            'total_price' => $request->total_price,
+            'capacity' => $request->capacity,
+            'ubication' => htmlspecialchars($request->ubication, ENT_QUOTES, 'UTF-8'),
+            'visible' => $request->input('visible', $product->visible),
+        ]);
+
+        // Busca la imagen si existe
+        if ($request->hasFile('image')) {
+            if ($product->image && file_exists(public_path($product->image))) {
+                unlink(public_path($product->image));
+            }
+
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName);
+            $imagePath = '../../img/' . $imageName;
+            $product->update(['image' => $imagePath]);
+        }
+
+        // Actualiza o crea el horario en la tabla Schedule
+        \App\Models\Schedule::updateOrCreate(
+            ['product_id' => $product->id], // Busca por el ID del restaurante
+            [
+                'opening_time' => $opening_time,
+                'closing_time' => $closing_time,
+                'unavailable_hours' => $request->unavailable_hours ?? [],
+            ]
+        );
+
+        // Devuelve la vista de home y un mensaje de éxito
+        return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
     }
-
-    // Actualiza o crea el horario en la tabla Schedule
-    \App\Models\Schedule::updateOrCreate(
-        ['product_id' => $product->id], // Busca por el ID del restaurante
-        [
-            'opening_time' => $opening_time,
-            'closing_time' => $closing_time,
-            'unavailable_hours' => $request->unavailable_hours ?? [],
-        ]
-    );
-
-    // Devuelve la vista de home y un mensaje de éxito
-    return redirect()->route('home')->with('success', 'Producto actualizado correctamente.');
-}
 
 
 

@@ -63,7 +63,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Decuelve la vista home
-        return redirect()->route('home');  
+        return redirect()->route('home');
     }
 
     // Cierra la sesión

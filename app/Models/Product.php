@@ -32,9 +32,9 @@ class Product extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-// Relación con schedule
-public function schedule() {
-    return $this->hasOne(Schedule::class, 'product_id');
-}
-
+    // Relación con schedule
+    public function schedule()
+    {
+        return $this->hasOne(Schedule::class, 'product_id');
+    }
 }

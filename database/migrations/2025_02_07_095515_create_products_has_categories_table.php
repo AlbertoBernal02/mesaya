@@ -17,4 +17,3 @@ return new class extends Migration {
         Schema::dropIfExists('products_has_categories');
     }
 };
-

@@ -17,4 +17,3 @@ return new class extends Migration {
         Schema::dropIfExists('shopping_carts_has_products');
     }
 };
-

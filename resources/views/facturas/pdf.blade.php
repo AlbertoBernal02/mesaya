@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Factura</title>
     <link rel="stylesheet" href="file://{{ public_path('css/pdf.css') }}">
 
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -57,4 +59,5 @@
         </div>
     </div>
 </body>
+
 </html>

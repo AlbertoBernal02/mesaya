@@ -5,11 +5,13 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductsSeeder extends Seeder {
-    public function run(): void {
+class ProductsSeeder extends Seeder
+{
+    public function run(): void
+    {
         DB::table('products')->insert([
             [
-              'name' => 'Street Food Burguer Porn',
+                'name' => 'Street Food Burguer Porn',
                 'total_price' => 21.00,
                 'categories_id' => 1,
                 'image' => '../../img/foodPorn.jpg',

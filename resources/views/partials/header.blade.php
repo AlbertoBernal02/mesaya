@@ -13,32 +13,32 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('contacto') }}">{{ __('contacto') }}</a></li> <!-- Enlace a Contacto -->
 
                 @guest
-                    <li class="nav-item">
-                        <a class="btn btn-primary me-2" href="{{ route('login') }}">{{ __('iniciar_sesion') }}</a> <!-- Botón de Iniciar Sesión -->
-                        <a class="btn btn-secondary" href="{{ route('register') }}">{{ __('registrarse') }}</a> <!-- Botón de Registrarse -->
-                    </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary me-2" href="{{ route('login') }}">{{ __('iniciar_sesion') }}</a> <!-- Botón de Iniciar Sesión -->
+                    <a class="btn btn-secondary" href="{{ route('register') }}">{{ __('registrarse') }}</a> <!-- Botón de Registrarse -->
+                </li>
                 @else
-                    @if (Auth::user()->role == 'user')
-                        <li class="nav-item">
-                            <a class="btn btn-reservas btn-custom position-relative" href="{{ route('carrito.index') }}">
-                                <i class="fas fa-calendar-check"></i> {{ __('confirmar_reservas') }} <!-- Botón de Confirmar Reservas -->
-                                @if($reservasPendientes > 0)
-                                    <span class="badge badge-danger position-absolute top-0 start-100 translate-middle">
-                                        {{ $reservasPendientes }} <!-- Número de reservas pendientes -->
-                                    </span>
-                                @endif
-                            </a>
-                        </li>
-                    @endif
-                    <li class="nav-item">
-                        <a class="btn btn-logout btn-custom" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> {{ __('cerrar_sesion') }} <!-- Botón de Cerrar Sesión -->
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hf">
-                            @csrf
-                        </form>
-                    </li>
+                @if (Auth::user()->role == 'user')
+                <li class="nav-item">
+                    <a class="btn btn-reservas btn-custom position-relative" href="{{ route('carrito.index') }}">
+                        <i class="fas fa-calendar-check"></i> {{ __('confirmar_reservas') }} <!-- Botón de Confirmar Reservas -->
+                        @if($reservasPendientes > 0)
+                        <span class="badge badge-danger position-absolute top-0 start-100 translate-middle">
+                            {{ $reservasPendientes }} <!-- Número de reservas pendientes -->
+                        </span>
+                        @endif
+                    </a>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a class="btn btn-logout btn-custom" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> {{ __('cerrar_sesion') }} <!-- Botón de Cerrar Sesión -->
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hf">
+                        @csrf
+                    </form>
+                </li>
                 @endguest
 
                 <!-- Botón para cambiar el idioma sin usar sesión -->

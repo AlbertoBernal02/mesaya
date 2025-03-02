@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 Route::get('/get-schedule', function (Request $request) {
     $restaurantId = $request->query('restaurant_id');
-    
+
     // Depurar el valor de restaurant_id
     Log::info('restaurant_id: ' . $restaurantId);
 
@@ -16,7 +16,7 @@ Route::get('/get-schedule', function (Request $request) {
     }
 
     $schedule = Schedule::where('product_id', $restaurantId)->first();
-    
+
     if (!$schedule) {
         return response()->json(['message' => 'No se encuentra la programación para este restaurante.'], 404);
     }

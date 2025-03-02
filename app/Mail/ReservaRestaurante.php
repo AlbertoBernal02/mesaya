@@ -60,15 +60,15 @@ class ReservaRestaurante extends Mailable
     {
         // Devolvuelve el asunto, la vista del cuerpo del correo y los datos
         return $this->subject('Nueva reserva en tu restaurante')
-                    ->view('emails.reserva-restaurante')
-                    ->with([
-                        'reserva' => $this->reserva,
-                        'cliente' => $this->cliente,
-                        'factura_url' => $this->publicPath, // URL pública para descargar
-                    ])
-                    ->attach($this->pdfPath, [
-                        'as' => "factura_{$this->factura->id}.pdf",
-                        'mime' => 'application/pdf',
-                    ]);
+            ->view('emails.reserva-restaurante')
+            ->with([
+                'reserva' => $this->reserva,
+                'cliente' => $this->cliente,
+                'factura_url' => $this->publicPath, // URL pública para descargar
+            ])
+            ->attach($this->pdfPath, [
+                'as' => "factura_{$this->factura->id}.pdf",
+                'mime' => 'application/pdf',
+            ]);
     }
 }

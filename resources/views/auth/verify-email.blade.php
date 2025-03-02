@@ -11,9 +11,9 @@
 
                 <div class="card-body">
                     @if (session('message'))
-                        <div class="alert alert-warning">
-                            {{ session('message') }}
-                        </div>
+                    <div class="alert alert-warning">
+                        {{ session('message') }}
+                    </div>
                     @endif
 
 
@@ -33,6 +33,3 @@
     </div>
 </div>
 @endsection
-
-
-

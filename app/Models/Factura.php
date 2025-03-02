@@ -17,4 +17,3 @@ class Factura extends Model
         return $this->belongsTo(ReservaConfirmada::class, 'reserva_id');
     }
 }
-

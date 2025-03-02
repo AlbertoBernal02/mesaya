@@ -10,7 +10,6 @@ class ReservationController extends Controller
     public function index()
     {
         $this->authorize('isClient');
-        
     }
 
     public function store(Request $request)

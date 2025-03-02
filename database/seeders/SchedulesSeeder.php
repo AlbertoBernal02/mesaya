@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SchedulesSeeder extends Seeder {
-    public function run(): void {
+class SchedulesSeeder extends Seeder
+{
+    public function run(): void
+    {
         DB::table('schedules')->insert([
             [
                 'product_id' => 1,

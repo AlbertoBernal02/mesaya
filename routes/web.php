@@ -93,8 +93,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/contacto/enviar', [ContactoController::class, 'enviarMensaje'])->name('contacto.enviar');
         Route::get('/get-schedule', [ScheduleController::class, 'getSchedule'])->name('get-schedule');
     });
-
-    
 });
 
 // 🌎 Rutas públicas
