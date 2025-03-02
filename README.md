@@ -1,66 +1,170 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# **DOCUMENTACIÓN MESA YA**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Encabezado](assets/logomesaya.png)
 
-## About Laravel
+> **"Reserva fácil, disfruta sin esperas".**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📌 **Guía de Instalación y Uso – MesaYa (Laravel)**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### **Requisitos Previos**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Antes de instalar el proyecto, asegúrate de contar con los siguientes requisitos:
 
-## Learning Laravel
+- PHP 8.x
+- Composer
+- MySQL/MariaDB
+- Node.js y npm (para gestionar los assets)
+- Laravel 11 (se instalará con Composer)
+- Un servidor web como Apache o Nginx
+- Extensiones PHP requeridas: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `fileinfo`
+- Cuenta de Gmail habilitada para enviar correos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📌 **Instalación**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### **1️⃣ Clonar el repositorio**
 
-## Laravel Sponsors
+Si el código fuente está en GitHub, clónalo con:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```sh
+git clone https://github.com/AlbertoBernal02/mesaya.git
+cd mesaya
+```
 
-### Premium Partners
+Si lo descargas como `.zip`, extrae la carpeta y accede a ella desde la terminal.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+### **2️⃣ Instalar dependencias**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Ejecuta los siguientes comandos para instalar las dependencias del proyecto:
 
-## Code of Conduct
+```sh
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+También instala las dependencias de frontend con:
 
-## Security Vulnerabilities
+```sh
+npm install && npm run build
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### **3️⃣ Configurar variables de entorno**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Duplica el archivo `.env.example` y renómbralo como `.env`:
+
+```sh
+cp .env.example .env
+```
+
+Después, genera la clave de la aplicación:
+
+```sh
+php artisan key:generate
+```
+
+Modifica el archivo `.env` y ajusta los valores de conexión a la base de datos:
+
+```ini
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mesaya
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Si estás usando otro usuario o una contraseña diferente, ajústalos según tu configuración.
+
+---
+
+### **4️⃣ Configurar envío de correos con Gmail**
+
+La aplicación envía correos utilizando **Gmail** en lugar de Mailtrap. Para configurarlo:
+
+1. Accede a [Tu cuenta de Google](https://myaccount.google.com/)
+2. Habilita la autenticación en dos pasos.
+3. Genera una contraseña de aplicación en [Google Security](https://myaccount.google.com/security) → "Contraseñas de aplicaciones".
+4. Configura las variables de entorno en `.env`:
+
+```ini
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=tu-email@gmail.com
+MAIL_PASSWORD=tu-contraseña-de-aplicacion
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=tu-email@gmail.com
+MAIL_FROM_NAME="MesaYa"
+```
+
+---
+
+### **5️⃣ Crear la base de datos**
+
+Crea la base de datos manualmente en MySQL o usa el siguiente código en la herramienta **MySQL Workbench**:
+
+```sql
+DROP DATABASE IF EXISTS mesaya;
+CREATE DATABASE IF NOT EXISTS mesaya;
+```
+
+---
+
+### **6️⃣ Ejecutar migraciones y seeders**
+
+Para crear las tablas e insertar datos de prueba, ejecuta:
+
+```sh
+php artisan migrate:fresh
+php artisan db:seed
+```
+
+Esto creará las tablas y llenará la base de datos con información de prueba.
+
+---
+
+### **7️⃣ Configurar Laravel Fortify**
+
+El proyecto utiliza **Laravel Fortify** para la autenticación. Ya está instalado, pero asegúrate de ejecutar el siguiente comando si aún no está publicado:
+
+```sh
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+```
+
+Si necesitas personalizar la autenticación, revisa el archivo:
+
+```sh
+app/Providers/FortifyServiceProvider.php
+```
+
+---
+
+### **8️⃣ Configurar generación de PDFs**
+
+El proyecto usa una librería para generar PDFs (**barryvdh/laravel-dompdf**). Si aún no está instalada, hazlo con:
+
+```sh
+composer require barryvdh/laravel-dompdf
+```
+
+Publica la configuración si necesitas modificar opciones:
+
+```sh
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+```
+
+---
+
+### **9️⃣ Iniciar el servidor de desarrollo**
+
+Ejecuta el siguiente comando para iniciar el servidor local de Laravel:
+
+```sh
+php artisan serve
+```
+
+El proyecto estará disponible en **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
